@@ -109,6 +109,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias -g L="&& ll"
 alias -g neo="~/Desktop/./neovide"
+alias -g dot="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias -g deno="/home/t.tapai/.deno/bin/deno"
+alias -g kitty-cat="./.local/kitty.app/bin/kitty"
 
 # GIT
 #abbr -g g-la="git log --graph --oneline"
