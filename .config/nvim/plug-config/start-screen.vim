@@ -11,6 +11,7 @@ let g:startify_bookmarks = [
             \ { 'n': '~/.config/nvim/readme.md' },
             \ { 'k': '~/.config/kitty/kitty.conf' },
             \ { 'i': '~/Documents/INSTRUCTIONS' },
+            \ { 't': '~/Documents/Tutorials' },
             \ { 'z': '~/.zshrc' },
             \ ]
 
