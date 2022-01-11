@@ -212,6 +212,9 @@ In git conflict go to unstaged file and press `dv` to open git conflict resolver
 In git conflict resolver press `\gj` for the right side or `\gf` for the left side.
 
 - `Gdiffsplit HEAD^` show file change of the previous commit
+- `Gdiff :0` show diff between current changes (SCREEN UP ARE NEW CHANGES)
+- `Gdiff ~3` show diff of tree commits behind
+- `Glogs` shows the list of commits and the diff files
 
 ## GitBlame
 
