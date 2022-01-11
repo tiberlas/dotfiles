@@ -107,11 +107,17 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias -g L="&& ll"
+alias ll="lsd -l"
+alias la="lsd -la"
+
+alias -g L="&& lsd -la"
 alias -g neo="~/Desktop/./neovide"
 alias -g dot="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 alias -g deno="/home/t.tapai/.deno/bin/deno"
 alias -g kitty-cat="./.local/kitty.app/bin/kitty"
+
+alias g-pass="pwgen -ysBv 17 1"
+alias pass="bash ~/Public/my-scripts/generate-password.sh"
 
 # GIT
 #abbr -g g-la="git log --graph --oneline"
