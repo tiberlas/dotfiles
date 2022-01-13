@@ -53,8 +53,8 @@ end
 beautiful.init("~/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "gnome-terminal"
-editor = os.getenv("EDITOR") or "editor"
+terminal = "alacritty"
+editor = os.getenv("nvim") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -66,18 +66,18 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
+    awful.layout.suit.fair,
+    awful.layout.suit.max,
     awful.layout.suit.floating,
-    awful.layout.suit.tile,
+    --awful.layout.suit.tile,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
-    -- awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    -- awful.layout.suit.magnifier,
+    --awful.layout.suit.max.fullscreen,
+     --awful.layout.suit.magnifier,
     -- awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
@@ -87,35 +87,35 @@ awful.layout.layouts = {
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
-}
+--myawesomemenu = {
+   --{ "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+   --{ "manual", terminal .. " -e man awesome" },
+   --{ "edit config", editor_cmd .. " " .. awesome.conffile },
+   --{ "restart", awesome.restart },
+   --{ "quit", function() awesome.quit() end },
+--}
 
-local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
-local menu_terminal = { "open terminal", terminal }
+--local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
+--local menu_terminal = { "open terminal", terminal }
 
-if has_fdo then
-    mymainmenu = freedesktop.menu.build({
-        before = { menu_awesome },
-        after =  { menu_terminal }
-    })
-else
-    mymainmenu = awful.menu({
-        items = {
-                  menu_awesome,
-                  { "Debian", debian.menu.Debian_menu.Debian },
-                  menu_terminal,
-                }
-    })
-end
+--if has_fdo then
+    --mymainmenu = freedesktop.menu.build({
+        --before = { menu_awesome },
+        --after =  { menu_terminal }
+    --})
+--else
+    --mymainmenu = awful.menu({
+        --items = {
+                  --menu_awesome,
+                  --{ "Debian", debian.menu.Debian_menu.Debian },
+                  --menu_terminal,
+                --}
+    --})
+--end
 
--- added widget
+-- added text widget
 praisewidget = wibox.widget.textbox()
-praisewidget.text = "ttiberius"
+praisewidget.text = "ttiberius    "
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -191,7 +191,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "!", "@", "#", "$", "%", "^", "&", "*", "(", ")" }, s, awful.layout.layouts[3])
+    awful.tag({ "", "", "", "", ""}, s, awful.layout.suit.fair)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -242,6 +242,19 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+-- tag functions
+local function add_tag()
+    awful.tag.add("", {
+        screen = awful.screen.focused(),
+        layout = awful.layout.suit.floating }):view_only()
+end
+
+local function delete_tag()
+    local t = awful.screen.focused().selected_tag
+    if not t then return end
+    t:delete()
+end
+
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
@@ -254,6 +267,10 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
+    awful.key({ modkey,           }, "a", add_tag,
+          {description = "add a tag", group = "tag"}),
+    awful.key({ modkey, "Shift"   }, "a", delete_tag,
+          {description = "delete the current tag", group = "tag"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
@@ -301,7 +318,8 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+
+    awful.key({ modkey, },            "q",     function () awful.util.spawn("bash /home/t.tapai/.dmenu/shutdown.sh") end,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -336,6 +354,13 @@ globalkeys = gears.table.join(
     -- Dmenu
     awful.key({ modkey },            "r",     function () awful.util.spawn("dmenu_run") end,
               {description = "run dmenu", group = "launcher"}),
+    -- Screen config
+    awful.key({ modkey, "Shift" },            "s",     function () awful.util.spawn("bash /home/t.tapai/.dmenu/monitor-settings.sh") end,
+              {description = "run screen config", group = "launcher"}),
+
+    -- Emoji ;)
+    awful.key({ modkey, },            "e",     function () awful.util.spawn("bash /home/t.tapai/.dmenu/emoji-list.sh") end,
+              {description = "run emoji app", group = "app"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -393,7 +418,10 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+
+    awful.key({ modkey }, "left mouse click",     function () end, {description = "move focused client", group = "client"}),
+    awful.key({ modkey }, "right mouse click",     function () end, {description = "resize focused client", group = "client"})
 )
 
 -- Bind all key numbers to tags.
@@ -512,7 +540,8 @@ awful.rules.rules = {
       }, properties = { floating = true }},
 
     -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
+    --{ rule_any = {type = { "normal", "dialog" }
+    { rule_any = {type = { "dialog" }
       }, properties = { titlebars_enabled = true }
     },
 
@@ -520,6 +549,28 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
 }
+
+-- turn titlebar on when client is floating
+client.connect_signal("property::floating", function(c)
+  if c.floating and not c.requests_no_titlebar then
+    awful.titlebar.show(c)
+  else
+    awful.titlebar.hide(c)
+  end
+end)
+
+-- turn tilebars on when layout is floating
+awful.tag.attached_connect_signal(nil, "property::layout", function (t)
+  local float = t.layout.name == "floating"
+  for _,c in pairs(t:clients()) do
+    c.floating = float
+    -- added resize to floating mode
+    --c.maximized_horizontal = false
+    --c.maximized_vertical   = false
+    --awful.mouse.client.move(c)
+  end
+end)
+
 -- }}}
 
 -- {{{ Signals
@@ -578,8 +629,8 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+client.connect_signal("mouse::click", function(c)
+    c:emit_signal("request::activate", "mouse_click", {raise = false})
 end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
@@ -587,6 +638,26 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 --Autostart application
-awful.spawn.with_shell("compton")
-awful.spawn.with_shell("./.local/kitty.app/bin/kitty")
+--awful.spawn.with_shell("nitrogen --set-centered --set-color=#373737 --random /home/t.tapai/Pictures/minecraft-wallpaper") --set wallpaper
+-- TRY feh for wallpaper
+--awful.spawn.with_shell("compton")  --enable transparency in windows
+--awful.spawn.with_shell("./.local/kitty.app/bin/kitty")
+--awful.util.spawn("nm-applet") --network manager
+--awful.util.spawn("pnmixer") --sound
+
+-- Autorun programs
+--autorun = true
+--autorunApps =
+-- {
+   --"program1",
+   --"program2",
+   --"program3",
+   --"program4",
+   --"program5",
+--}
+--if autorun then
+   --for app = 1, #autorunApps do
+       --awful.util.spawn(autorunApps[app])
+   --end
+--end
 
