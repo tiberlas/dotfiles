@@ -71,8 +71,8 @@ awful.layout.layouts = {
     awful.layout.suit.floating,
     --awful.layout.suit.tile,
     -- awful.layout.suit.tile.left,
-    -- awful.layout.suit.tile.bottom,
-    -- awful.layout.suit.tile.top,
+     --awful.layout.suit.tile.bottom,
+     awful.layout.suit.tile.top,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
@@ -191,7 +191,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "", "", "", "", ""}, s, awful.layout.suit.fair)
+    awful.tag({ "", "", "", "", ""}, s, awful.layout.suit.fair)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -318,6 +318,10 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
+
+    -- used i3lock-fancy: https://github.com/meskarune/i3lock-fancy
+    awful.key({ modkey }, "z", function () awful.spawn.with_shell("i3lock-fancy -pg") end,
+              {description = "lock screen", group = "awesome"}),
 
     awful.key({ modkey, },            "q",     function () awful.util.spawn("bash /home/t.tapai/.dmenu/shutdown.sh") end,
               {description = "quit awesome", group = "awesome"}),
@@ -638,12 +642,12 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 --Autostart application
---awful.spawn.with_shell("nitrogen --set-centered --set-color=#373737 --random /home/t.tapai/Pictures/minecraft-wallpaper") --set wallpaper
+awful.spawn.with_shell("nitrogen --set-centered --set-color=#373737 --random /home/t.tapai/Pictures/minecraft-wallpaper") --set wallpaper
 -- TRY feh for wallpaper
---awful.spawn.with_shell("compton")  --enable transparency in windows
---awful.spawn.with_shell("./.local/kitty.app/bin/kitty")
---awful.util.spawn("nm-applet") --network manager
---awful.util.spawn("pnmixer") --sound
+awful.spawn.with_shell("compton")  --enable transparency in windows
+awful.spawn.with_shell("./.local/kitty.app/bin/kitty")
+awful.util.spawn("nm-applet") --network manager
+awful.util.spawn("pnmixer") --sound
 
 -- Autorun programs
 --autorun = true
