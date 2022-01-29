@@ -13,40 +13,53 @@
 # change the monitor and wallpaper config
 
 # if not shore just run `xrandr` to see the available ports
+# for --pos flaf see: https://superuser.com/questions/485120/how-do-i-align-the-bottom-edges-of-two-monitors-with-xrandr
 # ports for lenovo laptop
 LAPTOP="eDP-1"
 DISPALY="DP-1"
 WGA="DP-2"
 
+WALLPAPERS=~/Pictures/minecraft-wallpaper
+
 MSG="Choose monitor setup: "
 OPT=(
 "l (laptop)"
+"duplicate (laptop duplicated on WGA)"
 "lv (laptop+vertical)"
-"t (two monitors)"
+"lh (laptop+horizontal)"
+"t (two monitors in T)"
+"w (two monitors in hoziontal; wide)"
 "all (two monitors and laptop bellow)"
+"r (refresh wallpaper)"
 )
 CHOICE=$(printf "%s\n" "${OPT[@]}" | dmenu -i -l 5 -p "$MSG")
 
 case $CHOICE in
   ${OPT[0]})
-    xrandr --output $LAPTOP --mode 1920x1080 --output $DISPALY --off --output $WGA --off &&
-    nitrogen --set-centered --set-color=#373737 --random ~/Pictures/minecraft-wallpaper
+    xrandr --output $LAPTOP --mode 1920x1080 --output $DISPALY --off --output $WGA --off
     ;;
   ${OPT[1]})
-    xrandr --output $LAPTOP ---mode 1920x1080 --output $DISPALY --off --output $WGA --mode 1920x1080 ---rotate left -left-of $LAPTOP &&
-    nitrogen --set-centered --set-color=#373737 --random ~/Pictures/minecraft-wallpaper --head=0 &&
-    nitrogen --set-centered --set-color=#373737 --random ~/Pictures/minecraft-wallpaper --head=1
+    xrandr --output $LAPTOP --mode 1920x1080 --output $DISPALY --off --output $WGA --same-as $LAPTOP
     ;;
   ${OPT[2]})
-    xrandr --output $LAPTOP --off --output $DISPALY --mode 1920x1080 --rotate left --output $WGA --mode 1920x1080 --left-of $DISPALY &&
-    nitrogen --set-centered --set-color=#373737 --random ~/Pictures/minecraft-wallpaper --head=0 &&
-    nitrogen --set-centered --set-color=#373737 --random ~/Pictures/minecraft-wallpaper --head=1
+    xrandr --output $LAPTOP ---mode 1920x1080 --primary --pos 0x840 --output $DISPALY --off --output $WGA --mode 1920x1080 --rotate left --pos 1920x0
     ;;
   ${OPT[3]})
-    xrandr --output $LAPTOP --mode 1920x1080 --below $WGA --output $DISPALY --mode 1920x1080 --rotate left --output $WGA --mode 1920x1080 --left-of $DISPALY &&
-    nitrogen --set-centered --set-color=#373737 --random ~/Pictures/minecraft-wallpaper --head=0 &&
-    nitrogen --set-centered --set-color=#373737 --random ~/Pictures/minecraft-wallpaper --head=1 &&
-    nitrogen --set-centered --set-color=#373737 --random ~/Pictures/minecraft-wallpaper --head=2
+    xrandr --output $LAPTOP ---mode 1920x1080 --primary --output $DISPALY --off --output $WGA --mode 1920x1080
+    ;;
+  ${OPT[4]})
+    xrandr --output $LAPTOP --off --output $DISPALY --mode 1920x1080 --rotate left --pos 1920x0 --output $WGA --mode 1920x1080 --primary --pos 0x840
+    ;;
+  ${OPT[4]})
+    xrandr --output $LAPTOP --off --output $DISPALY --mode 1920x1080 --output $WGA --mode 1920x1080 --primary --left-of $DISPALY
+    ;;
+  ${OPT[6]})
+    xrandr --output $LAPTOP --mode 1920x1080 --below $WGA --output $DISPALY --mode 1920x1080 --rotate left --output $WGA --mode 1920x1080 --left-of $DISPALY
+    ;;
+  ${OPT[7]})
+    nitrogen --set-centered --set-color=#373737 --random ${WALLPAPERS} --head=0 &&
+    nitrogen --set-centered --set-color=#373737 --random "${WALLPAPERS}" --head=1 &&
+    nitrogen --set-centered --set-color=#373737 --random "${WALLPAPERS}" --head=2
     ;;
   *)
     printf "%s" "command not implemented T_T"
