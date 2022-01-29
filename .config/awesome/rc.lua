@@ -87,35 +87,39 @@ awful.layout.layouts = {
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
---myawesomemenu = {
-   --{ "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   --{ "manual", terminal .. " -e man awesome" },
-   --{ "edit config", editor_cmd .. " " .. awesome.conffile },
-   --{ "restart", awesome.restart },
-   --{ "quit", function() awesome.quit() end },
---}
+myawesomemenu = {
+   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+   { "manual", terminal .. " -e man awesome" },
+   { "edit config", editor_cmd .. " " .. awesome.conffile },
+   { "restart", awesome.restart },
+   { "quit", function() awesome.quit() end },
+}
 
---local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
---local menu_terminal = { "open terminal", terminal }
+local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
+local menu_terminal = { "open terminal", terminal }
 
---if has_fdo then
-    --mymainmenu = freedesktop.menu.build({
-        --before = { menu_awesome },
-        --after =  { menu_terminal }
-    --})
---else
-    --mymainmenu = awful.menu({
-        --items = {
-                  --menu_awesome,
-                  --{ "Debian", debian.menu.Debian_menu.Debian },
-                  --menu_terminal,
-                --}
-    --})
---end
+if has_fdo then
+    mymainmenu = freedesktop.menu.build({
+        before = { menu_awesome },
+        after =  { menu_terminal }
+    })
+else
+    mymainmenu = awful.menu({
+        items = {
+                  menu_awesome,
+                  { "Debian", debian.menu.Debian_menu.Debian },
+                  menu_terminal,
+                }
+    })
+end
 
 -- added text widget
-praisewidget = wibox.widget.textbox()
-praisewidget.text = "ttiberius    "
+praisewidget = wibox.widget{
+  markup = "<span foreground='#3eb489dd'><b>    </b></span>",
+  align  = 'center',
+    valign = 'center',
+widget = wibox.widget.textbox
+}
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -191,7 +195,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "", "", "", "", ""}, s, awful.layout.suit.fair)
+    awful.tag({ "", "", "", "", ""}, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -207,32 +211,62 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
+        buttons = taglist_buttons,
+        style = {
+            fg_focus = '#3eb489dd',
+            bg_focus = '#00000000',
+        }
     }
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
+        style    = {
+            shape_border_width = 1,
+            shape_border_color = '#3eb489dd',
+            shape  = gears.shape.rounded_bar,
+            fg_normal = '#3eb489dd',
+            bg_normal = '#00000000',
+            fg_focus = "#ffffff",
+            bg_focus = '#3eb489dd' --primary collor
+        },
+        layout   = {
+            spacing = 10,
+            spacing_widget = {
+                {
+                    forced_width = 5,
+                    shape        = gears.shape.circle,
+                    widget       = wibox.widget.separator,
+                    color = '#3eb489dd'
+                },
+                valign = 'center',
+                halign = 'center',
+                widget = wibox.container.place,
+            },
+            layout  = wibox.layout.flex.horizontal
+        }
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
-
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 25, border_color = "#00000000", border_width = 5, bg = "#00000000" })
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
-            praisewidget,
-            s.mytaglist,
+            --mylauncher,
             s.mypromptbox,
-        },
-        s.mytasklist, -- Middle widget
+            praisewidget,
+            s.mytasklist,
+        },{ -- Middle widget
+            layout = wibox.layout.align.horizontal,
+        } ,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            s.mytaglist,
+            praisewidget,
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
@@ -244,7 +278,7 @@ end)
 
 -- tag functions
 local function add_tag()
-    awful.tag.add("", {
+    awful.tag.add("", {
         screen = awful.screen.focused(),
         layout = awful.layout.suit.floating }):view_only()
 end
@@ -501,8 +535,11 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
+      properties = { 
+                     border_width = 5,
+                     border_color = gears.color.parse_color("#00000000"),
+                     --border_width = beautiful.border_width,
+                     --border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
@@ -550,8 +587,11 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    -- TODO: not working
+     { rule = { class = "firefox" },
+       properties = { screen = 1, tag = "3" } },
+     { rule = { class = "authy" },
+       properties = { screen = 1, tag = "2" } },
 }
 
 -- turn titlebar on when client is floating
@@ -606,7 +646,12 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c) : setup {
+    awful.titlebar(c, {
+        bg_normal = "#00000000",
+        fg_normal = "#3eb489dd",
+        bg_focus = "#3eb489dd",
+        fg_focus = "#ffffff"
+    }) : setup {
         { -- Left
             awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
@@ -637,19 +682,23 @@ client.connect_signal("mouse::click", function(c)
     c:emit_signal("request::activate", "mouse_click", {raise = false})
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c) c.border_color = "#3eb48922" end)
+client.connect_signal("unfocus", function(c) c.border_color = "#00000000" end)
 -- }}}
 
 --Autostart application
-awful.spawn.with_shell("nitrogen --set-centered --set-color=#373737 --random /home/t.tapai/Pictures/minecraft-wallpaper") --set wallpaper
+--awful.spawn.with_shell("nitrogen --set-centered --set-color=#373737 --random /home/t.tapai/Pictures/minecraft-wallpaper") --set wallpaper
 -- TRY feh for wallpaper
 awful.spawn.with_shell("compton")  --enable transparency in windows
 awful.spawn.with_shell("./.local/kitty.app/bin/kitty")
 awful.util.spawn("nm-applet") --network manager
 awful.util.spawn("pnmixer") --sound
+awful.util.spawn("flameshot") --print screen
 
 -- Autorun programs
+
+awful.spawn.single_instance("authy", awful.rules.rules)
+
 --autorun = true
 --autorunApps =
 -- {
@@ -660,8 +709,26 @@ awful.util.spawn("pnmixer") --sound
    --"program5",
 --}
 --if autorun then
-   --for app = 1, #autorunApps do
+  --for app = 1, #autorunApps do
        --awful.util.spawn(autorunApps[app])
    --end
 --end
 
+-- battery worning
+gears.timer {
+    timeout = 60,
+    call_now = true,
+    autostart = true,
+    callback = function ()
+        awful.spawn.easy_async([[cat /sys/class/power_supply/BAT0/capacity]], function (stdout0) batcapacity = tonumber(stdout0)
+            awful.spawn.easy_async([[cat /sys/class/power_supply/BAT0/status]], function (stdout1) batstatus = stdout1:sub(1,-2) end)
+            if (batcapacity <= 20 and batstatus == "Discharging") then
+	        battery_notify = naughty.warning{
+		    title = "Battery warning\n",
+		    text = "Battery is lower than 20%.\n" .. batstatus .. " at " .. batcapacity .. "%.",
+		    timeout = 120,
+		}
+	    end
+        end)
+    end
+}
