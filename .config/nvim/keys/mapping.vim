@@ -50,3 +50,30 @@ map <Leader>tk <C-W>t<C-w>K
 nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 
+" center the cursor when jumping 
+nnoremap n nzzzv " goto next, center screen, unfold txt
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+inoremap [ [<c-g>u
+inoremap { {<c-g>u
+inoremap ' '<c-g>u
+inoremap " "<c-g>u
+
+" add relative jumps to jumplist
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+" move lines above or below
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+
+" bigger jump
+nnoremap gj 25jzz
+nnoremap gk 25kzz
+

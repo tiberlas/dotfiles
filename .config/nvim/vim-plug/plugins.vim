@@ -42,10 +42,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mhinz/vim-startify'
     "switching between alternative files
     Plug 'tpope/vim-projectionist'
-    " ranger file manager
-    Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
     " git blame
     Plug 'zivyangll/git-blame.vim'
+    " floating terminal
+    Plug 'voldikss/vim-floaterm'
+    " can surround txt
+    Plug 'tpope/vim-surround'
+    " swagger preview
+    Plug 'xavierchow/vim-swagger-preview'
 
 call plug#end()
 

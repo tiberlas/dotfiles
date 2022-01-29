@@ -1,5 +1,12 @@
 # VIM CONFIG
 
+When changing a config file to you have to source it, you can use: `source %` where % is the current buffer
+
+## mapings
+
+- `gj` goto 25 lines below
+- `gk` goto 25 lines above
+
 ## VimPlug
 
 For plugins use a plugin manager **vim-plug**: `https://github.com/junegunn/vim-plug`
@@ -37,11 +44,24 @@ useful commands:
 - `space e` activate/deactivate extensions
 - `space c` coc commands, **restart**
 
+### Coc-prettier
+
+- `:Prettier` format current buffer
+
 ### Coc-snippets
 
 ads custom defined snippets and some are pre defined
 
 `CocList snippets` show all snippets
+
+In insert mode pres `Ctrl-space` and the snippets has [s] at the end of the list.
+When the list is open use:
+
+- `Ctrl-k` move up
+- `Ctrl-j` mode down
+- `Ctrl-l` use the selected snippet
+
+When the snippet template is generate you can move through the placeholders with `Ctrl-j` and `Ctrl-k`.
 
 ### Spell checker
 
@@ -150,7 +170,7 @@ When you press the leader key a menu will show with all available actions.
 
 Rainbow brackets.
 
-## Stratify
+## Startify
 
 Show welcome screen on start.
 Can save sessions.
@@ -158,6 +178,7 @@ Can pin files as bookmarks.
 
 The session are available in command mode, the commands start with 'S'.
 
+- `Startify` open startify menu
 - `SSave` save session
 - `SLoad` load session
 - `SDelete`
@@ -182,11 +203,38 @@ The third line defines a type 'service' for easier service finding.
 - `:A` to alternate files
 - `:E{type_name}` to go to file type; ex `:Eservice auth` open auth.service.ts
 
-## Ranger
+## Floaterm
 
-File manager, stand alone application.
+- `F1` to open float term or
+- `leader+y t`
 
-install `sudo apt install ranger`
+to close pres `F1` or `Ctrl+D` basically ending the process
+
+in **which_key.vim** is set:
+`leadet+y n` node
+`leadet+y g` lazygit
+
+## Surround
+
+Surround txt with quotes, brackets, tags, ...
+No config
+
+- ys+MOTION+SURROUND adds surround to the selected motion
+- on word HELLO do ysaw" resold "HELLO"
+- cs+OLD_SURROUND+NEW_SURROUND replace the surround
+- ds+SURROUND removes the surround
+
+- ysaw<div> surround *a word* with <div> tag
+- dst deletes the tag surround
+
+- in visual line (V) press S+SURROUND to surround the selected lines
+
+for more info see *https://github.com/tpope/vim-surround*
+
+## Swagger preview
+TODO: NOT WORKING
+
+- `leader+w` to open the swagger preview on url: localhost:8017/
 
 ---
 
@@ -208,17 +256,47 @@ commands:
 
 ## Fugitive
 
+In confict file run: `Gvdiffsplit!` for 3 way vertical split or `Gdiffsplit!` for 3 way horizontal split or
 In git conflict go to unstaged file and press `dv` to open git conflict resolver.
-In git conflict resolver press `\gj` for the right side or `\gf` for the left side.
+In git conflict resolver press `leader+gj` for the right side (new changes) or `leader+gf` for the left side (current changes).
 
 - `Gdiffsplit HEAD^` show file change of the previous commit
 - `Gdiff :0` show diff between current changes (SCREEN UP ARE NEW CHANGES)
-- `Gdiff ~3` show diff of tree commits behind
-- `Glogs` shows the list of commits and the diff files
+- `Gdiff HEAD~3` show diff of tree commits behind
+- `diffupdate` to refresh the diff view
 
-## GitBlame
+- `Glog` shows the list of commits and the diff files
+- `Gclog` show logs and above the diff
+- `Gclog -n 10` shows only 10 commits so you can add any git modificator
+- `Gclog -- %` SHOWS COMMITS THAT HAVE AFFECTED THE CURRENT BUFFER
+
+- `Git show --pretty="" --name-only HEAD~0` show affected files from the latest commit, to open a file use `gf` goto file
+
+- `Gedit` go to working copy
+- `Git add %` stages the current buffer, the '%' is the current buffer
+- `Gwrite` does the same sa above
+- `Git checkout %` revert the unstaged file, the current buffer
+- `Gread` empty the buffer and reverte the current buffer (only the unstaged changes)
+- `Gcommit` create a commit
+- `Gblame` or `Git blame` creates a vertical split
+
+- `Gstatus` or `Git` shows status
+- - `enter` open the file; goot combination with `Gdiff` to review changes
+- - `s` to stage
+- - `u` to unstage
+- - `X` discart unstaged changes
+
+Abbr (use space to unfold them)
+
+- `g-l` log graph
+- `g-f` file changes in last commmit
+- `g-d` diff for current changes
+
+## GitBlame *UNINSTALL THIS*
 
 Use leader B to see the blame in the vim status.
 
 TODO: see lazy git it's a git client in terminal
 maybe tpope dispacher to run async commands in vim's terminal tip 10
+
+telescope for file navigation; quick fix list!

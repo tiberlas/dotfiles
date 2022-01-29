@@ -2,6 +2,13 @@
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-eslint',
+      \ 'coc-prettier',
+      \ 'coc-spell-checker',
+      \ 'coc-explorer',
+      \ 'coc-emmet',
+      \ 'coc-swagger',
+      \ 'coc-sh',
+      \ 'coc-lua',
       \]
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
@@ -212,4 +219,15 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | end
 
 " Css enable for scss
 autocmd FileType scss setl iskeyword+=@-@
+
+" Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
 

@@ -63,5 +63,12 @@ let g:which_key_map.s = {
       \ 'z' : [':FZF'          , 'FZF'],
       \ }
 
+let g:which_key_map.y = {
+      \ 'name' : '+terminal' ,
+      \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
+      \ 'g' : [':FloatermNew lazygit'                           , 'git'],
+      \ 't' : [':FloatermToggle'                                , 'toggle'],
+      \ }
+
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")

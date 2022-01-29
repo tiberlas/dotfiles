@@ -5,10 +5,11 @@
   // coc-html
   "html.autoClosingTags": true,
   // coc-snippets
-  "snippets.ultisnips.directories": [
-    "UltiSnips",
-    "~/.config/nvim/utils/snippets"
-  ],
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
+  //"snippets.ultisnips.directories": [
+    //"UltiSnips",
+    //"~/.config/nvim/snips"
+  //],
   // coc-explorer
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
@@ -18,5 +19,12 @@
     "v": "open:vsplit"
   },
   // spell checker
-  "cSpell.language": "en"
+  "cSpell.language": "en",
+  // prettier
+  "prettier.printWidth": 80,
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.semi": true,
+  "prettier.useTabs": false
 }
