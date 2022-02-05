@@ -50,6 +50,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tpope/vim-surround'
     " swagger preview
     Plug 'xavierchow/vim-swagger-preview'
+    Plug 'mhartington/formatter.nvim'
 
 call plug#end()
 

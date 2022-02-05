@@ -300,3 +300,6 @@ TODO: see lazy git it's a git client in terminal
 maybe tpope dispacher to run async commands in vim's terminal tip 10
 
 telescope for file navigation; quick fix list!
+
+TODO: https://github.com/mhartington/formatter.nvim is not working
+

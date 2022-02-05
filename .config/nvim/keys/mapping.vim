@@ -54,6 +54,7 @@ nnoremap <Leader>O O<Esc>^Da
 nnoremap n nzzzv " goto next, center screen, unfold txt
 nnoremap N Nzzzv
 nnoremap J mzJ`z
+nnoremap G Gzz
 
 " Undo break points
 inoremap , ,<c-g>u
@@ -77,3 +78,8 @@ nnoremap <C-k> :m .-2<CR>==
 nnoremap gj 25jzz
 nnoremap gk 25kzz
 
+" close all buffers except the last edited
+"%bd - close all the buffers
+"e# - open last edited file
+"bd# - close the unnamed buffer
+nnoremap <Leader>w :%bd<CR>:e#<CR>:bd#<CR>
