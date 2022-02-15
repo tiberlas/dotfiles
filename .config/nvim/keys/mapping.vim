@@ -75,8 +75,8 @@ nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 
 " bigger jump
-nnoremap gj 25jzz
-nnoremap gk 25kzz
+nnoremap zj 25jzz
+nnoremap zk 25kzz
 
 " close all buffers except the last edited
 "%bd - close all the buffers

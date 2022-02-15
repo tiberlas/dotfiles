@@ -19,7 +19,7 @@ set tabstop=2                           " Insert 2 spaces for a tab
 set softtabstop=2
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
-set expandtab                           " Converts tabs to spaces
+"set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
 set laststatus=0                        " Always display the status line
@@ -45,9 +45,9 @@ set termguicolors
 "set autochdir                           " Your working directory will always be the same as your working directory
 
 set showbreak=↪\ 
-"set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,space:•
 set list				" Sets white spaces
+"set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set listchars=tab:→·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,space:•
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
@@ -55,3 +55,15 @@ au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm al
 cmap w!! w !sudo tee %
 
 map <leader>d :nohlsearch<CR>
+
+fu! ConvertToTabs()
+  set noexpandtab
+  retab!
+endfunc
+com! -nargs=0 ConvertToTabs :call ConvertToTabs()
+
+fu! ConvertToSpaces()
+  set expandtab
+  retab!
+endfunc
+com! -nargs=0 ConvertToSpaces :call ConvertToSpaces()
