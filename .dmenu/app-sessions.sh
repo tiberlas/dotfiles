@@ -13,9 +13,8 @@
 
 MSG="Choose monitor setup: "
 OPT=(
-"l (laptop)"
-"lv (laptop+vertical)"
-"t (two monitors)"
+"levi9"
+"?"
 )
 CHOICE=$(printf "%s\n" "${OPT[@]}" | dmenu -i -p "$MSG")
 
