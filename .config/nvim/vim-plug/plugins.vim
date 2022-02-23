@@ -27,7 +27,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " better git
     Plug 'tpope/vim-fugitive'
     " show branch name in status bar
-    Plug 'vim-airline/vim-airline'
+    "Plug 'vim-airline/vim-airline'
     " fzf better search
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'

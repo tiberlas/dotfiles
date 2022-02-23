@@ -1,5 +1,7 @@
 # VIM CONFIG
 
+In this document are described plugins for neovim.
+In [commands](/commands.md)  are described basic vim commands and some advanced flows.
 When changing a config file to you have to source it, you can use: `source %` where % is the current buffer
 
 ## mapings
@@ -260,7 +262,9 @@ In confict file run: `Gvdiffsplit!` for 3 way vertical split or `Gdiffsplit!` fo
 In git conflict go to unstaged file and press `dv` to open git conflict resolver.
 In git conflict resolver press `leader+gj` for the right side (new changes) or `leader+gf` for the left side (current changes).
 
-- `Gdiffsplit HEAD^` show file change of the previous commit
+**in Gdiffsplit the file with R0 is the old file**
+
+- `Gdiffsplit HEAD^` show file change of the previous commit **the work tree version is always placed to the right or bottom**
 - `Gdiff :0` show diff between current changes (SCREEN UP ARE NEW CHANGES)
 - `Gdiff HEAD~3` show diff of tree commits behind
 - `diffupdate` to refresh the diff view
@@ -290,7 +294,7 @@ Abbr (use space to unfold them)
 
 - `g-l` log graph
 - `g-f` file changes in last commmit
-- `g-d` diff for current changes
+- `g-d` diff for *current* changes (unstaged changes)
 
 ## GitBlame *UNINSTALL THIS*
 
@@ -303,3 +307,4 @@ telescope for file navigation; quick fix list!
 
 TODO: https://github.com/mhartington/formatter.nvim is not working
 
+deinstaliraj air line ovaj je bolji status line i sredi Fugitive sa njim

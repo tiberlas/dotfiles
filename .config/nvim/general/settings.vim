@@ -47,7 +47,8 @@ set termguicolors
 set showbreak=↪\ 
 set list				" Sets white spaces
 "set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-set listchars=tab:→·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,space:•
+"set listchars=tab:→·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,space:•
+set listchars=tab:}·,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,space:•
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
