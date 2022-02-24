@@ -204,6 +204,12 @@ commands:
 - `gq` format line to 80 chars
 - `zv` opent folds in text
 
+## tab/space formating
+
+command functions are defined *ConvertToTabs* and *ConvertToSpaces*
+- set the indent size with: `: set tabstop=4`
+- convert spaces to tabs; when converting spaces to tabs *you must first set the indent*
+
 ## format json
 
 - select the json txt
