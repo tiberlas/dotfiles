@@ -443,6 +443,12 @@ globalkeys = gears.table.join(
 		end,
 		{description = "run emoji app", group = "app"}
 	), awful.key(
+		{modkey}, "i",
+		function()
+			awful.util.spawn("bash /home/t.tapai/.dmenu/apps.sh")
+		end,
+		{description = "run emoji app", group = "app"}
+	), awful.key(
 		{modkey}, "x",
 		function()
 			awful.prompt.run {
