@@ -23,6 +23,7 @@ OPT=(
 "nautilus"
 "teams-for-linux"
 "kitty"
+"blueman-applet"
 )
 
 CHOICE=$(printf "%s\n" "${OPT[@]}" | dmenu -i -p "$MSG")
