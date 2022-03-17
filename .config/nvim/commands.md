@@ -181,7 +181,7 @@ for this action and below the change on all selected lines will be viseible afte
 - `Alt+h,j,k,l` window resize
 - `Ctrl+h,j,k,l` window navigation
 - `Ctrl+w r` rotate
-- `\th` `\tl` switch pains
+- `<leader>th` `<leader>tl` switch pains
 
 ## quick fix list
 
@@ -202,21 +202,56 @@ commands:
 ## mapped commands
 
 - `gq` format line to 80 chars
-- `zv` opent folds in text
+- `zv` open folds in text
 
-## tab/space formating
+## useful commands
+
+- `:tabnew %` opens the current buffer in new tab
+- `<leader>w` close all buffers except the current one
+- `:WindowFull` maximize the current window
+- `Ctrl+W =` make all windows equal size
+
+## tab/space formatting
 
 command functions are defined *ConvertToTabs* and *ConvertToSpaces*
 - set the indent size with: `: set tabstop=4`
 - convert spaces to tabs; when converting spaces to tabs *you must first set the indent*
+
+## git flow
+
+see git logs
+- use `g-i` in bash
+- `Gclog HEAD...origin/BRANCH` show the difference between local and origin
+
+To review changes before committing
+- `:Git`  shows all changed files
+- `Alt+j`  make the git window smaller
+- in git window hover on file and press `dv` to see the diff
+- you don't need to close any buffer when you want to view another file just go to the git window and preview the new file
+- to stage a file press `s` or `S` to stage all files
+- fugitive mappings:
+- - `cc`  Create a commit.
+- - `ca`  Amend the last commit and edit the message.
+- - `ce`  Amend the last commit without editing the message.
 
 ## format json
 
 - select the json txt
 - run `'<,'>!python3 -m json.tool`
 
-## lokking at git diff file
+## looking at git diff file
 
 in vertical view open `Git log` to see the commits
 Go TO file and go back in history `Gdiffsplit HEAD~X`
 Upper diff screen should be the head (current changes) but you can always see in the status line the git hash
+
+## file history
+
+open a file, then use `0Gclog` to view all commits that have affected that file
+**In the status line is written witch commit is shown**
+You can select a commit and the file will change to view the file in that commit
+
+To view changes (diff) first select a starting commit
+If you want to see the diff of the current status use `Gedit` to show the current file
+Then use `Gdiffsplit HASH` where the HASH is the git commit HASH
+

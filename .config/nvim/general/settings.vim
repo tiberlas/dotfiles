@@ -68,3 +68,10 @@ fu! ConvertToSpaces()
   retab!
 endfunc
 com! -nargs=0 ConvertToSpaces :call ConvertToSpaces()
+
+fu! WindowFull()
+  res
+  vert res
+endfunc
+com! -nargs=0 WindowFull :call WindowFull()
+

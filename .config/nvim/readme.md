@@ -268,7 +268,7 @@ In git conflict resolver press `leader+gj` for the right side (new changes) or `
 - `Gdiff :0` show diff between current changes (SCREEN UP ARE NEW CHANGES)
 - `Gdiff HEAD~3` show diff of tree commits behind
 - `diffupdate` to refresh the diff view
-
+- `0Gclog` view **file history**
 - `Glog` shows the list of commits and the diff files
 - `Gclog` show logs and above the diff
 - `Gclog -n 10` shows only 10 commits so you can add any git modificator
@@ -293,7 +293,7 @@ In git conflict resolver press `leader+gj` for the right side (new changes) or `
 Abbr (use space to unfold them)
 
 - `g-l` log graph
-- `g-f` file changes in last commmit
+- `g-f` file changes in last commit
 - `g-d` diff for *current* changes (unstaged changes)
 
 ## GitBlame *UNINSTALL THIS*

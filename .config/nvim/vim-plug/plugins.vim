@@ -51,6 +51,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " swagger preview
     Plug 'xavierchow/vim-swagger-preview'
     Plug 'mhartington/formatter.nvim'
+    "telescope TODO: test this
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 

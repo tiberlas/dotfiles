@@ -28,6 +28,7 @@ source $HOME/.config/nvim/plug-config/start-screen.vim
 source $HOME/.config/nvim/plug-config/git-blame.vim
 source $HOME/.config/nvim/plug-config/floaterm.vim
 source $HOME/.config/nvim/plug-config/swagger-preview.vim
+source $HOME/.config/nvim/plug-config/telescope.vim
 
 luafile $HOME/.config/nvim/lua/plug-colorizer.lua
 
