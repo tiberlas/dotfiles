@@ -1,3 +1,8 @@
+-- TODO:
+-- [] code clean up
+-- [] group colors to variables
+-- [] make wibar nicer
+
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
@@ -21,7 +26,6 @@ require("awful.hotkeys_popup.keys")
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
-local battery_widget = require 'battery_widget'
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -119,15 +123,6 @@ else
 	})
 end
 
--- added text widget
-local status = 0;
-praisewidget = wibox.widget {
-	markup = "<span foreground='#3eb489dd'><b> " .. status .. "% </b></span>",
-	align = 'center',
-	valign = 'center',
-	widget = wibox.widget.textbox
-}
-
 mylauncher = awful.widget.launcher({
 	image = beautiful.awesome_icon,
 	menu = mymainmenu
@@ -141,8 +136,54 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
+
+-- StartIcon
+local start = wibox.widget {
+	markup = "<span foreground='#3eb489dd'><b>  </b></span>",
+	align = 'center',
+	valign = 'center',
+	widget = wibox.widget.textbox
+}
+
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+local mytextclock = wibox.widget.textclock()
+
+-- battery infos from freedesktop upower
+local mybattery = awful.widget.watch(
+		{ awful.util.shell, "-c", "upower -i /org/freedesktop/UPower/devices/battery_BAT0 | sed -n '/present/,/icon-name/p'" },
+		30,
+		function(widget, stdout)
+				local bat_now = {
+						present			 = "N/A",
+						state				 = "N/A",
+						warninglevel = "N/A",
+						energy			 = "N/A",
+						energyfull	 = "N/A",
+						energyrate	 = "N/A",
+						voltage			 = "N/A",
+						percentage	 = "N/A",
+						capacity		 = "N/A",
+						icon				 = "N/A"
+				}
+
+				for k, v in string.gmatch(stdout, '([%a]+[%a|-]+):%s*([%a|%d]+[,|%a|%d]-)') do
+						if		 k == "present"				then bat_now.present			= v
+						elseif k == "state"					then bat_now.state				= v
+						elseif k == "warning-level" then bat_now.warninglevel = v
+						elseif k == "energy"				then bat_now.energy				= string.gsub(v, ",", ".") -- Wh
+						elseif k == "energy-full"		then bat_now.energyfull		= string.gsub(v, ",", ".") -- Wh
+						elseif k == "energy-rate"		then bat_now.energyrate		= string.gsub(v, ",", ".") -- W
+						elseif k == "voltage"				then bat_now.voltage			= string.gsub(v, ",", ".") -- V
+						elseif k == "percentage"		then bat_now.percentage		= tonumber(v)							 -- %
+						elseif k == "capacity"			then bat_now.capacity			= string.gsub(v, ",", ".") -- %
+						elseif k == "icon-name"			then bat_now.icon					= v
+						end
+				end
+
+				-- customize here
+				widget:set_text("  " .. bat_now.percentage .. "   " .. bat_now.state .. " ")
+		end
+)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -186,19 +227,6 @@ local function set_wallpaper(s)
 		gears.wallpaper.maximized(wallpaper, s, true)
 	end
 end
-
--- battery_widget
-local my_battery_widget = battery_widget {
-	screen = s,
-	use_display_device = true,
-	widget_template = wibox.widget.textbox
-}
-
--- When UPower updates the battery status, the widget is notified
--- and calls a signal you need to connect to:
-my_battery_widget:connect_signal('upower::update', function(widget, device)
-	widget.text = string.format('%3d', device.percentage) .. '%'
-end)
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
@@ -276,7 +304,7 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.fixed.horizontal,
 			-- mylauncher,
 			s.mypromptbox,
-			praisewidget,
+			start,
 			s.mytasklist
 		},
 		{ -- Middle widget
@@ -284,12 +312,11 @@ awful.screen.connect_for_each_screen(function(s)
 		},
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
+			mybattery,
 			s.mytaglist,
-			praisewidget,
 			mykeyboardlayout,
 			wibox.widget.systray(),
 			mytextclock,
-			my_battery_widget,
 			s.mylayoutbox
 		}
 	}
@@ -464,7 +491,14 @@ globalkeys = gears.table.join(
 	awful.key(
 		{modkey}, "p", function() menubar.show() end,
 		{description = "show the menubar", group = "launcher"}
-	)
+	-- TODO: when status changes the panel line is not updated
+	), awful.key(
+			{modkey}, "t",
+			function()
+				status = 10
+			end,
+			{description = "testing gui change", group = "awesome"}
+		)
 )
 
 clientkeys = gears.table.join(
@@ -544,14 +578,14 @@ for i = 1, 9 do
 		if tag then tag:view_only() end
 	end, {description = "view tag #" .. i, group = "tag"}),
 	-- Toggle tag display.
-								  awful.key({modkey, "Control"}, "#" .. i + 9,
+									awful.key({modkey, "Control"}, "#" .. i + 9,
 											function()
 		local screen = awful.screen.focused()
 		local tag = screen.tags[i]
 		if tag then awful.tag.viewtoggle(tag) end
 	end, {description = "toggle tag #" .. i, group = "tag"}),
 	-- Move client to tag.
-								  awful.key({modkey, "Shift"}, "#" .. i + 9,
+									awful.key({modkey, "Shift"}, "#" .. i + 9,
 											function()
 		if client.focus then
 			local tag = client.focus.screen.tags[i]
@@ -559,7 +593,7 @@ for i = 1, 9 do
 		end
 	end, {description = "move focused client to tag #" .. i, group = "tag"}),
 	-- Toggle tag on focused client.
-								  awful.key({modkey, "Control", "Shift"},
+									awful.key({modkey, "Control", "Shift"},
 											"#" .. i + 9, function()
 		if client.focus then
 			local tag = client.focus.screen.tags[i]
@@ -657,7 +691,7 @@ awful.tag.attached_connect_signal(nil, "property::layout", function(t)
 		c.floating = float
 		-- added resize to floating mode
 		-- c.maximized_horizontal = false
-		-- c.maximized_vertical   = false
+		-- c.maximized_vertical		= false
 		-- awful.mouse.client.move(c)
 	end
 end)
@@ -731,31 +765,13 @@ client.connect_signal("unfocus", function(c) c.border_color = "#00000000" end)
 
 -- Autostart application
 -- awful.spawn.with_shell("nitrogen --set-centered --set-color=#373737 --random /home/t.tapai/Pictures/minecraft-wallpaper") --set wallpaper
--- TRY feh for wallpaper
 awful.spawn.with_shell("compton") -- enable transparency in windows
 awful.spawn.with_shell("./.local/kitty.app/bin/kitty")
 awful.util.spawn("nm-applet") -- network manager
+awful.util.spawn("redshift -O 5000K")
 awful.util.spawn("pnmixer") -- sound
 awful.util.spawn("flameshot") -- print screen
-
--- Autorun programs
-
 awful.spawn.single_instance("authy", awful.rules.rules)
-
--- autorun = true
--- autorunApps =
--- {
--- "program1",
--- "program2",
--- "program3",
--- "program4",
--- "program5",
--- }
--- if autorun then
--- for app = 1, #autorunApps do
--- awful.util.spawn(autorunApps[app])
--- end
--- end
 
 -- battery worning
 gears.timer {
@@ -764,22 +780,13 @@ gears.timer {
 	autostart = true,
 	callback = function()
 		awful.spawn.easy_async([[cat /sys/class/power_supply/BAT0/capacity]],
-							   function(stdout0)
+								 function(stdout0)
 			batcapacity = tonumber(stdout0)
-			status = batcapacity; -- not working
+			status = batcapacity;
 			awful.spawn.easy_async([[cat /sys/class/power_supply/BAT0/status]],
-								   function(stdout1)
+									 function(stdout1)
 				batstatus = stdout1:sub(1, -2)
 			end)
-
-			praisewidget = wibox.widget {
-				markup = "<span foreground='#3eb489dd'><b> " .. batcapacity ..
-					"% </b></span>",
-				align = 'center',
-				valign = 'center',
-				widget = wibox.widget.textbox
-			}
-
 			if (batcapacity <= 20 and batstatus == "Discharging") then
 				battery_notify = naughty.notify {
 					title = "Battery warning\n",
