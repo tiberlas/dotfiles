@@ -41,6 +41,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     "telescope
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+    " file tree viewer
+    Plug 'nvim-neo-tree/neo-tree.nvim'
 
 call plug#end()
 

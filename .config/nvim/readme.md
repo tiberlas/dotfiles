@@ -198,7 +198,7 @@ bindings:
 Default mappings in open telescope:
 
 - <C-n>  <C-p> next | previous
--own> <Up>  next | previous
+- <Down> <Up>  next | previous
 - j      k     next | previous (in normal mode, press ESC to enter normal mode, i for insert mode)
 - <CR>         go to file selection
 
@@ -274,11 +274,15 @@ Abbr (use space to unfold them)
 
 high priority:
 
+- fix noe-tree plugin
+- fix CocExplorer, the theme is off
+- Configure Telescope to delete a buffer
 - Configure Telescope to run proper **grep**
 - quick fix list
 
 low priority:
 
+- rewrite config to lua
 - see lazy git it's a git client in terminal
 - tpope dispacher to run async commands in vim's terminal tip 10
 
