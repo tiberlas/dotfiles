@@ -105,49 +105,6 @@ commands:
 - `<<` stage a file
 - `>>` unstage a file
 
-## FZF, Ripgrep, Universal-ctags, Silver-searcher
-
-For more info [see](https://www.chrisatmachine.com/Neovim/08-fzf/)
-
-First install linux packages:
-
-```bash
-  sudo apt install fzf ripgrep universal-ctags silversearcher-ag fd-find
-```
-
-### FZF
-
-Fuzzy file finder (Ctrl+p on steroids)
-
-- `:FZF` to show the fuzzy finder
-- `Ctrl+f` opens fuzzy finder with preview, ignores files that git ignores
-- `:GFile` file search for git files
-- `:File` file search
-- `\t` opens fzf for tags
-- `\b` opens fzf for buffers
-- `\m` opens fzf for markers
-- `:Lines` search for string in loaded buffers
-- `:BLines` search for string in current buffer
-
-When the FZF window is open then press:
-
-- `Enter` to open the file in buffer
-- `Ctrl+t` to open the file in new tab
-- `Ctrl+x` to open the file in horizontal split |
-- `Ctrl+v` to open the file in vertical split -
-
-### RipGrep
-
-Searches all files for a string; Global string search
-
-- `\g` opens ripGrep finder
-
-When repGrep search is opened user:
-
-- `Enter` to select the match
-- `Alt+A` to select all matches
-- `Alt+D` to deselect all matches
-
 ## NerdCommenter
 
 Comment out code with: `<leader>+/`.
@@ -162,11 +119,6 @@ Lightline is a action line
 Font with icons :)
 install them from: `https://www.nerdfonts.com/`
 and unzip the fonts in `~/.local/share/fonts`
-
-## Which key
-
-Used to show all key binds (action) for leader key, in my case `\`.
-When you press the leader key a menu will show with all available actions.
 
 ## Rainbow
 
@@ -233,10 +185,32 @@ No config
 
 for more info see *https://github.com/tpope/vim-surround*
 
-## Swagger preview
-TODO: NOT WORKING
+## Telescope
 
-- `leader+w` to open the swagger preview on url: localhost:8017/
+Fuzzy finder
+
+bindings:
+
+- `<leader>ff` file finder
+- `<leader>fb` buffers
+- `<leader>fg` grep
+
+Default mappings in open telescope:
+
+- <C-n>  <C-p> next | previous
+-own> <Up>  next | previous
+- j      k     next | previous (in normal mode, press ESC to enter normal mode, i for insert mode)
+- <CR>         go to file selection
+
+- <C-x>        go to file selection as a split
+- <C-v>        go to file selection as a vertical split
+- <C-t>        go to a file in a new tab
+
+- <C-u>        scroll up in preview window
+- <C-d>        scroll down in preview window
+
+- <C-c>        close telescope
+- <Esc>        close telescope (in normal mode)
 
 ---
 
@@ -296,15 +270,15 @@ Abbr (use space to unfold them)
 - `g-f` file changes in last commit
 - `g-d` diff for *current* changes (unstaged changes)
 
-## GitBlame *UNINSTALL THIS*
+# TODO
 
-Use leader B to see the blame in the vim status.
+high priority:
 
-TODO: see lazy git it's a git client in terminal
-maybe tpope dispacher to run async commands in vim's terminal tip 10
+- Configure Telescope to run proper **grep**
+- quick fix list
 
-telescope for file navigation; quick fix list!
+low priority:
 
-TODO: https://github.com/mhartington/formatter.nvim is not working
+- see lazy git it's a git client in terminal
+- tpope dispacher to run async commands in vim's terminal tip 10
 
-deinstaliraj air line ovaj je bolji status line i sredi Fugitive sa njim

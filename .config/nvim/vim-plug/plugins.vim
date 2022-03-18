@@ -26,14 +26,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mhinz/vim-signify'
     " better git
     Plug 'tpope/vim-fugitive'
-    " show branch name in status bar
-    "Plug 'vim-airline/vim-airline'
-    " fzf better search
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'airblade/vim-rooter'
-    "shows all key bindings for leader key
-    Plug 'liuchengxu/vim-which-key'
     "show colors change in insert mode
     Plug 'norcalli/nvim-colorizer.lua'
     "rainbow brackets
@@ -42,16 +34,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mhinz/vim-startify'
     "switching between alternative files
     Plug 'tpope/vim-projectionist'
-    " git blame
-    Plug 'zivyangll/git-blame.vim'
     " floating terminal
     Plug 'voldikss/vim-floaterm'
     " can surround txt
     Plug 'tpope/vim-surround'
-    " swagger preview
-    Plug 'xavierchow/vim-swagger-preview'
-    Plug 'mhartington/formatter.nvim'
-    "telescope TODO: test this
+    "telescope
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
 
