@@ -277,7 +277,7 @@ high priority:
 
 - add a lib for custom functions
 - make git abbr more user friendly
-- fix noe-tree plugin
+- fix neo-tree plugin
 - fix CocExplorer, the theme is off
 - Configure Telescope to delete a buffer
 - Configure Telescope to run proper **grep**

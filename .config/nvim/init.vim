@@ -27,5 +27,5 @@ source $HOME/.config/nvim/plug-config/floaterm.vim
 source $HOME/.config/nvim/plug-config/telescope.vim
 
 luafile $HOME/.config/nvim/lua/plug-colorizer.lua
-luafile $HOME/.config/nvim/lua/neo-tree.lua
+"luafile $HOME/.config/nvim/lua/neo-tree.lua
 
