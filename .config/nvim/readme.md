@@ -159,14 +159,15 @@ The third line defines a type 'service' for easier service finding.
 
 ## Floaterm
 
-- `F1` to open float term or
-- `leader+y t`
+- `leader+t t` toggle floating terminal
+- `leader+t n` new floating terminal
+- `leader+t j` next floating terminal
+- `leader+t k` prev floating terminal
+- `leadet+t g` lazygit
+- `leadet+t r` ranger
 
-to close pres `F1` or `Ctrl+D` basically ending the process
+to close pres `leader+t t` or `Ctrl+D` basically ending the process
 
-in **which_key.vim** is set:
-`leadet+y n` node
-`leadet+y g` lazygit
 
 ## Surround
 
@@ -274,6 +275,8 @@ Abbr (use space to unfold them)
 
 high priority:
 
+- add a lib for custom functions
+- make git abbr more user friendly
 - fix noe-tree plugin
 - fix CocExplorer, the theme is off
 - Configure Telescope to delete a buffer

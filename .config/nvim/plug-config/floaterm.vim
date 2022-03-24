@@ -1,7 +1,11 @@
-let g:floaterm_keymap_toggle = '<F1>'
-let g:floaterm_keymap_next   = '<F2>'
-let g:floaterm_keymap_prev   = '<F3>'
-let g:floaterm_keymap_new    = '<F4>'
+let g:floaterm_keymap_toggle = '<Leader>tt'
+let g:floaterm_keymap_next   = '<Leader>tj'
+let g:floaterm_keymap_prev   = '<Leader>tk'
+let g:floaterm_keymap_new    = '<Leader>te'
+
+nmap <Leader>tr :FloatermNew ranger<CR>
+nmap <Leader>tg :FloatermNew lazygit<CR>
+nmap <Leader>tn :FloatermNew node<CR>
 
 " Floaterm
 let g:floaterm_gitcommit='floaterm'
