@@ -26,6 +26,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mhinz/vim-signify'
     " better git
     Plug 'tpope/vim-fugitive'
+    " fzf better search
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     "show colors change in insert mode
     Plug 'norcalli/nvim-colorizer.lua'
     "rainbow brackets
