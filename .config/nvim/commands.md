@@ -107,6 +107,25 @@ The search separator `/` can be replaced with: |, #, +, &
 Change the search separator if the search separator is used in search string
 The search separator must be constant in search
 
+## Multy file search
+
+*GREP*
+
+For multi file search we use `vimgrep`. Note that *rg* is faster but I couldn't use it correctly.
+All found matches are in quickfix list that can be open on: `:copen`.
+There is a alias for this that opens the quickfix list:
+
+- `:Grep /SEARCH/ PATH` ex `Grep /actions/ **/ats/**/*.ts` searches actions only it the specified path
+- `:Grep /cSEARCH/ PATH` case insensitive SEARCH
+- `:Grep /CSEARCH/ PATH` case sensitive SEARCH
+- `:Grep /SEARCH/g PATH` global, matches multiple occurrences in the same line
+- `:Grep /SEARCH/f PATH` fuzzy
+
+## Replace in multiple files
+
+1. Use `Grep` (see the previous heading) to populate the quickfix list.
+2. `cdo s/OLD/NEW/` to replace all occurrences OLD with NEW in the quickfix list.
+
 ## Text objects
 
 Smart operators that make coding easier
@@ -194,6 +213,7 @@ Two types of list:
 commands:
 
 - `copen` open the quickFixList
+- `cclose` close the quickFixList
 - `cnext`
 - `cprev`
 

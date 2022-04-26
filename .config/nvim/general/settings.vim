@@ -60,6 +60,6 @@ map <leader>d :nohlsearch<CR>
 " run rip grep if it's installed
 " ex: `:grep foo src`
 if executable("rg")
-  set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
-  set grepformat=%f:%l:%c:%m
+  set grepprg=rg\ --vimgrep\ --follow
+  "set grepformat=%f:%l:%c:%m
 endif

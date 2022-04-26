@@ -16,3 +16,6 @@ fu! WindowFull()
 endfunc
 com! -nargs=0 WindowFull :call WindowFull()
 
+" defined 'Grep' fun to open quickfix list
+command! -nargs=+ Grep execute 'silent vimgrep! <args>' | copen
+
