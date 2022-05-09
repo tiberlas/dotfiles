@@ -61,5 +61,5 @@ map <leader>d :nohlsearch<CR>
 " ex: `:grep foo src`
 if executable("rg")
   set grepprg=rg\ --vimgrep\ --follow
-  "set grepformat=%f:%l:%c:%m
+  set grepformat=%f:%l:%c:%m
 endif
