@@ -19,7 +19,8 @@ LAPTOP="eDP-1"
 DISPALY="DP-1"
 WGA="DP-2"
 
-WALLPAPERS=~/Pictures/minecraft-wallpaper
+MINECRAFT_WALLPAPERS=~/Pictures/minecraft-wallpaper
+RETRO_WALLPAPERS=~/Pictures/retro2D
 
 MSG="Choose monitor setup: "
 OPT=(
@@ -30,7 +31,8 @@ OPT=(
 "t (two monitors in T)"
 "w (two monitors in hoziontal; wide)"
 "all (two monitors and laptop bellow)"
-"r (refresh wallpaper)"
+"rm (refresh minecraft wallpaper)"
+"rr (refresh retro wallpaper)"
 )
 CHOICE=$(printf "%s\n" "${OPT[@]}" | dmenu -i -l 5 -p "$MSG")
 
@@ -57,9 +59,14 @@ case $CHOICE in
     xrandr --output $LAPTOP --mode 1920x1080 --below $WGA --output $DISPALY --mode 1920x1080 --rotate left --output $WGA --mode 1920x1080 --left-of $DISPALY
     ;;
   ${OPT[7]})
-    nitrogen --set-centered --set-color=#373737 --random ${WALLPAPERS} --head=0 &&
-    nitrogen --set-centered --set-color=#373737 --random "${WALLPAPERS}" --head=1 &&
-    nitrogen --set-centered --set-color=#373737 --random "${WALLPAPERS}" --head=2
+    nitrogen --set-centered --set-color=#373737 --random ${MINECRAFT_WALLPAPERS} --head=0 &&
+    nitrogen --set-centered --set-color=#373737 --random "${MINECRAFT_WALLPAPERS}" --head=1 &&
+    nitrogen --set-centered --set-color=#373737 --random "${MINECRAFT_WALLPAPERS}" --head=2
+    ;;
+  ${OPT[8]})
+    nitrogen --set-centered --set-color=#000 --random ${RETRO_WALLPAPERS} --head=0 &&
+    nitrogen --set-centered --set-color=#000 --random "${RETRO_WALLPAPERS}" --head=1 &&
+    nitrogen --set-centered --set-color=#000 --random "${RETRO_WALLPAPERS}" --head=2
     ;;
   *)
     printf "%s" "command not implemented T_T"

@@ -764,7 +764,7 @@ client.connect_signal("unfocus", function(c) c.border_color = "#00000000" end)
 -- }}}
 
 -- Autostart application
--- awful.spawn.with_shell("nitrogen --set-centered --set-color=#373737 --random /home/t.tapai/Pictures/minecraft-wallpaper") --set wallpaper
+ awful.spawn.with_shell("nitrogen --set-centered --set-color=#000 --random /home/t.tapai/Pictures/retro2D") --set wallpaper
 awful.spawn.with_shell("compton") -- enable transparency in windows
 awful.spawn.with_shell("./.local/kitty.app/bin/kitty")
 awful.util.spawn("nm-applet") -- network manager
