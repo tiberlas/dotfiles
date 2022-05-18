@@ -33,7 +33,7 @@ selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
 
-background_opacity: 0.90
+background_opacity: 0.80
 
 # Font
 font:
@@ -53,4 +53,4 @@ font:
     family: monospace
     style: Bold Italic
 
-  size: 16
+  size: 1o
