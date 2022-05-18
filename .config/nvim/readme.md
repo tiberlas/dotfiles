@@ -19,7 +19,7 @@ useful commands:
 - `:PlugStatus` check status of your plugins
 - `:PlugInstall` install all defined plugins from **plugins file**
 - `:PlugUpdate` updates the installed plugins
-- `:PlugClear` to remove plugins that have been removed from the **plugins file**
+- `:PlugClean` to remove plugins that have been removed from the **plugins file**
 - `:PlugUpdate` update the vim plug manager
 
 When changing the plugins you have to source the file: `sourve ~/.config/nvim/vim-plug/plugins.vim`
