@@ -124,7 +124,7 @@ There is a alias for this that opens the quickfix list:
 ## Replace in multiple files
 
 1. Use `Grep` (see the previous heading) to populate the quickfix list.
-2. `cdo s/OLD/NEW/` to replace all occurrences OLD with NEW in the quickfix list.
+2. `cdo s/OLD/NEW/ | update` to replace all occurrences OLD with NEW in the quickfix list.
 
 ## Text objects
 
@@ -274,4 +274,23 @@ You can select a commit and the file will change to view the file in that commit
 To view changes (diff) first select a starting commit
 If you want to see the diff of the current status use `Gedit` to show the current file
 Then use `Gdiffsplit HASH` where the HASH is the git commit HASH
+
+## CODE REVIEW with fugitive
+
+- checkout to the branch with the wanted commit
+- `Gclog` to view all the commits
+- select the wanted commit
+- You will now see the default git diff file for that commit
+- to view a file change, from the default git diff goto the *b* line diff
+    ```git diff
+diff --git a/src/app/main/marketplace-v2/product-details/product-details.component.ts b/src/app/main/marketplace-v2/product-details/product-details.component.ts
+index 8cbe01bfd..e28bcfbe9 100644
+--- a/src/app/main/marketplace-v2/product-details/product-details.component.ts
++++ b/src/app/main/marketplace-v2/product-details/product-details.component.ts
+    ```
+    the *b* line has the file with the incoming changes
+- when you position your cursor over the *b* line after the char 'b'
+- press `Ctrl+W df` open the file in a new tab
+- `0Gclog` to view the file history
+- `dv` to view the git diff of the file
 
