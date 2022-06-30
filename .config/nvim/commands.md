@@ -294,3 +294,10 @@ index 8cbe01bfd..e28bcfbe9 100644
 - `0Gclog` to view the file history
 - `dv` to view the git diff of the file
 
+## GIT FILE CHANGED
+
+show list of files that have been affected by the diff
+
+```bash
+git diff HASH1..HASH2 --name-only
+```

@@ -41,11 +41,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'voldikss/vim-floaterm'
     " can surround txt
     Plug 'tpope/vim-surround'
-    "telescope
+    " this is a lua dependency
     Plug 'nvim-lua/plenary.nvim'
+    "telescope
     Plug 'nvim-telescope/telescope.nvim'
     " file tree viewer
-    "Plug 'nvim-neo-tree/neo-tree.nvim'
+    Plug 'nvim-neo-tree/neo-tree.nvim'
+    Plug 'MunifTanjim/nui.nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()
 
