@@ -9,4 +9,3 @@ use {
       "MunifTanjim/nui.nvim",
     }
   }
-
