@@ -34,7 +34,7 @@ HISTFILE=~/.zsh_history
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # !!!the zsh-abbr plug must be last!!!
-plugins=(zsh-autosuggestions zsh-syntax-highlighting vi-mode zsh-abbr)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-abbr)
 
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOT=true
