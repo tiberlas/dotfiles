@@ -1,5 +1,10 @@
 # NEOVIM lua edition
 
+## CUSTOM FUN
+
+- `:lua _CONVERT_TO_TABS()`
+- `:lua _CONVERT_TO_SPACES()`
+
 ## Plugins
 
 ### Pluginn manager
@@ -15,4 +20,39 @@ In the plugin setup you define what tools to use.
 To see what tools are supported by the plugin:
 - open the desired file
 - use command: `:NullLsInfo`
+
+### Neogit
+
+Git interface simmilar to Emacs's Magog;
+Use `:Neogit` and it opens the client in a new tab;
+You can:
+
+- create, add or edit an commit
+- see git stash
+- see the last commit changes
+
+### Diffview
+
+A git tool for viewing diff; It can:
+
+- `:DiffviewFileHistory %` shows file history of current buffer in new tab
+- `:DiffviewOpen` show diff of latest commit in new tab
+- `:DiffviewOpen HEAD~2`
+- `:DiffviewOpen HEAD~4..HEAD~2`
+- `:DiffviewOpen d4a7b0d`
+- `:DiffviewOpen d4a7b0d..519b30e`
+- `:DiffviewOpen origin/main...HEAD`
+- `:DiffviewOpen HEAD~2 -- lua/diffview plugin` You can also provide additional paths to narrow down what files are shown:
+- `:DiffviewClose` Close the current diffview. You can also use :tabclose.
+- `:DiffviewToggleFiles` Toggle the files panel.
+- `:DiffviewFocusFiles` Bring focus to the files panel.
+- `:DiffviewRefresh` Update stats and entries in the file list of the current Diffview.
+- `:DiffviewFileHistory`
+- `:DiffviewFileHistory %`
+- `:DiffviewFileHistory path/to/some/file.txt`
+- `:DiffviewFileHistory path/to/some/directory`
+- `:DiffviewFileHistory include/this and/this :!but/not/this`
+- `:DiffviewFileHistory --range=origin..HEAD`
+- `:DiffviewFileHistory --range=feat/example-branch`
+- `:'<,'>DiffviewFileHistory`
 

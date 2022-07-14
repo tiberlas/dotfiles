@@ -69,10 +69,20 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["FixCursorHold.nvim"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
+    url = "https://github.com/antoinemadec/FixCursorHold.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  ["alpha-nvim"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    url = "https://github.com/goolord/alpha-nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -114,6 +124,16 @@ _G.packer_plugins = {
     path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["impatient.nvim"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+    url = "https://github.com/lewis6991/impatient.nvim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   kommentary = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/kommentary",
@@ -124,10 +144,25 @@ _G.packer_plugins = {
     path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["luatab.nvim"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/luatab.nvim",
+    url = "https://github.com/alvarosevilla95/luatab.nvim"
+  },
   ["monokai.nvim"] = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/monokai.nvim",
     url = "https://github.com/tanvirtin/monokai.nvim"
+  },
+  neogit = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/TimUntersberger/neogit"
+  },
+  ["neoscroll.nvim"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
+    url = "https://github.com/karb94/neoscroll.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -158,6 +193,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
     url = "https://github.com/AckslD/nvim-neoclip.lua"
+  },
+  ["nvim-scrollbar"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/nvim-scrollbar",
+    url = "https://github.com/petertriho/nvim-scrollbar"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -218,6 +258,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/vim-floaterm",
     url = "https://github.com/voldikss/vim-floaterm"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 

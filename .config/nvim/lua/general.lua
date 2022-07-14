@@ -28,7 +28,7 @@ vim.opt.updatetime = 300
 vim.opt.timeoutlen = 500
 vim.opt.formatoptions:remove "cro"
 vim.opt.clipboard = "unnamedplus"
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.hlsearch = true
 vim.opt.tabpagemax = 30
 vim.opt.pyxversion = 3
@@ -50,7 +50,9 @@ vim.opt.sidescrolloff = 8
 vim.opt.shortmess:append "c"
 vim.opt.showbreak = "↪"
 vim.opt.list = true
-vim.opt.listchars = { tab="  ", eol="↲", nbsp="␣", trail="", extends="⟩", precedes="⟨", space="•" }
+vim.opt.listchars = { tab=" ", eol="↲", nbsp="␣", trail="", extends="⟩", precedes="⟨", space="•" }
 vim.opt.termguicolors = true
 vim.o.background = "dark"
+
+vim.cmd "set whichwrap+=<,>,[,],h,l"
 

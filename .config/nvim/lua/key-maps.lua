@@ -33,3 +33,4 @@ KEYMAP("n", "G", "Gzz", OPTS)
 -- swapp lines with zj and zk
 KEYMAP("n", "zj", ":m .+1<CR>==", OPTS)
 KEYMAP("n", "zk", ":m .-2<CR>==", OPTS)
+

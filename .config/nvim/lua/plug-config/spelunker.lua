@@ -1,4 +1,19 @@
-vim.opt.spell = false
+-------------------------------------------------------------------------------
+-- KEYMAPS
+-------------------------------------------------------------------------------
+
+--spellunker
+-- in spell dir you put correct words
+-- Zl show suggestions
+-- ZT toogle spell check (word highlight)
+-- Zt toogle spell check (word highlight) only in current buffer
+-- ZN go to next misspelled word
+-- ZP go to previous misspelled word
+
+-------------------------------------------------------------------------------
+-- CONFIG IN VIM SCRIPT
+-------------------------------------------------------------------------------
+
 -- Enable spelunker.vim. (default: 1)
 -- 1: enable
 -- 0: disable
@@ -71,5 +86,6 @@ vim.g.spelunker_spell_bad_group = 'SpelunkerSpellBad'
 vim.g.spelunker_complex_or_compound_word_group = 'SpelunkerComplexOrCompoundWord'
 
 -- Override highlight setting.
-vim.cmd([[highlight SpelunkerSpellBad cterm=underline ctermfg=247 gui=underline guifg=#9e9e9e]])
-vim.cmd([[highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=NONE gui=underline guifg=NONE]])
+vim.cmd([[highlight SpelunkerSpellBad cterm=bold ctermfg=247 gui=underline guifg=#9e9e9e]])
+vim.cmd([[highlight SpelunkerComplexOrCompoundWord cterm=NONE ctermfg=247 gui=NONE guifg=NONE]])
+
