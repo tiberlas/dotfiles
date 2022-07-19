@@ -64,8 +64,8 @@ case $CHOICE in
     nitrogen --set-centered --set-color=#373737 --random "${MINECRAFT_WALLPAPERS}" --head=2
     ;;
   ${OPT[8]})
-    nitrogen --set-centered --set-color=#000 --random ${RETRO_WALLPAPERS} --head=0 &&
-    nitrogen --set-centered --set-color=#000 --random "${RETRO_WALLPAPERS}" --head=1 &&
+    nitrogen --set-zoom --set-color=#000 --random ${RETRO_WALLPAPERS} --head=0 &&
+    nitrogen --set-zoom --set-color=#000 --random "${RETRO_WALLPAPERS}" --head=1 &&
     nitrogen --set-centered --set-color=#000 --random "${RETRO_WALLPAPERS}" --head=2
     ;;
   *)
