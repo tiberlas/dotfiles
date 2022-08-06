@@ -11,24 +11,25 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "sans 8"
+theme.wallpaper = "~/Pictures/lain.gif"
+theme.font          = "sans 11"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
+theme.bg_normal     = COLOR.transparent
+theme.bg_focus      = COLOR.primary
+theme.bg_urgent     = COLOR.secondary
+theme.bg_minimize   = COLOR.white
+theme.bg_systray    = COLOR.transparent
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = COLOR.white
+theme.fg_focus      = COLOR.white
+theme.fg_urgent     = COLOR.white
+theme.fg_minimize   = COLOR.white
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
-theme.border_marked = "#91231c"
+theme.border_normal = COLOR.transparent
+theme.border_focus  = COLOR.primary
+theme.border_marked = COLOR.secondary
 
 -- There are other variable sets
 -- overriding the default one when
@@ -97,8 +98,6 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "~/Pictures/lain.gif"
-
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
 theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
@@ -128,4 +127,3 @@ theme.icon_theme = nil
 
 return theme
 
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
