@@ -14,7 +14,7 @@ local theme = {}
 theme.wallpaper = "~/Pictures/lain.gif"
 theme.font          = "sans 11"
 
-theme.bg_normal     = COLOR.transparent
+theme.bg_normal     = COLOR.black
 theme.bg_focus      = COLOR.primary
 theme.bg_urgent     = COLOR.secondary
 theme.bg_minimize   = COLOR.white
