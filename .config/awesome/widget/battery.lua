@@ -1,3 +1,7 @@
+-- batery:               {  }
+-- charging:  ଘ(੭*ˊᵕˋ)੭* {  }
+-- charged:      (*ˊᵕˋ*) {  }
+
 return AWFUL.widget.watch(
 		{ AWFUL.util.shell, "-c", "upower -i /org/freedesktop/UPower/devices/battery_BAT0 | sed -n '/present/,/icon-name/p'" },
 		30,

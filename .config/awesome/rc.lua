@@ -31,8 +31,6 @@ HOTKEYS_POPUP = require'awful.hotkeys_popup'
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require'awful.hotkeys_popup.keys'
--- Load Debian menu entries
-local debian = require'debian.menu'
 local has_fdo, freedesktop = pcall(require, 'freedesktop')
 COLOR = require'.colors'
 
@@ -91,10 +89,10 @@ modkey = "Mod4"
 AWFUL.layout.layouts = {
 	AWFUL.layout.suit.fair,
 	AWFUL.layout.suit.max,
-	AWFUL.layout.suit.floating,
-	AWFUL.layout.suit.tile.top
+	AWFUL.layout.suit.tile.left,
+	-- AWFUL.layout.suit.floating,
+	-- AWFUL.layout.suit.tile.top
 	-- AWFUL.layout.suit.tile,
-	-- AWFUL.layout.suit.tile.left,
 	-- AWFUL.layout.suit.tile.bottom,
 	-- AWFUL.layout.suit.fair.horizontal,
 	-- AWFUL.layout.suit.spiral,
@@ -133,8 +131,8 @@ if has_fdo then
 else
 	mymainmenu = AWFUL.menu({
 		items = {
-			menu_awesome, {"Debian", debian.menu.Debian_menu.Debian},
-			menu_terminal
+			{"awesome", awesomemenu, BEAUTIFUL.awesome_icon },
+			{"open terminal", menu_terminal }
 		}
 	})
 end
