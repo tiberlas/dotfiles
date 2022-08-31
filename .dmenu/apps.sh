@@ -24,6 +24,9 @@ OPT=(
 "teams-for-linux"
 "kitty"
 "blueman-applet"
+"drawio"
+"cura"
+"virtualbox"
 )
 
 CHOICE=$(printf "%s\n" "${OPT[@]}" | dmenu -i -p "$MSG")
