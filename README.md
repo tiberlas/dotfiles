@@ -29,33 +29,29 @@ We created an git bare repo called *dotfiles*
 In $HOME a *dotfiles* folder is created  
 When you add a file (stage it) it'c copied to $HOME/dotfiles folder  
 
-## setup replication
+## setup replication on clean Arch install
 
-After instale a bare arch linux distro run these commands:
+Install arch with `archinstall` and set the profile to *xorg* (no desktop env just the basic X11)  
 
-Set the mirror to hungarian servers  
-Go to '/etc/pacman.d/mirrorlist' and paste the list from 'https://archlinux.org/mirrorlist/'
-
+After reboot log into the newly createt system and run:  
 ```bash
+# update the packet manager
 sudo pacman -Sc
 sudo pacman -Syyu
-# if not installed awesomewm install it with it's dependencies
-sudo pacman -S lightdm xorg-server awesome xterm dmenu nitrogen compton
-# basic apps
-sudo pacman -S vim neovim kitty firefox ranger lsd git
-# fish terminal emulator
-sudo pacman -S fish
+# base apps
+sudo pacman -Sy neovim kitty fish git lsd ranger dmenu
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-# network manager
+#network
 sudo pacman -S networkmanager network-manager-applet
 sudo systemctl start NettworkManager.service
-nm-applet # start network manager applet; enable it in start up awesome
 # sound
 sudo pacman -S alsa-utils alsa-oss
 sudo pacman -S alsamixer alsa-plugin
-# cloning my dot files
-sudo pacman -S git
+# dots
 git clone --bare https://github.com/tiberlas/dotfiles.git
-alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
+dot fetch
+dot restore --staged .
+dot restore Templates Pictures Public .dmenu .config README.md
 ```
 
