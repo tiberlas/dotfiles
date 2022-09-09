@@ -8,7 +8,7 @@ SETUVAR _fish_abbr_dir_2D_pop:cd\x20\x24\x28xclip\x20\x2dselection\x20c\x20\x2do
 SETUVAR _fish_abbr_dir_2D_push:pwd\x20\x7c\x20xclip\x20\x2dselection\x20c
 SETUVAR _fish_abbr_dira:tree\x20\x2daL\x202
 SETUVAR _fish_abbr_g_2D_a:git\x20add\x20\x2d\x2dall
-SETUVAR _fish_abbr_g_2D_c:git\x20commit\x20\x2dm\x20\x27CNSL\x2d\x27
+SETUVAR _fish_abbr_g_2D_c:git\x20commit\x20\x2dm\x20\x27PL\x2d\x27
 SETUVAR _fish_abbr_g_2D_ch:git\x20checkout
 SETUVAR _fish_abbr_g_2D_diff:git\x20diff\x20HEAD\x7b\x27\x5e\x27\x2c\x7d
 SETUVAR _fish_abbr_g_2D_f:git\x20fetch\x20origin
@@ -23,6 +23,7 @@ SETUVAR _fish_abbr_g_2D_rs:git\x20reset\x20\x2d\x2dsoft\x20HEAD\x5e
 SETUVAR _fish_abbr_g_2D_s:git\x20status
 SETUVAR _fish_abbr_getclip:xclip\x20\x2dselection\x20c\x20\x2do
 SETUVAR _fish_abbr_ls:lsd\x20\x2dla
+SETUVAR _fish_abbr_n:nvim\x20\x2e
 SETUVAR _fish_abbr_npm_2D_lr:npm\x20run\x20serve\x20\x2d\x2dprofile\x3dfactor\x2ddev\x2dprofile\x20\x2d\x2denv\x3d
 SETUVAR _fish_abbr_open:mimeopen\x20\x2dd
 SETUVAR _fish_abbr_r_2D_off:redshift\x20\x2dO\x206500K

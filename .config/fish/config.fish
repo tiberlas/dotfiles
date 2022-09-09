@@ -26,6 +26,7 @@ abbr -a open "mimeopen -d"
 abbr -a r-off "redshift -O 6500K"
 abbr -a r-on "redshift -O 5000K"
 abbr -a clock "tty-clock -scbx -C 6 -f \"%a, %d %b %Y %T\""
+abbr -a n "nvim ."
 abbr -a t-sh "cp ~/Templates/new.sh new.sh"
 abbr -a t-curl "cp ~/Templates/curl.sh new.sh"
 
