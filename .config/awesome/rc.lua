@@ -33,6 +33,7 @@ HOTKEYS_POPUP = require'awful.hotkeys_popup'
 require'awful.hotkeys_popup.keys'
 local has_fdo, freedesktop = pcall(require, 'freedesktop')
 COLOR = require'.colors'
+HOME = "/home/t.tapai"
 
 -------------------------------------------------------------------------------
 -- ERROR HANDLING

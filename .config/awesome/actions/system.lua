@@ -44,7 +44,7 @@ globalkeys = GEARS.table.join(
 		AWFUL.spawn.with_shell("i3lock-fancy -pg")
 	end, { description = "lock screen", group = "awesome" }),
 	AWFUL.key({ modkey }, "q", function()
-		AWFUL.util.spawn("bash ~/.dmenu/shutdown.sh")
+		AWFUL.util.spawn("bash "..HOME.."/.dmenu/shutdown.sh")
 	end, { description = "quit awesome", group = "awesome" }),
 	AWFUL.key({ modkey }, "l", function()
 		AWFUL.tag.incmwfact(0.05)
@@ -82,13 +82,13 @@ globalkeys = GEARS.table.join(
 		AWFUL.util.spawn("dmenu_run")
 	end, { description = "run dmenu", group = "launcher" }),
 	AWFUL.key({ modkey, "Shift" }, "s", function()
-		AWFUL.util.spawn("bash ~/.dmenu/monitor-settings.sh")
+		AWFUL.util.spawn("bash "..HOME.."/.dmenu/monitor-settings.sh")
 	end, { description = "screen config", group = "launcher" }),
 	AWFUL.key({ modkey }, "e", function()
-		AWFUL.util.spawn("bash ~/.dmenu/emoji-list.sh")
+		AWFUL.util.spawn("bash "..HOME.."/.dmenu/emoji-list.sh")
 	end, { description = "run emoji app", group = "app" }),
 	AWFUL.key({ modkey }, "i", function()
-		AWFUL.util.spawn("bash ~/.dmenu/apps.sh")
+		AWFUL.util.spawn("bash "..HOME.."/.dmenu/apps.sh")
 	end, { description = "run emoji app", group = "app" }),
 	AWFUL.key({ modkey }, "x", function()
 		AWFUL.prompt.run({
