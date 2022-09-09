@@ -38,7 +38,7 @@ abbr -a setclip "xclip -selection c"
 # alias
 
 alias deno=/home/t.tapai/.deno/bin/deno
-alias dot='/usr/bin/git --git-dir=/home/t.tapai/dotfiles/ --work-tree=/home/t.tapai'
+alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias kitty-cat=./.local/kitty.app/bin/kitty
 alias neo='~/Desktop/./neovide'
 
