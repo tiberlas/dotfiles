@@ -88,9 +88,9 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with AWFUL.layout.inc, order matters.
 AWFUL.layout.layouts = {
-	AWFUL.layout.suit.fair,
-	AWFUL.layout.suit.max,
 	AWFUL.layout.suit.tile.left,
+	AWFUL.layout.suit.max,
+	-- AWFUL.layout.suit.fair,
 	-- AWFUL.layout.suit.floating,
 	-- AWFUL.layout.suit.tile.top
 	-- AWFUL.layout.suit.tile,
@@ -157,6 +157,13 @@ local start_icon = require'.widget.start_icon'
 local separator = WIBOX.widget.textbox("   ")
 local mytextclock = require'.widget.calendar_clock'
 local mybattery = require'.widget.battery'
+
+-- system tray icons
+local t_systrey = WIBOX.widget.systray();
+
+-- street turtle widgets
+local cpu_widget = require("streetturtle-widgets.awesome-wm-widgets.cpu-widget.cpu-widget")
+local todo_widget = require("streetturtle-widgets.awesome-wm-widgets.todo-widget.todo")
 
 -- Create a WIBOX for each screen and add it
 local taglist_buttons = GEARS.table.join(
@@ -285,29 +292,16 @@ AWFUL.screen.connect_for_each_screen(function(s)
 			separator,
 			s.mytaglist,
 			separator,
+			cpu_widget(),
+			todo_widget(),
 			mykeyboardlayout,
-			WIBOX.widget.systray(),
+			t_systrey,
 			mytextclock,
 			s.mylayoutbox
 		}
 	}
 end)
 
--- tag functions
-local tag_count = 5
-local function add_tag()
-	tag_count = tag_count + 1
-	AWFUL.tag.add("["..tag_count.."]", {
-		screen = AWFUL.screen.focused(),
-		layout = AWFUL.layout.suit.floating
-	}):view_only()
-end
-
-local function delete_tag()
-	local t = AWFUL.screen.focused().selected_tag
-	if not t then return end
-	t:delete()
-end
 
 -------------------------------------------------------------------------------
 -- Key and mouse bindings

@@ -1,3 +1,20 @@
+-- custom tag fun
+local tag_count = 5
+local function add_tag()
+	tag_count = tag_count + 1
+	AWFUL.tag.add("["..tag_count.."]", {
+		screen = AWFUL.screen.focused(),
+		layout = AWFUL.layout.suit.floating
+	}):view_only()
+end
+
+local function delete_tag()
+	local t = AWFUL.screen.focused().selected_tag
+	if not t then return end
+	t:delete()
+end
+
+-- key bindings
 globalkeys = GEARS.table.join(
 	AWFUL.key({ modkey }, "s", HOTKEYS_POPUP.show_help, { description = "show help", group = "awesome" }),
 	AWFUL.key({ modkey }, "a", add_tag, { description = "add a tag", group = "tag" }),
