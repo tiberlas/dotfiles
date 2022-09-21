@@ -30,6 +30,7 @@ SETUVAR _fish_abbr_r_2D_off:redshift\x20\x2dO\x206500K
 SETUVAR _fish_abbr_r_2D_on:redshift\x20\x2dO\x205000K
 SETUVAR _fish_abbr_rig:neofetch\x20\x2d\x2dascii_bold\x20on\x20\x2d\x2dascii_distro\x20Xubuntu\x20\x2d\x2dcolor_blocks\x20off\x20\x2d\x2dbold\x20on\x20\x2d\x2dpackage_managers\x20off\x20\x2d\x2dcpu_temp\x20on\x20\x2d\x2drefresh_rate\x20on
 SETUVAR _fish_abbr_setclip:xclip\x20\x2dselection\x20c
+SETUVAR _fish_abbr_show_2D_usb:sudo\x20fdisk\x20\x2dl
 SETUVAR _fish_abbr_t_2D_curl:cp\x20\x7e/Templates/curl\x2esh\x20new\x2esh
 SETUVAR _fish_abbr_t_2D_sh:cp\x20\x7e/Templates/new\x2esh\x20new\x2esh
 SETUVAR fish_color_autosuggestion:585858

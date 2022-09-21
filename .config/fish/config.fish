@@ -34,12 +34,13 @@ abbr -a dir-pop "cd \$(xclip -selection c -o)"
 abbr -a dir-push "pwd | xclip -selection c"
 abbr -a getclip "xclip -selection c -o"
 abbr -a setclip "xclip -selection c"
+abbr -a show-usb "sudo fdisk -l"
 
 # alias
 
 alias deno=/home/t.tapai/.deno/bin/deno
 alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-alias kitty-cat=./.local/kitty.app/bin/kitty
+alias kitty-cat=~/.local/kitty.app/bin/kitty
 alias neo='~/Desktop/./neovide'
 
 alias g-pass='pwgen -ysBv 17 1'
