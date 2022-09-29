@@ -33,24 +33,24 @@ selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
 
-background_opacity: 0.80
+background_opacity: 0.90
 
 # Font
 font:
   normal:
-    family: monospace
+    family: Fira Code Nerd Font Mono
     style: Regular
 
   bold:
-    family: monospace
+    family: Fira Code Nerd Font Mono
     style: Bold
 
   italic:
-    family: monospace
+    family: Fira Code Nerd Font Mono
     style: Italic
 
   bold_italic:
-    family: monospace
+    family: Fira Code Nerd Font Mono
     style: Bold Italic
 
-  size: 10
+  size: 8
