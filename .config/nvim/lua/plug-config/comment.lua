@@ -1,5 +1,6 @@
 local status_ok, comment = pcall(require, "kommentary.config")
 if not status_ok then
+	print"[PlugErr] kommentary not loaded"
 	return
 end
 

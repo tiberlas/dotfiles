@@ -1,5 +1,6 @@
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
+	print"[PlugErr] which-key not loaded"
 	return
 end
 
@@ -79,15 +80,15 @@ local opts = {
 }
 
 local mappings = {
-	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-	["d"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	p = {
-		name = "Packer",
+		name = "Packer and LSP installer",
 		c = { "<cmd>PackerCompile<cr>", "Compile" },
 		i = { "<cmd>PackerInstall<cr>", "Install" },
 		s = { "<cmd>PackerSync<cr>", "Sync" },
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
+		l = { "<cmd>LspInfo<cr>", "Info" },
+		L = { "<cmd>LspInstallInfo<cr>", "LSP Installer Info" },
 	},
 	c = {
 		name = "Comment",
@@ -100,27 +101,27 @@ local mappings = {
 		f = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Search Files" },
 	},
 	f = {
-		name = "TJ",
+		name = "File explorer/search",
+		e = { "<cmd>NeoTreeFloatToggle<cr>", "Explorer" },
 		f = { "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>", "Find Files"},
 		g = { "<cmd>Telescope live_grep<cr>", "Grep"},
 		b = { "<cmd>Telescope buffers<cr>", "Buffers"},
-		r = { "<cmd>Telescope lsp_references<cr>", "Find References"},
-		d = { "<cmd>Telescope lsp_definitions<cr>", "Find Definitions"},
-		c = { "<cmd>Telescope neoclip<cr>", "Show CLipboard"},
+		c = { "<cmd>Telescope neoclip<cr>", "Show Clipboard"},
+		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+		S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols", },
 	},
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Action (import, ..)" },
-		d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic" },
+		h = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic" },
 		t = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Method Info" },
 		j = { "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", "Next Error" },
 		k = { "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", "Prev Error" },
-		f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
-		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-		i = { "<cmd>LspInfo<cr>", "Info" },
-		I = { "<cmd>LspInstallInfo<cr>", "LSP Installer Info" },
-		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-		S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols", },
+		r = { "<cmd>Telescope lsp_references<cr>", "Find References"},
+		D = { "<cmd>Telescope lsp_definitions<cr>", "Find Definitions"},
+		d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition"},
+		s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature"},
+		e = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration"},
 	},
 	g = {
 		name = "Git",
@@ -128,7 +129,7 @@ local mappings = {
 		c = { "<cmd>Telescope git_commits<cr>", "Commits"},
 		s = { "<cmd>Telescope git_stash<cr>", "Stash"},
 		j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk"},
-		k = { "<cmd>Gitsigns prev_hunk<cr>", "Prec Hunk"},
+		k = { "<cmd>Gitsigns prev_hunk<cr>", "Prev Hunk"},
 		r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk"},
 		h = { "<cmd>Gitsigns blame_line<cr>", "Blame"},
 		p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview"},
@@ -136,19 +137,41 @@ local mappings = {
 		x = { "<cmd>Gitsigns refresh<cr>", "Refresh"},
 		n = { "<cmd>Neogit<cr>", "Neogit"},
 		f = { "<cmd>DiffviewFileHistory<cr>", "FileHistory"},
-		l = { "<cmd>DiffviewOpen<cr>", "Latest commt diff"},
+		l = { "<cmd>DiffviewOpen<cr>", "Latest commit diff"},
 	},
 	t = {
 		name = "Terminal",
 		e = { "new terminal" },
-		t = { "toogle terminal" },
+		t = { "toggle terminal" },
 		j = { "next  terminal" },
 		k = { "previous terminal" },
 	},
-	s = {
-		name = "Spelling",
-		s = { "show suggestions"},
-		t = { "toogle cpell check"},
+	a = {
+		name = "code actions",
+		d = { "<cmd>nohlsearch<CR>", "No Highlight" },
+		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+		s = { "<cmd>lua _CONVERT_TO_SPACES()<CR>", "Convert to spaces" },
+		t = { "<cmd>lua _CONVERT_TO_TABS()<CR>", "Convert to tabs" },
+		f = { "<cmd>lua vim.lsp.buf.format { async == true } <cr>", "Format" },
+	},
+	e = {
+		name = "Easy",
+		w = { "Hop forward word" },
+		b = { "Hop backward word" },
+		k = { "Hop forward line" },
+		j = { "Hop backward line" },
+		f = { "Hop forward char" },
+		F = { "Hop backward char" },
+		t = { "Hop forward 2 chars" },
+		T = { "Hop backward 2 chars" },
+		["/"] = { "pattern search" },
+		p = { "Paste" },
+		d = { "Delete word" },
+		c = { "Change word" },
+		y = { "Yank word" },
+		D = { "Delete line" },
+		C = { "Change line" },
+		Y = { "Yank line" },
 	}
 }
 

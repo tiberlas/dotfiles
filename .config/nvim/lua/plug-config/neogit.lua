@@ -1,5 +1,6 @@
 local status_ok, neogit  = pcall(require, "neogit")
 if not status_ok then
+	print"[PlugErr] neogit not loaded"
 	return
 end
 

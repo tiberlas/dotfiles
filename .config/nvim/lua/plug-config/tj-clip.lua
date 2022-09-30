@@ -1,5 +1,6 @@
 local status_ok, neoclip  = pcall(require, "neoclip")
 if not status_ok then
+	print"[PlugErr] neoclip not loaded"
 	return
 end
 
@@ -11,10 +12,10 @@ neoclip.setup({
 	db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
 	filter = nil,
 	preview = true,
-	default_register = '"',
+	default_register = {'"', '*', '+'},
 	default_register_macros = "q",
 	enable_macro_history = true,
-	content_spec_column = false,
+	content_spec_column = true,
 	on_paste = {
 		set_reg = false,
 	},
@@ -24,8 +25,8 @@ neoclip.setup({
 	keys = {
 		telescope = {
 			i = {
-				select = "<cr>",
-				paste = "<c-p>",
+				select = "<cr>", -- in register 0 is selected
+				paste = "<c-p>", -- paste the selection where the cursor was before activating this
 				paste_behind = "<c-l>",
 				replay = "<c-q>", -- replay a macro
 				delete = "<c-d>", -- delete an entry

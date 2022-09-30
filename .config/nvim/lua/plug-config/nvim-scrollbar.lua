@@ -1,7 +1,9 @@
 local status_ok, scrollbar = pcall(require, "scrollbar")
 if not status_ok then
+	print"[PlugErr] scrollbar not loaded"
 	return
 end
+
 scrollbar.setup({
 	show = true,
 	show_in_active_only = false,

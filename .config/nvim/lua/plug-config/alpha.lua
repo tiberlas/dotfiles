@@ -1,5 +1,6 @@
 local status_ok, alpha = pcall(require, "alpha")
 if not status_ok then
+	print"[PlugErr] alpha not loaded"
 	return
 end
 
@@ -14,7 +15,7 @@ dashboard.section.header.val = {
 	[[     888     888 888  888 888    Y88  88P 888 888  888  888 ]],
 	[[     888     888 888 d88P 888 d8b Y8bd8P  888 888  888  888 ]],
 	[[     888     888 88888P"  888 Y8P  Y88P   888 888  888  888 ]],
-	[[                                                            ]]
+	[[                                                            ]],
 }
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),

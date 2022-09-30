@@ -11,6 +11,14 @@
 
 Configured when you save 'init.lua' to update the Plugins
 
+### LSP
+
+> ':LspInstallInfo'  
+> to see and install awailable LSP clients  
+> To install hightlight a wanted LSP and press 'i'
+> To remove hightlight the desire LSP and press 'X'
+> To update hightlight the desire LSP and press 'u'
+
 ### Null ls
 
 Code formater, diagnostic tool,
@@ -55,4 +63,9 @@ A git tool for viewing diff; It can:
 - `:DiffviewFileHistory --range=origin..HEAD`
 - `:DiffviewFileHistory --range=feat/example-branch`
 - `:'<,'>DiffviewFileHistory`
+
+## Spell
+
+In `~/.config/nvim/spell/en.utf-8.add` add the new "correctly" spelled word
+After run command :`mkspell! ~/.config/nvim/spell/en.utf-8.add`
 

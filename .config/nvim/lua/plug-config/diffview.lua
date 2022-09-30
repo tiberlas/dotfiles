@@ -1,5 +1,6 @@
 local status_ok, actions = pcall(require, "diffview.actions")
 if not status_ok then
+	print"[PlugErr] diffview not loaded"
 	return
 end
 
