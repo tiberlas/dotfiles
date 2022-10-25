@@ -141,5 +141,5 @@ export NVM_DIR="$HOME/.nvm"
 # set global star search
 shopt -s globstar
 
-# start zsh
-zsh
+# start fish
+fish

@@ -33,6 +33,8 @@ OPT=(
 "all (two monitors and laptop bellow)"
 "rm (refresh minecraft wallpaper)"
 "rr (refresh retro wallpaper)"
+"rotate left laptop"
+"rotate normar laptop"
 )
 CHOICE=$(printf "%s\n" "${OPT[@]}" | dmenu -i -l 5 -p "$MSG")
 
@@ -68,9 +70,16 @@ case $CHOICE in
     nitrogen --set-zoom --set-color=#000 --random "${RETRO_WALLPAPERS}" --head=1 &&
     nitrogen --set-centered --set-color=#000 --random "${RETRO_WALLPAPERS}" --head=2
     ;;
+  ${OPT[9]})
+    xrandr --output $LAPTOP --rotate left
+    ;;
+  ${OPT[10]})
+    xrandr --output $LAPTOP --rotate normal
+    ;;
   *)
     printf "%s" "command not implemented T_T"
     ;;
 esac
 
 exit 0
+

@@ -19,9 +19,16 @@ KEYMAP("v", "<Leader>ek", "<cmd>HopLineBC<CR>", OPTS)
 -- search for one char
 KEYMAP("n", "<Leader>ef", "<cmd>HopChar1AC<CR>", OPTS)
 KEYMAP("n", "<Leader>eF", "<cmd>HopChar1BC<CR>", OPTS)
+KEYMAP("v", "<Leader>ef", "<cmd>HopChar1AC<CR>", OPTS)
+KEYMAP("v", "<Leader>eF", "<cmd>HopChar1BC<CR>", OPTS)
 -- search for two chars
 KEYMAP("n", "<Leader>et", "<cmd>HopChar2AC<CR>", OPTS)
 KEYMAP("n", "<Leader>eT", "<cmd>HopChar2BC<CR>", OPTS)
 -- search for word
 KEYMAP("n", "<Leader>e/", "<cmd>HopPattern<CR>", OPTS)
+KEYMAP("v", "<Leader>e/", "<cmd>HopPattern<CR>", OPTS)
+
+-- copy to registar t; upgrade to this plugin
+KEYMAP("n", "<Leader>e", "\"t", OPTS)
+KEYMAP("v", "<Leader>e", "\"t", OPTS)
 

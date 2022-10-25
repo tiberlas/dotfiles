@@ -24,6 +24,8 @@ arn
 kms
 iam
 s3
+sqs
+sns
 codeartifact
 dao
 localhost
@@ -76,3 +78,14 @@ rg
 ag
 popup
 async
+params
+metadata
+timestamp
+const
+stringify
+atr
+att
+ln
+dest
+TODO
+readme

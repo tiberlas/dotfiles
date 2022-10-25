@@ -41,16 +41,3 @@ KEYMAP("n", "zj", ":m .+1<CR>==", OPTS)
 KEYMAP("n", "zk", ":m .-2<CR>==", OPTS)
 -- stay on word when highlighted
 KEYMAP("n", "*", "*N", OPTS)
--- copy to registar t; upgrade to vim easy
---[[ KEYMAP("n", "<Leader>ed", "\"tdaw", OPTS)
-KEYMAP("n", "<Leader>ec", "\"tcaw", OPTS)
-KEYMAP("n", "<Leader>ey", "\"tyaw", OPTS)
-KEYMAP("n", "<Leader>eD", "\"tD", OPTS)
-KEYMAP("n", "<Leader>eC", "\"tC", OPTS)
-KEYMAP("n", "<Leader>eY", "\"tY", OPTS)
-KEYMAP("v", "<Leader>ed", "\"td", OPTS)
-KEYMAP("v", "<Leader>ec", "\"tc", OPTS)
-KEYMAP("v", "<Leader>ey", "\"ty", OPTS)
-KEYMAP("n", "<Leader>ep", "\"tp", OPTS) ]]
--- TEST THIS
-KEYMAP("n", "<Leader>e", "\"t", OPTS)

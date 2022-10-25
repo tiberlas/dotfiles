@@ -155,7 +155,7 @@ mykeyboardlayout = AWFUL.widget.keyboardlayout()
 
 local start_icon = require'.widget.start_icon'
 local separator = WIBOX.widget.textbox("   ")
-local mytextclock = require'.widget.calendar_clock'
+-- local mytextclock = require'.widget.calendar_clock'
 local mybattery = require'.widget.battery'
 
 -- system tray icons
@@ -163,7 +163,22 @@ local t_systrey = WIBOX.widget.systray();
 
 -- street turtle widgets
 local cpu_widget = require("streetturtle-widgets.awesome-wm-widgets.cpu-widget.cpu-widget")
-local todo_widget = require("streetturtle-widgets.awesome-wm-widgets.todo-widget.todo")
+local  calendar_widget = require("streetturtle-widgets.awesome-wm-widgets.calendar-widget.calendar")
+local mytextclock = WIBOX.widget.textclock()
+local cw = calendar_widget({
+    theme = 'dark',
+    placement = 'top_right',
+    start_sunday = true,
+    radius = 8,
+-- with customized next/previous (see table above)
+    previous_month_button = 1,
+    next_month_button = 3,
+})
+mytextclock:connect_signal("button::press",
+    function(_, _, _, button)
+        if button == 1 then cw.toggle() end
+    end)
+local ram_widget = require("streetturtle-widgets.awesome-wm-widgets.ram-widget.ram-widget")
 
 -- Create a WIBOX for each screen and add it
 local taglist_buttons = GEARS.table.join(
@@ -292,8 +307,8 @@ AWFUL.screen.connect_for_each_screen(function(s)
 			separator,
 			s.mytaglist,
 			separator,
+			ram_widget(),
 			cpu_widget(),
-			todo_widget(),
 			mykeyboardlayout,
 			t_systrey,
 			mytextclock,

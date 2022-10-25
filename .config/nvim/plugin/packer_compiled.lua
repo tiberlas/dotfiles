@@ -224,6 +224,11 @@ _G.packer_plugins = {
     path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/nvim-scrollbar",
     url = "https://github.com/petertriho/nvim-scrollbar"
   },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
