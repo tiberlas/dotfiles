@@ -9,7 +9,7 @@ SETUVAR _fish_abbr_d_2D_b:dot\x20branch
 SETUVAR _fish_abbr_d_2D_ch:dot\x20checkout
 SETUVAR _fish_abbr_d_2D_d:dot\x20diff\x20HEAD\x7b\x27\x5e\x27\x2c\x7d
 SETUVAR _fish_abbr_d_2D_f:dot\x20fetch
-SETUVAR _fish_abbr_d_2D_i:dot\x20status
+SETUVAR _fish_abbr_d_2D_i:dot\x20status\x20\x2duno
 SETUVAR _fish_abbr_d_2D_l:dot\x20log\x20\x2d\x2dgraph\x20\x2d\x2doneline\x20\x2dn\x208
 SETUVAR _fish_abbr_d_2D_m:dot\x20merge
 SETUVAR _fish_abbr_d_2D_p:dot\x20push\x20origin\x20

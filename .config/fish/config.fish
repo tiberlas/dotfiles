@@ -36,13 +36,14 @@ abbr -a getclip "xclip -selection c -o"
 abbr -a setclip "xclip -selection c"
 abbr -a show-usb "sudo fdisk -l"
 
-abbr -a d-i "dot status"
+abbr -a d-i "dot status -uno"
 abbr -a d-s "dot status"
 abbr -a d-l "dot log --graph --oneline -n 8"
 abbr -a d-ch "dot checkout"
 abbr -a d-f "dot fetch"
 abbr -a d-m "dot merge"
-abbr -a d-a "dot add "
+abbr -a d-a "dot add"
+abbr -a d-c "dot commit"
 abbr -a d-b "dot branch"
 abbr -a d-p "dot push origin "
 abbr -a d-d "dot diff HEAD{'^',}"
@@ -51,7 +52,7 @@ abbr -a d-d "dot diff HEAD{'^',}"
 
 alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v (pwd):/aws amazon/aws-cli'
 alias deno=/home/t.tapai/.deno/bin/deno
-alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 alias kitty-cat=~/.local/kitty.app/bin/kitty
 alias neo='~/Desktop/./neovide'
 
