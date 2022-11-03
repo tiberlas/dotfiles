@@ -133,11 +133,11 @@ local mappings = {
 		r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk"},
 		h = { "<cmd>Gitsigns blame_line<cr>", "Blame"},
 		p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview"},
-		d = { "<cmd>Gitsigns diffthis<cr>", "Diff"},
+		d = { "<cmd>Gitsigns diffthis<cr>", "Diff changes"},
 		x = { "<cmd>Gitsigns refresh<cr>", "Refresh"},
 		n = { "<cmd>Neogit<cr>", "Neogit"},
 		f = { "<cmd>DiffviewFileHistory<cr>", "FileHistory"},
-		l = { "<cmd>DiffviewOpen<cr>", "Latest commit diff"},
+		l = { "<cmd>DiffviewOpen HEAD^<cr>", "Latest commit diff"},
 	},
 	t = {
 		name = "Terminal",

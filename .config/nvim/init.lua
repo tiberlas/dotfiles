@@ -80,7 +80,7 @@ PLUGINS = {
 	{ { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }, plug_path .. ".neogit" },
 
 	-- PLUGINS GRAVE
-	{ { "nvim-treesitter/nvim-treesitter", run = function() require("nvim-treesitter.install").update({ with_sync = true }) end, }, plug_path .. ".treesitter", },
+	--{ { "nvim-treesitter/nvim-treesitter", run = function() require("nvim-treesitter.install").update({ with_sync = true }) end, }, plug_path .. ".treesitter", },
 	-- { "lewis6991/impatient.nvim", plug_path .. ".impatient" }, speeds up plugin load time
 	-- { { 'goolord/alpha-nvim', requires = { 'kyazdani42/nvim-web-devicons' } }, plug_path..".alpha" },
 }
