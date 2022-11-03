@@ -64,8 +64,8 @@ dot restore Templates Pictures Public .dmenu .config README.md
 sudo apt install xubuntu-desktop
 reboot
 #install awesome and utilities
-sudo apt-get install firefox vim git nitrogen compton awesome xterm fish neofetch pnmixer flameshot i3lock-fancy
-sudo snap install authy --beta
+sudo apt-get install firefox vim git nitrogen compton awesome xterm fish neofetch pnmixer flameshot i3lock-fancy ranger
+sudo snap install authy --beta lsd
 # dmenu
 sudo apt install suckless-tools
 #alacrity
@@ -74,6 +74,7 @@ sudo apt install alacritty
 #kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
 sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/
+#install omf https://github.com/oh-my-fish/oh-my-fish
 #neard font
 cd .local/share/fonts
 # url: https://github.com/ryanoasis/nerd-fonts#option-1-download-and-install-manually
@@ -86,6 +87,10 @@ dot restore Templates Pictures Public .dmenu .config README.md
 #awesome
 # comment out start-up apps in awesome
 u rc.lua promeni variable HOME
+# instaliraj streetturtle
+mkdir streetturtle-widgets
+cd streetturtle-widgets
+git clone https://github.com/streetturtle/awesome-wm-widgets.git
 #neovim
 sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
 cd Public
