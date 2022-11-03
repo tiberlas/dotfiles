@@ -1,23 +1,12 @@
-################################################################################
-#                                           
-#  _    _   _ _               _             author: t.tiberius
-# | |  | | (_) |             (_)            usage:
-# | |_ | |_ _| |__   ___ _ __ _ _   _ ___     bash configuration file
-# | __|| __| | '_ \ / _ \ '__| | | | / __|    
-# | |_ | |_| | |_) |  __/ |  | | |_| \__ \    
-#  \__(_)__|_|_.__/ \___|_|  |_|\__,_|___/    
-#                                             
-################################################################################
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+#case $- in
+#    *i*) ;;
+#      *) return;;
+#esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -67,13 +56,8 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
 if [ "$color_prompt" = yes ]; then
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1="📁 \e[1;33m[\w]\e[m  \e[1;36m\$(parse_git_branch)\e[m  🕑 \e[1;32m[\t]\e[m \n\e[1;31m\u\e[m🚀 "
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -132,14 +116,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Node Version Manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
 
-# set global star search
-shopt -s globstar
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
 
-# start fish
+# start fish terminal as the default one
 fish

@@ -14,10 +14,9 @@
 
 # if not shore just run `xrandr` to see the available ports
 # for --pos flaf see: https://superuser.com/questions/485120/how-do-i-align-the-bottom-edges-of-two-monitors-with-xrandr
-# ports for lenovo laptop
-LAPTOP="eDP1"
-DISPALY="DP1"
-WGA="DP2"
+# ports for lenovo L15 laptop
+LAPTOP="eDP-1"
+HDMI="HDMI-1"
 
 GIRLS_WALLPAPER=~/pictures/pastel-girls
 RETRO_WALLPAPERS=~/pictures/retro2D
@@ -28,70 +27,38 @@ MINECRAFT_WALLPAPERS=~/pictures/minecraft-wallpaper
 MSG="Choose monitor setup: "
 OPT=(
 "laptop"
-"VGA normal"
-"VGA left"
-"duplicated on VGA"
-"laptop+vertical"
-"laptop+horizontal"
-"two monitors in T"
-"two monitors in horizontal"
-"refresh girl wallpaper"
-"refresh retro wallpaper"
-"refresh eye wallpaper"
-"refresh dark wallpaper"
-"refresh minecraft wallpaper"
+"hdmi+laptop"
+"duplicate"
+"hdmi"
+"rotaded left hdmi"
+"rotate normal hdmi"
+"refresh wallpaper"
 )
 CHOICE=$(printf "%s\n" "${OPT[@]}" | dmenu -i -l 5 -p "$MSG")
 
 case $CHOICE in
   ${OPT[0]})
-    xrandr --output $LAPTOP --mode 1920x1080 --output $DISPALY --off --output $WGA --off
+    xrandr --output $LAPTOP --mode 1920x1080 --output $HDMI --off
     ;;
   ${OPT[1]})
-    xrandr --output $LAPTOP --off --output $DISPALY --off --output $WGA --mode 1920x1080 --primary --rotate normal
+    xrandr --output $LAPTOP --mode 1920x1080 --pos 1920x0 --primary --output $HDMI --mode 1920x1080
     ;;
   ${OPT[2]})
-    xrandr --output $LAPTOP --off --output $DISPALY --off --output $WGA --mode 1920x1080 --primary --rotate left
+    xrandr --output $LAPTOP --mode 1920x1080 --output $HDMI --same-as $LAPTOP
     ;;
   ${OPT[3]})
-    xrandr --output $LAPTOP --mode 1920x1080 --output $DISPALY --off --output $WGA --same-as $LAPTOP
+    xrandr --output $LAPTOP --off --output $HDMI --mode 1920x1080 --primary
     ;;
   ${OPT[4]})
-    xrandr --output $LAPTOP ---mode 1920x1080 --primary --pos 0x840 --output $DISPALY --off --output $WGA --mode 1920x1080 --rotate left --pos 1920x0
+    xrandr --output $LAPTOP --off --output $HDMI --mode 1920x1080 --primary --rotate left
     ;;
-  ${OPT[5]})
-    xrandr --output $LAPTOP ---mode 1920x1080 --primary --output $DISPALY --off --output $WGA --mode 1920x1080
+  ${OPT[4]})
+    xrandr --output $LAPTOP --off --output $HDMI --mode 1920x1080 --primary --rotate normal
     ;;
   ${OPT[6]})
-    xrandr --output $LAPTOP --off --output $DISPALY --mode 1920x1080 --rotate left --pos 1920x0 --output $WGA --mode 1920x1080 --primary --pos 0x840
-    ;;
-  ${OPT[7]})
-    xrandr --output $LAPTOP --off --output $DISPALY --mode 1920x1080 --output $WGA --mode 1920x1080 --primary --left-of $DISPALY
-    ;;
-  ${OPT[8]})
-    nitrogen --set-centered --set-color=#000 --random ${GIRLS_WALLPAPER} --head=0 &&
-    nitrogen --set-centered --set-color=#000 --random "${GIRLS_WALLPAPER}" --head=1 &&
-    nitrogen --set-centered --set-color=#000 --random "${GIRLS_WALLPAPER}" --head=2
-    ;;
-  ${OPT[9]})
-    nitrogen --set-centered --set-color=#000 --random ${RETRO_WALLPAPERS} --head=0 &&
-    nitrogen --set-centered --set-color=#000 --random "${RETRO_WALLPAPERS}" --head=1 &&
+    nitrogen --set-zoom --set-color=#000 --random ${RETRO_WALLPAPERS} --head=0 &&
+    nitrogen --set-zoom --set-color=#000 --random "${RETRO_WALLPAPERS}" --head=1 &&
     nitrogen --set-centered --set-color=#000 --random "${RETRO_WALLPAPERS}" --head=2
-    ;;
-  ${OPT[10]})
-    nitrogen --set-centered --set-color=#000000 --random ${EYE_WALLPAPERS} --head=0 &&
-    nitrogen --set-centered --set-color=#000000 --random "${EYE_WALLPAPERS}" --head=1 &&
-    nitrogen --set-centered --set-color=#000000 --random "${EYE_WALLPAPERS}" --head=2
-    ;;
-  ${OPT[11]})
-    nitrogen --set-centered --set-color=#000000 --random ${DARK_WALLPAPERS} --head=0 &&
-    nitrogen --set-centered --set-color=#000000 --random "${DARK_WALLPAPERS}" --head=1 &&
-    nitrogen --set-centered --set-color=#000000 --random "${DARK_WALLPAPERS}" --head=2
-    ;;
-  ${OPT[12]})
-    nitrogen --set-centered --set-color=#373737 --random ${MINECRAFT_WALLPAPERS} --head=0 &&
-    nitrogen --set-centered --set-color=#373737 --random "${MINECRAFT_WALLPAPERS}" --head=1 &&
-    nitrogen --set-centered --set-color=#373737 --random "${MINECRAFT_WALLPAPERS}" --head=2
     ;;
   *)
     printf "%s" "command not implemented T_T"

@@ -14,3 +14,5 @@ AWFUL.spawn.single_instance("authy")
 -- cron job is set to change the wall papper, this is just for the initial view
 AWFUL.spawn.with_shell("nitrogen --set-centered --set-color=#000 --random ~/Pictures/retro2D") --set wallpaper
 
+-- mouse juggler
+AWFUL.spawn.with_shell("python3 ~/utils/python/mouse_mover.py")

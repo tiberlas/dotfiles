@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =8
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/t.tapai/.config/nvim-profiles/new-blood/plugins'
+let g:netrw_dirhist_9='/home/t.tapai/.config/nvim-profiles/new-blood'
 let g:netrw_dirhist_8='/home/tiberius/.config/fish'
 let g:netrw_dirhist_7='/home/tiberius/.config/fish/completions'
 let g:netrw_dirhist_6='/home/tiberius/.config/fish'

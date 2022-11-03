@@ -161,7 +161,6 @@ local mybattery = require'.widget.battery'
 local t_systrey = WIBOX.widget.systray();
 
 -- street turtle widgets
-local cpu_widget = require("streetturtle-widgets.awesome-wm-widgets.cpu-widget.cpu-widget")
 local  calendar_widget = require("streetturtle-widgets.awesome-wm-widgets.calendar-widget.calendar")
 local mytextclock = WIBOX.widget.textclock()
 local cw = calendar_widget({
@@ -177,7 +176,6 @@ mytextclock:connect_signal("button::press",
     function(_, _, _, button)
         if button == 1 then cw.toggle() end
     end)
-local ram_widget = require("streetturtle-widgets.awesome-wm-widgets.ram-widget.ram-widget")
 
 -- Create a WIBOX for each screen and add it
 local taglist_buttons = GEARS.table.join(
@@ -324,8 +322,6 @@ AWFUL.screen.connect_for_each_screen(function(s)
 			separator,
 			s.mytaglist,
 			separator,
-			ram_widget(),
-			cpu_widget(),
 			mykeyboardlayout,
 			t_systrey,
 			mytextclock,

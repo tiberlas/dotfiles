@@ -1,3 +1,4 @@
+package pyenv
 theme default
 theme es
 theme kawasaki

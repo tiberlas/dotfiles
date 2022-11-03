@@ -12,6 +12,7 @@ local ts_select_dir_for_grep = function(prompt_bufnr)
 	fb.file_browser({
 		files = false,
 		depth = false,
+		hidden = { file_browser = false, folder_browser = false },
 		attach_mappings = function(prompt_bufnr)
 			require("telescope.actions").select_default:replace(function()
 				local entry_path = action_state.get_selected_entry().Path
@@ -34,6 +35,9 @@ local fb_actions = require "telescope._extensions.file_browser.actions"
 telescope.setup {
 	pickers = {
 		live_grep = {
+			additional_args = function(opts)
+                return {"--hidden"}
+            end,
 			mappings = {
 				i = {
 					["<C-f>"] = ts_select_dir_for_grep,

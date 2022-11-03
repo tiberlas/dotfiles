@@ -46,8 +46,11 @@ def check_sleeping_mouse ():
 
   last_known_position = current_position
 
-schedule.every(2).minutes.do(check_sleeping_mouse)
+schedule.every(5).minutes.do(check_sleeping_mouse)
+
+mouse_draw_pentagram(0, 120, 0.8)
 
 while 1:
     schedule.run_pending()
-    time.sleep(1)
+    #time.sleep(1)
+
