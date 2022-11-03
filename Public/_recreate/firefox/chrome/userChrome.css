@@ -1,0 +1,7 @@
+/* hides the native tabs */
+#TabsToolbar {
+  visibility: collapse;
+}/* leaves space for the window buttons */
+#nav-bar {
+    margin-top: 20px;
+}

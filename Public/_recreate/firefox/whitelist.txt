@@ -1,0 +1,9 @@
+liveramp.okta.com
+liveramp-privacy.awsapps.com
+*.console.aws.amazon.com
+meet.google.com
+liveramp.atlassian.net
+eu-west-1.signin.aws
+outlook.office.com
+levi9-global-sourcing.app.openair.com
+docs.aws.amazon.com
