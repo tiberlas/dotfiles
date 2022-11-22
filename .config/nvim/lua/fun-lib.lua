@@ -11,3 +11,4 @@ end
 function _TAB_THIS_BUFFER()
 	vim.cmd([[tabedit %]])
 end
+

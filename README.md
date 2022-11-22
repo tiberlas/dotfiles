@@ -64,7 +64,7 @@ dot restore Templates Pictures Public .dmenu .config README.md
 sudo apt install xubuntu-desktop
 reboot
 #install awesome and utilities
-sudo apt-get install firefox vim git nitrogen compton awesome xterm fish neofetch pnmixer flameshot i3lock-fancy ranger
+sudo apt-get install firefox vim git nitrogen compton awesome xterm fish neofetch pnmixer flameshot i3lock-fancy ranger fzf ripgrep lua5.4 pwgen redshift
 sudo snap install authy --beta lsd
 # dmenu
 sudo apt install suckless-tools

@@ -82,7 +82,6 @@ local opts = {
 local mappings = {
 	p = {
 		name = "Packer and LSP installer",
-		c = { "<cmd>PackerCompile<cr>", "Compile" },
 		i = { "<cmd>PackerInstall<cr>", "Install" },
 		s = { "<cmd>PackerSync<cr>", "Sync" },
 		S = { "<cmd>PackerStatus<cr>", "Status" },
@@ -136,7 +135,7 @@ local mappings = {
 		d = { "<cmd>Gitsigns diffthis<cr>", "Diff changes"},
 		x = { "<cmd>Gitsigns refresh<cr>", "Refresh"},
 		n = { "<cmd>Neogit<cr>", "Neogit"},
-		f = { "<cmd>DiffviewFileHistory<cr>", "FileHistory"},
+		f = { "<cmd>DiffviewFileHistory %<cr>", "FileHistory"},
 		l = { "<cmd>DiffviewOpen HEAD^<cr>", "Latest commit diff"},
 	},
 	t = {

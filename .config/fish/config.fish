@@ -27,8 +27,10 @@ abbr -a r-off "redshift -O 6500K"
 abbr -a r-on "redshift -O 5000K"
 abbr -a clock "tty-clock -scbx -C 6 -f \"%a, %d %b %Y %T\""
 abbr -a n "nvim ."
-abbr -a t-sh "cp ~/Templates/new.sh new.sh"
+abbr -a v "vim ."
+abbr -a t-sh "cp ~/Templates/newShellScript.sh new.sh"
 abbr -a t-curl "cp ~/Templates/curl.sh new.sh"
+abbr -a t-lua "cp ~/Templates/newLua.lua new.lua"
 
 abbr -a dir-pop "cd \$(xclip -selection c -o)"
 abbr -a dir-push "pwd | xclip -selection c"
@@ -51,10 +53,9 @@ abbr -a d-d "dot diff HEAD{'^',}"
 # alias
 
 alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v (pwd):/aws amazon/aws-cli'
-alias deno=/home/t.tapai/.deno/bin/deno
+alias deno=$HOME/.deno/bin/deno
 alias dot='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 alias kitty-cat=~/.local/kitty.app/bin/kitty
-alias neo='~/Desktop/./neovide'
 
 alias g-pass='pwgen -ysBv 17 1'
 alias pass='bash ~/Public/my-scripts/generate-password.sh'
@@ -62,5 +63,15 @@ alias pass='bash ~/Public/my-scripts/generate-password.sh'
 # function
 
 function go
-    clear && cd $argv && lsd -la
+	pwd > $HOME/.config/fish/previous_dir.txt
+	clear
+	cd $argv
+	ll
+end
+
+function back
+	PREV_DIR=cat $HOME/.config/fish/previous_dir.txt
+	cd $PREV_DIR
+	clear
+	ll
 end

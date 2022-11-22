@@ -42,7 +42,13 @@ SETUVAR _fish_abbr_rig:neofetch\x20\x2d\x2dascii_bold\x20on\x20\x2d\x2dascii_dis
 SETUVAR _fish_abbr_setclip:xclip\x20\x2dselection\x20c
 SETUVAR _fish_abbr_show_2D_usb:sudo\x20fdisk\x20\x2dl
 SETUVAR _fish_abbr_t_2D_curl:cp\x20\x7e/Templates/curl\x2esh\x20new\x2esh
-SETUVAR _fish_abbr_t_2D_sh:cp\x20\x7e/Templates/new\x2esh\x20new\x2esh
+SETUVAR _fish_abbr_t_2D_lua:cp\x20\x7e/Templates/newLua\x2elua\x20new\x2elua
+SETUVAR _fish_abbr_t_2D_sh:cp\x20\x7e/Templates/newShellScript\x2esh\x20new\x2esh
+SETUVAR _fish_abbr_v:vim\x20\x2e
+SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
+SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_list\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/nvm\x2efish\x1eedc/bass
+SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:585858
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:a1b56c
@@ -72,3 +78,6 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR nvm_data:/home/t\x2etapai/\x2elocal/share/nvm
+SETUVAR nvm_default_version:latest
+SETUVAR nvm_mirror:https\x3a//nodejs\x2eorg/dist

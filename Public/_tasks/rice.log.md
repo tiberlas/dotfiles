@@ -1,5 +1,6 @@
 # RICE LOGS
 
+- [x]fix telescope fzf (install fzf)
 - [x]omf treba da se instalira
 - [x]xrand da se podesi za hdmi
 - [x]nvim fix easy mode
