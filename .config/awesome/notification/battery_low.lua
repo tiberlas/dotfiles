@@ -1,4 +1,4 @@
-local artorias = require'..ascii.artorias'
+local artorias = require'..utils.ascii.artorias'
 
 GEARS.timer {
 	timeout = 60,
