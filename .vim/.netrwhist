@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/tiberius/.config/fish'
+let g:netrw_dirhist_7='/home/tiberius/.config/fish/completions'
+let g:netrw_dirhist_6='/home/tiberius/.config/fish'
+let g:netrw_dirhist_5='/home/tiberius/.config/fish/functions'
+let g:netrw_dirhist_4='/home/tiberius/.config/fish'
+let g:netrw_dirhist_3='/home/tiberius/.config/fish/conf.d'
+let g:netrw_dirhist_2='/home/tiberius/.config/fish'
+let g:netrw_dirhist_1='/home/tiberius/.config/alacritty'

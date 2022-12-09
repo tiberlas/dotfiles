@@ -57,6 +57,10 @@ set showbreak=↪\
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:~,extends:⟩,precedes:⟨,space:•
 set list                                " Sets white spaces
 
+colorscheme monokai
+" transparent background
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE
 
 " MAPPINGS
 inoremap kj <Esc>                       " go to NORMAL mode
