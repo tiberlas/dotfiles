@@ -218,3 +218,5 @@ export PATH="$HOME/neovim/bin:$PATH"
 # enter to nvim and install all dependencies, comment out the theme
 ```
 
+> for **dmenu** restore dir *opt-aur/dmenu-5.3*; then cd into it and run `sudo make install`
+
