@@ -1,4 +1,15 @@
+# EXPORTS
+export VISUAL=vim
+export PATH="$HOME/.local/bin:$PATH"
+
 fish_vi_key_bindings
+
+# NVM config (https://github.com/brigand/fast-nvm-fish) [
+# just run `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`
+export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# ]
 
 # abbriviations
 
@@ -38,6 +49,7 @@ abbr -a r-on "redshift -O 5000K"
 abbr -a clock "tty-clock -scbx -C 6 -f \"%a, %d %b %Y %T\""
 abbr -a t-sh "cp ~/Templates/newShellScript.sh new.sh"
 abbr -a t-curl "cp ~/Templates/curl.sh new.sh"
+abbr -a t-pie "cp ~/templates/httpie.sh new.sh"
 abbr -a t-lua "cp ~/Templates/newLua.lua new.lua"
 
 abbr -a dir-pop "cd \$(xclip -selection c -o)"

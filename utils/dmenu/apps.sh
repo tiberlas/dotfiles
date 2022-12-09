@@ -13,19 +13,22 @@
 
 MSG="(⌐▨_▨) app: "
 OPT=(
-"authy"
-"chromium"
-"firefox"
-"vlc"
-"freecad"
-"cura-slicer.cura"
-"gimp"
-"flameshot"
 "kitty"
 "alacritty"
-"blueman-applet"
+"firefox"
+"transmission-gtk"
+"chromium"
+"freecad"
+"cura-slicer.cura"
+"openscad"
 "drawio"
-"virtualbox"
+"gimp"
+"foliate"
+"okular"
+"vlc"
+"authy"
+"flameshot"
+"blueman-applet"
 )
 
 CHOICE=$(printf "%s\n" "${OPT[@]}" | dmenu -i -p "$MSG")

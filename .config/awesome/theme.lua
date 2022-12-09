@@ -11,7 +11,7 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.wallpaper = "~/Pictures/lain.gif"
+theme.wallpaper = "~/pictures/firefox.sexy-1920x1080.png"
 theme.font          = "sans 11"
 
 theme.bg_normal     = COLOR.black
