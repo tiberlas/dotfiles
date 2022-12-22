@@ -91,7 +91,7 @@ local mappings = {
 	},
 	c = {
 		name = "Comment",
-		i = { "Comment Line" },
+		c = { "Comment Line" },
 		d = { "Remove Comment Line" },
 	},
 	h = {
@@ -152,6 +152,9 @@ local mappings = {
 		s = { "<cmd>lua _CONVERT_TO_SPACES()<CR>", "Convert to spaces" },
 		t = { "<cmd>lua _CONVERT_TO_TABS()<CR>", "Convert to tabs" },
 		f = { "<cmd>lua vim.lsp.buf.format { async == true } <cr>", "Format" },
+		i = { "<cmd>set foldmethod=indent<CR>", "Indent folds" },
+		m = { "<cmd>set foldmethod=marker<CR>", "Marker folds ({{{)" },
+		n = { "<cmd>set nofoldenable<CR>", "Disables folds" }
 	},
 	e = {
 		name = "Easy",

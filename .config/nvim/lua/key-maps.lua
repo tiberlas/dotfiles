@@ -1,6 +1,6 @@
 -- jumps in wraps
-KEYMAP("n","j", "gj", OPTS)
-KEYMAP("n","k", "gk", OPTS)
+--[[ KEYMAP("n","j", "gj", OPTS)
+KEYMAP("n","k", "gk", OPTS) ]]
 -- escape from insert/visual mode
 KEYMAP("i","jk", "<Esc>", OPTS)
 KEYMAP("i","kj", "<Esc>", OPTS)

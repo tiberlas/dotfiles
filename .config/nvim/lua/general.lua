@@ -52,7 +52,7 @@ vim.opt.showbreak = "↪"
 vim.opt.list = true
 vim.opt.listchars = { tab=" ", eol="↲", nbsp="␣", trail="", extends="⟩", precedes="⟨", space="•" }
 vim.opt.termguicolors = true
-vim.o.background = "dark"
+vim.opt.background = "dark"
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 
