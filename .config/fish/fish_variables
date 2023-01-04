@@ -3,6 +3,9 @@
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_L:\x26\x26\x20lsd\x20\x2dla
 SETUVAR _fish_abbr_awsin:aws\x20sso\x20login\x20\x2d\x2dprofile\x20factor\x2ddev\x2dprofile
+SETUVAR _fish_abbr_b_2D_fetch:bash\x20\x7e/utils/bash\x2dscripts/back\x2dup\x2dpull\x2esh
+SETUVAR _fish_abbr_b_2D_m:sudo\x20mount\x20/dev/sda1\x20/mnt/sanDisk\x20\x2do\x20uid\x3d1000
+SETUVAR _fish_abbr_b_2D_push:bash\x20\x7e/utils/bash\x2dscripts/back\x2dup\x2dpush\x2esh
 SETUVAR _fish_abbr_clock:tty\x2dclock\x20\x2dscbx\x20\x2dC\x206\x20\x2df\x20\x22\x25a\x2c\x20\x25d\x20\x25b\x20\x25Y\x20\x25T\x22
 SETUVAR _fish_abbr_d_2D_a:dot\x20add\x20
 SETUVAR _fish_abbr_d_2D_b:dot\x20branch
@@ -44,6 +47,9 @@ SETUVAR _fish_abbr_show_2D_usb:sudo\x20fdisk\x20\x2dl
 SETUVAR _fish_abbr_t_2D_curl:cp\x20\x7e/Templates/curl\x2esh\x20new\x2esh
 SETUVAR _fish_abbr_t_2D_lua:cp\x20\x7e/Templates/newLua\x2elua\x20new\x2elua
 SETUVAR _fish_abbr_t_2D_sh:cp\x20\x7e/Templates/newShellScript\x2esh\x20new\x2esh
+SETUVAR _fish_abbr_usb_2D_ll:sudo\x20fdisk\x20\x2dl
+SETUVAR _fish_abbr_usb_2D_m:sudo\x20mount\x20\x2do\x20umask\x3d000\x2cuid\x3dt\x2etapai\x2cgid\x3dt\x2etapai\x20/dev/sda1\x20/mnt/thumb\x2ddrive
+SETUVAR _fish_abbr_usb_2D_u:sudo\x20umount\x20/dev/sda1\x20/mnt/thumb\x2ddrive
 SETUVAR _fish_abbr_v:vim\x20\x2e
 SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
 SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_list\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish
