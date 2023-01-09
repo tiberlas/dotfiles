@@ -2,6 +2,9 @@ fish_vi_key_bindings
 
 # abbriviations
 
+abbr -a n-l "bash ~/utils/bash-scripts/nvim-light.sh"
+abbr -a n-nb "bash ~/utils/bash-scripts/nvim-nb.sh"
+
 abbr -a ls lsd -la
 abbr -a dira "tree -aL 2"
 abbr -a L "&& lsd -la"

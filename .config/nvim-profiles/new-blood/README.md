@@ -1,0 +1,23 @@
+# NEW BLOOD
+
+This is my new (2023) nvim configuration
+Currently is in develop
+
+TODO:
+
+- creates fish dir here
+- don't show file-tree on start
+
+- for plugin neo-tree:
+- - when rename action is run use: `git mv` (this preserves the git file history)
+
+optional TODO:
+
+- easy mode
+- debugger
+
+TEST:
+
+- line is always on top
+- vim easy
+
