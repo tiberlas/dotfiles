@@ -41,6 +41,16 @@ Plugin manager `Packer`
 - `:LspStart` start the lsp client
 - `:LspStop` stop the lsp client
 
+### Null ls
+
+Code formater, diagnostic tool,
+You need to install all the diagnostic tools on your system and then you can refer to them in this plugin.
+In the plugin setup you define what tools to use.
+
+To see what tools are supported by the plugin:
+- open the desired file
+- use command: `:NullLsInfo`
+
 ## custom_functions
 
 - `:lua _CONVERT_TO_TABS()`
