@@ -1,6 +1,6 @@
 -- jumps in wraps when needed
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gkzz' : 'kzz'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gjzz' : 'jzz'", { expr = true, silent = true })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- escape from insert/visual mode
 vim.keymap.set("i","jk", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("i","kj", "<Esc>", { noremap = true, silent = true })
@@ -45,3 +45,6 @@ vim.keymap.set("n", "<leader>sj", "]s", { noremap = true, silent = true }) --nex
 vim.keymap.set("n", "<leader>sa", "zg", { noremap = true, silent = true }) --add word to list
 vim.keymap.set("n", "<leader>sc", "z=", { noremap = true, silent = true }) --show suggestion
 
+-- copy to registar t; useful for multiple pasting
+vim.keymap.set("n", "<Leader>e", "\"t", { noremap = true, silent = true })
+vim.keymap.set("v", "<Leader>e", "\"t", { noremap = true, silent = true })

@@ -40,6 +40,13 @@ PLUGIN_LIST = {
 		},
 		'treesitter'
 	},
+	{ 'windwp/nvim-autopairs', 'autopairs' }, --autoclose '"`[{(...
+	{
+{
+  'phaazon/hop.nvim',
+  branch = 'v2', -- optional but strongly recommended
+}, 'hop'
+	}, -- vim easy motions
 	-- Git
 	{ 'lewis6991/gitsigns.nvim', 'gitsigns' },
 	{
@@ -57,12 +64,10 @@ PLUGIN_LIST = {
 	{ 'tanvirtin/monokai.nvim' },
 	-- Fancier statusline
 	{ 'nvim-lualine/lualine.nvim', 'lualine' },
-	-- Add indentation guides even on blank lines
-	{ 'lukas-reineke/indent-blankline.nvim' },
-	-- "gc" to comment visual regions/lines
+	-- indentation guides even on blank lines
+	{ 'lukas-reineke/indent-blankline.nvim', 'indent-blankline' },
+	-- comment visual regions/lines
 	{ 'numToStr/Comment.nvim', 'comment' },
-	-- Detect tabstop and shiftwidth automatically
-	{ 'tpope/vim-sleuth'},
 	{
 		{
 			"nvim-neo-tree/neo-tree.nvim",

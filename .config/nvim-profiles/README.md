@@ -22,3 +22,11 @@ vim.keymap.set("n", "<leader>sc", "z=", { noremap = true, silent = true }) --sho
 - in path: `~/.local/share/nvim-profiles/NEW_PROFILE/nvim/`
   add dir **site** (there is the default white-list)
 
+## Create new configuration
+
+- Copy new-blood dir and rename it
+- In ~/utils/bash-script/ add new script based on nvim-new-blood.sh
+- comment out theme in /config/general.lua
+- comment out all plugins except packer (first plugin)
+- run multiple :PackerSync and restart the config until it's done
+

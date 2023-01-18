@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/t.tapai/.local/share/nvim-profiles/new-blood/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["hop.nvim"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim-profiles/new-blood/nvim/site/pack/packer/start/hop.nvim",
+    url = "https://github.com/phaazon/hop.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim-profiles/new-blood/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -153,6 +158,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim-profiles/new-blood/nvim/site/pack/packer/start/nui.nvim",
     url = "https://github.com/MunifTanjim/nui.nvim"
+  },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim-profiles/new-blood/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -206,11 +216,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim-profiles/new-blood/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["vim-sleuth"] = {
-    loaded = true,
-    path = "/home/t.tapai/.local/share/nvim-profiles/new-blood/nvim/site/pack/packer/start/vim-sleuth",
-    url = "https://github.com/tpope/vim-sleuth"
   },
   ["vim-surround"] = {
     loaded = true,

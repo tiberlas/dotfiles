@@ -5,13 +5,12 @@ Currently is in develop
 
 TODO:
 
-- creates fish dir here
 - don't show file-tree on start
 
 - for plugin neo-tree:
 - - when rename action is run use: `git mv` (this preserves the git file history)
 
-optional TODO:
+Optional TODO:
 
 - easy mode
 - debugger

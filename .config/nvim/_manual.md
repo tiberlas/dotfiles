@@ -106,3 +106,13 @@ This is a white list. I'm using the default vim spell checker and adding the whi
 In `~/.config/nvim/spell/en.utf-8.add` add the new "correctly" spelled word
 After run command :`mkspell! ~/.config/nvim/spell/en.utf-8.add`
 
+## debugging JS (jest tests)
+
+plugins:
+- "mfussenegger/nvim-dap" core of the debugger
+- "rcarriga/nvim-dap-ui" better UI
+- "David-Kunz/jester" run/debug jest tests (onako je radilo)
+- 
+
+FLOW:
+

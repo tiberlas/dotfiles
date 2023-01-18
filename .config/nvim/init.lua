@@ -78,9 +78,39 @@ PLUGINS = {
 	{ "lewis6991/gitsigns.nvim", plug_path .. ".git-sign" },
 	{ { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }, plug_path .. ".diffview" },
 	{ { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }, plug_path .. ".neogit" },
-
-	-- PLUGINS GRAVE
-	--{ { "nvim-treesitter/nvim-treesitter", run = function() require("nvim-treesitter.install").update({ with_sync = true }) end, }, plug_path .. ".treesitter", },
+	-- debugger
+	{ { "nvim-treesitter/nvim-treesitter", run = function() require("nvim-treesitter.install").update({ with_sync = true }) end, }, plug_path .. ".treesitter", },
+	--[[ {"mfussenegger/nvim-dap", plug_path..'.dap'},
+	{{ "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }, plug_path..'.dapui'},
+	{{ "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }},
+	{{
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npm run compile" 
+	}},
+	{
+		{
+			'nvim-neotest/neotest',
+			requires = {
+				'haydenmeade/neotest-jest',
+			},
+			config = function()
+				require('neotest').setup({
+					adapters = {
+						require('neotest-jest')({
+							jestCommand = "npm test --",
+							jestConfigFile = "custom.jest.config.ts",
+							env = { CI = true },
+							cwd = function(path)
+								return vim.fn.getcwd()
+							end,
+						}),
+					}
+				})
+			end
+		}
+	}, ]]
+		-- PLUGINS GRAVE
 	-- { "lewis6991/impatient.nvim", plug_path .. ".impatient" }, speeds up plugin load time
 	-- { { 'goolord/alpha-nvim', requires = { 'kyazdani42/nvim-web-devicons' } }, plug_path..".alpha" },
 }
