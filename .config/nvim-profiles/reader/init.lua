@@ -51,34 +51,10 @@ PLUGIN_LIST = {
 		},
 		'treesitter'
 	},
-	{ 'windwp/nvim-autopairs', 'autopairs' }, --autoclose
-	{
-		{
-			'phaazon/hop.nvim',
-			branch = 'v2', -- optional but strongly recommended
-		}, 'hop'
-	}, -- vim easy motions
-	-- Git
-	{ 'lewis6991/gitsigns.nvim', 'gitsigns' },
-	{
-		{
-			"sindrets/diffview.nvim",
-			requires = {
-				"nvim-lua/plenary.nvim",
-				"kyazdani42/nvim-web-devicons"
-			}
-		},
-		"diffview"
-	},
-	{ "tpope/vim-surround" },
 	-- Theme
 	{ 'tanvirtin/monokai.nvim' },
-	-- Fancier statusline
-	{ 'nvim-lualine/lualine.nvim', 'lualine' },
 	-- indentation guides even on blank lines
 	{ 'lukas-reineke/indent-blankline.nvim', 'indent-blankline' },
-	-- comment visual regions/lines
-	{ 'numToStr/Comment.nvim', 'comment' },
 	{
 		{
 			"nvim-neo-tree/neo-tree.nvim",
@@ -91,26 +67,7 @@ PLUGIN_LIST = {
 		},
 		'neo-tree'
 	},
-	-- Fuzzy Finder (files, lsp, etc)
-	{
-		{
-			'nvim-telescope/telescope.nvim',
-			branch = '0.1.x',
-			requires = {
-				'nvim-lua/plenary.nvim'
-			}
-		},
-		'telescope'
-	},
-	{
-		{
-			'nvim-telescope/telescope-fzf-native.nvim',
-			run = 'make',
-			cond = vim.fn.executable 'make' == 1
-		}
-	},
-	{ "AckslD/nvim-neoclip.lua", "telescope-clip" },
-	{ 'ThePrimeagen/harpoon' },
+	{ 'folke/zen-mode.nvim', 'zen' },
 	-- key combo explained
 	{
 		{

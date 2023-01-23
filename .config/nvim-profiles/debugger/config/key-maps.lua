@@ -6,8 +6,6 @@ vim.keymap.set("i","jk", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("i","kj", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("i","KJ", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("v","KJ", "<Esc>", { noremap = true, silent = true })
--- jump on line start
-vim.keymap.set("n","0", "0w", { noremap = true, silent = true })
 -- use Ctrl+j/k to navigate through pop-up list
 vim.keymap.set("i", "<C-j>", "<C-n>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-k>", "<C-p>", { noremap = true, silent = true })

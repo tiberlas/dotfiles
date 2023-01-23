@@ -10,13 +10,3 @@ TODO:
 - for plugin neo-tree:
 - - when rename action is run use: `git mv` (this preserves the git file history)
 
-Optional TODO:
-
-- easy mode
-- debugger
-
-TEST:
-
-- line is always on top
-- vim easy
-

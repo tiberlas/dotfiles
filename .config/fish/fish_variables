@@ -37,8 +37,10 @@ SETUVAR _fish_abbr_g_2D_s:git\x20status
 SETUVAR _fish_abbr_getclip:xclip\x20\x2dselection\x20c\x20\x2do
 SETUVAR _fish_abbr_ls:lsd\x20\x2dla
 SETUVAR _fish_abbr_n:nvim\x20\x2e
+SETUVAR _fish_abbr_n_2D_d:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2ddebugger\x2esh
 SETUVAR _fish_abbr_n_2D_l:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2dlight\x2esh
 SETUVAR _fish_abbr_n_2D_nb:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2dnb\x2esh
+SETUVAR _fish_abbr_n_2D_r:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2dreader\x2esh
 SETUVAR _fish_abbr_npm_2D_lr:npm\x20run\x20serve\x20\x2d\x2dprofile\x3dfactor\x2ddev\x2dprofile\x20\x2d\x2denv\x3d
 SETUVAR _fish_abbr_open:mimeopen\x20\x2dd
 SETUVAR _fish_abbr_r_2D_off:redshift\x20\x2dO\x206500K
