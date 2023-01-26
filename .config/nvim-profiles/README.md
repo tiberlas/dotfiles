@@ -24,9 +24,18 @@ vim.keymap.set("n", "<leader>sc", "z=", { noremap = true, silent = true }) --sho
 
 ## Create new configuration
 
-- Copy new-blood dir and rename it
+config:
+- Duplicate **new-blood** dir and rename it to the new config
+- in init.lua:
+- - comment: *require(".config.general")*
+- - set *importConfigurations* and *usePlugins* to false
+- restart and run `:PackerSync`
+- set *usePlugins* to true
+- restart and run `:PackerSync`
+- set *importConfigurations* to true and uncomment the import
+- restart and run `:PackerSync`
+
+launching:
 - In ~/utils/bash-script/ add new script based on nvim-new-blood.sh
-- comment out theme in /config/general.lua
-- comment out all plugins except packer (first plugin)
-- run multiple :PackerSync and restart the config until it's done
+- add abbr in fish
 
