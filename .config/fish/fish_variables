@@ -1,11 +1,15 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export PYENV_ROOT:/home/t\x2etapai/\x2epyenv
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_L:\x26\x26\x20lsd\x20\x2dla
 SETUVAR _fish_abbr_awsin:aws\x20sso\x20login\x20\x2d\x2dprofile\x20factor\x2ddev\x2dprofile
+SETUVAR _fish_abbr_b_2D_all_2D_pull:bash\x20\x7e/utils/bash\x2dscripts/back\x2dup\x2dpull\x2esh
+SETUVAR _fish_abbr_b_2D_all_2D_push:bash\x20\x7e/utils/bash\x2dscripts/back\x2dup\x2dpush\x2esh
 SETUVAR _fish_abbr_b_2D_fetch:bash\x20\x7e/utils/bash\x2dscripts/back\x2dup\x2dpull\x2esh
 SETUVAR _fish_abbr_b_2D_m:sudo\x20mount\x20/dev/sda1\x20/mnt/sanDisk\x20\x2do\x20uid\x3d1000
-SETUVAR _fish_abbr_b_2D_push:bash\x20\x7e/utils/bash\x2dscripts/back\x2dup\x2dpush\x2esh
+SETUVAR _fish_abbr_b_2D_pull:bash\x20\x7e/utils/bash\x2dscripts/back\x2dup\x2dpull\x2dno\x2dender\x2esh
+SETUVAR _fish_abbr_b_2D_push:bash\x20\x7e/utils/bash\x2dscripts/back\x2dup\x2dpush\x2dno\x2dender\x2esh
 SETUVAR _fish_abbr_clock:tty\x2dclock\x20\x2dscbx\x20\x2dC\x206\x20\x2df\x20\x22\x25a\x2c\x20\x25d\x20\x25b\x20\x25Y\x20\x25T\x22
 SETUVAR _fish_abbr_d_2D_a:dot\x20add\x20
 SETUVAR _fish_abbr_d_2D_b:dot\x20branch
@@ -36,10 +40,11 @@ SETUVAR _fish_abbr_g_2D_rs:git\x20reset\x20\x2d\x2dsoft\x20HEAD\x5e
 SETUVAR _fish_abbr_g_2D_s:git\x20status
 SETUVAR _fish_abbr_getclip:xclip\x20\x2dselection\x20c\x20\x2do
 SETUVAR _fish_abbr_ls:lsd\x20\x2dla
-SETUVAR _fish_abbr_n:nvim\x20\x2e
+SETUVAR _fish_abbr_n:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2dnb\x2esh
 SETUVAR _fish_abbr_n_2D_d:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2ddebugger\x2esh
 SETUVAR _fish_abbr_n_2D_e:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2deasy\x2esh
 SETUVAR _fish_abbr_n_2D_l:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2dlight\x2esh
+SETUVAR _fish_abbr_n_2D_legacy:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2dlegacy\x2esh
 SETUVAR _fish_abbr_n_2D_nb:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2dnb\x2esh
 SETUVAR _fish_abbr_n_2D_r:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2dreader\x2esh
 SETUVAR _fish_abbr_n_2D_t:bash\x20\x7e/utils/bash\x2dscripts/nvim\x2dtest\x2esh

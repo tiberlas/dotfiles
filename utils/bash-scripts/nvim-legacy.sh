@@ -1,8 +1,7 @@
 #!/bin/sh
 # script for launching different neovim configurations
-# main config for 2023 aka NEW BLOOD
 
-NVIM_PROFILE_NAME="new-blood"
+NVIM_PROFILE_NAME="legacy"
 export LUA_PATH="$HOME/.config/nvim-profiles/${NVIM_PROFILE_NAME}/?.lua"
 
 exec env XDG_CONFIG_HOME="$HOME/.config/nvim-profiles/${NVIM_PROFILE_NAME}" \

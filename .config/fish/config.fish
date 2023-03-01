@@ -2,11 +2,14 @@ fish_vi_key_bindings
 
 # abbriviations
 
+abbr -a v "vim ."
+abbr -a n "bash ~/utils/bash-scripts/nvim-nb.sh ."
 abbr -a n-l "bash ~/utils/bash-scripts/nvim-light.sh"
 abbr -a n-nb "bash ~/utils/bash-scripts/nvim-nb.sh"
 abbr -a n-d "bash ~/utils/bash-scripts/nvim-debugger.sh"
 abbr -a n-r "bash ~/utils/bash-scripts/nvim-reader.sh"
 abbr -a n-t "bash ~/utils/bash-scripts/nvim-test.sh"
+abbr -a n-legacy "bash ~/utils/bash-scripts/nvim-legacy.sh"
 
 abbr -a ls lsd -la
 abbr -a dira "tree -aL 2"
@@ -32,8 +35,6 @@ abbr -a open "mimeopen -d"
 abbr -a r-off "redshift -O 6500K"
 abbr -a r-on "redshift -O 5000K"
 abbr -a clock "tty-clock -scbx -C 6 -f \"%a, %d %b %Y %T\""
-abbr -a n "nvim ."
-abbr -a v "vim ."
 abbr -a t-sh "cp ~/Templates/newShellScript.sh new.sh"
 abbr -a t-curl "cp ~/Templates/curl.sh new.sh"
 abbr -a t-lua "cp ~/Templates/newLua.lua new.lua"
