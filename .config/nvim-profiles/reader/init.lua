@@ -78,6 +78,7 @@ PLUGIN_LIST = {
 		},
 		"which-key"
 	},
+	{ '~/documents/nvim-plugins/easy-reader' },
 }
 
 ------------------------------------------

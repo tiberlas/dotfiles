@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/t.tapai/.local/share/nvim-profiles/reader/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["easy-reader"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim-profiles/reader/nvim/site/pack/packer/start/easy-reader",
+    url = "/home/t.tapai/documents/nvim-plugins/easy-reader"
+  },
   ["fidget.nvim"] = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim-profiles/reader/nvim/site/pack/packer/start/fidget.nvim",
