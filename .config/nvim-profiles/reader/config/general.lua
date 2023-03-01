@@ -1,4 +1,4 @@
-vim.cmd([[let g:mapleader = "\<F10>"]])
+vim.cmd([[let g:mapleader = " "]])
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 -- See `:help vim.opt`
 vim.opt.breakindent = true
