@@ -60,8 +60,10 @@ abbr -a d-b "dot branch"
 abbr -a d-p "dot push"
 abbr -a d-d "dot diff HEAD{'^',}"
 
-abbr -a b-push "bash ~/utils/bash-scripts/back-up-push.sh"
-abbr -a b-fetch "bash ~/utils/bash-scripts/back-up-pull.sh"
+abbr -a b-all-pull "bash ~/utils/bash-scripts/back-up-pull.sh"
+abbr -a b-all-push "bash ~/utils/bash-scripts/back-up-push.sh"
+abbr -a b-pull "bash ~/utils/bash-scripts/back-up-pull-no-ender.sh"
+abbr -a b-push "bash ~/utils/bash-scripts/back-up-push-no-ender.sh"
 
 # alias
 
