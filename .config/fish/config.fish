@@ -4,12 +4,12 @@ fish_vi_key_bindings
 
 abbr -a v "vim ."
 abbr -a n "bash ~/utils/bash-scripts/nvim-nb.sh ."
-abbr -a n-l "bash ~/utils/bash-scripts/nvim-light.sh"
-abbr -a n-nb "bash ~/utils/bash-scripts/nvim-nb.sh"
-abbr -a n-d "bash ~/utils/bash-scripts/nvim-debugger.sh"
-abbr -a n-r "bash ~/utils/bash-scripts/nvim-reader.sh"
-abbr -a n-t "bash ~/utils/bash-scripts/nvim-test.sh"
-abbr -a n-legacy "bash ~/utils/bash-scripts/nvim-legacy.sh"
+abbr -a n-l "bash ~/utils/bash-scripts/nvim-light.sh ."
+abbr -a n-nb "bash ~/utils/bash-scripts/nvim-nb.sh ."
+abbr -a n-d "bash ~/utils/bash-scripts/nvim-debugger.sh ."
+abbr -a n-r "bash ~/utils/bash-scripts/nvim-reader.sh ."
+abbr -a n-t "bash ~/utils/bash-scripts/nvim-test.sh ."
+abbr -a n-legacy "bash ~/utils/bash-scripts/nvim-legacy.sh ."
 
 abbr -a ls lsd -la
 abbr -a dira "tree -aL 2"
