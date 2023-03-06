@@ -28,10 +28,10 @@ set tabstop=2                           " Insert 2 spaces for a tab
 set softtabstop=2
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
-set expandtab                           " Converts tabs to spaces
+set noexpandtab                         " Use TABS as line indent
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
-set laststatus=0                        " Always display the status line
+set laststatus=2                        " Always display the status line
 set number                              " Line numbers
 set relativenumber                      " Show relative line numbers
 set cursorline                          " Enable highlighting of the current line
@@ -45,7 +45,7 @@ set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set wrap                                " text wrap
-setlocal spell spelllang=en_us          " set spell check
+setlocal nospell spelllang=en_us        " disables spell check
 set hlsearch                            " show highlighting in search
 set splitbelow splitright               " open split below and right
 set tabpagemax=30                       " can open max of 30 tabs
@@ -66,11 +66,14 @@ hi! NonText ctermbg=NONE guibg=NONE
 inoremap kj <Esc>                       " go to NORMAL mode
 inoremap jk <Esc>
 inoremap KJ <Esc>
-inoremap JK <Esc>
-vnoremap KJ <Esc>
 vnoremap JK <Esc>
 inoremap <C-k> :m-2<CR>                 " move current line up
 inoremap <C-j> :m+1<CR>                 " move current line down
 map <leader>d :nohlsearch<CR>           " disable hl search
+nnoremap gU viwU<Esc>                   " converts word to upper case
+nnoremap gu viwu<Esc>                   " converts word to lower case
+" Better tabbing
+vnoremap < <gv
+vnoremap > >gv
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vim alternatively you can run :source $MYVIMRC
