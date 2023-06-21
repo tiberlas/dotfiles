@@ -21,3 +21,6 @@ require("jester").setup(
     disableOptimisticBPs = true
   }
 })
+
+vim.keymap.set('n', '<leader>j', function() require'dap'.continue() end)
+

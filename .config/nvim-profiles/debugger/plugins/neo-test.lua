@@ -1,5 +1,6 @@
-vim.api.nvim_set_keymap("n", "<leader>tw", "<cmd>lua require('neotest').run.run({ jestCommand = 'jest --watch ' })<cr>", {})
-vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>lua require('neotest').run.run()<cr>", {})
+require("neodev").setup({
+	library = { plugins = { "neotest" }, types = true }
+})
 
 require('neotest').setup({
 	adapters = {
@@ -11,5 +12,11 @@ require('neotest').setup({
 				return vim.fn.getcwd()
 			end,
 		}),
-	},
+		require("neotest-plenary"),
+	}
 })
+
+vim.keymap.set("n", "<leader>tr", function() require('neotest').run.run() end)
+vim.keymap.set("n", "<leader>tR", function() require('neotest').run.run(vim.fn.expand("%")) end)
+vim.keymap.set("n", "<leader>td", function() require('neotest').run.run({strategy = "dap"}) end)
+vim.keymap.set("n", "<leader>ta", function() require('neotest').run.attach() end)

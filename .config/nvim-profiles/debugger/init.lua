@@ -113,7 +113,7 @@ if allPlugins then
 				cond = vim.fn.executable 'make' == 1
 			}
 		},
-		{ "AckslD/nvim-neoclip.lua", "telescope-clip" },
+		--[[ { "AckslD/nvim-neoclip.lua", "telescope-clip" }, ]]
 		{ 'ThePrimeagen/harpoon' },
 		-- key combo explained
 		{
@@ -128,19 +128,21 @@ if allPlugins then
 		-- DEBUGGER
 		{ 'mfussenegger/nvim-dap', 'debugger' },
 		{ 'rcarriga/nvim-dap-ui' },
-		{'David-Kunz/jester', 'test' }
-		--[[ {
+		--[[ {'David-Kunz/jester', 'test' } ]]
+		{
 			{
 				"nvim-neotest/neotest",
 				requires = {
+					"folke/neodev.nvim",
 					"nvim-lua/plenary.nvim",
+					"nvim-neotest/neotest-plenary",
 					"nvim-treesitter/nvim-treesitter",
 					"antoinemadec/FixCursorHold.nvim",
 					-- test frameworks
 					'haydenmeade/neotest-jest',
 				}
 			}, 'neo-test'
-		}, ]]
+		},
 		--{ 'folke/neodev.nvim', 'neo-dev' }
 	}
 end

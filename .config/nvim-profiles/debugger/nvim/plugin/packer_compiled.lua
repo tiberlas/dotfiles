@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  ["FixCursorHold.nvim"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/FixCursorHold.nvim",
+    url = "https://github.com/antoinemadec/FixCursorHold.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/LuaSnip",
@@ -124,11 +129,6 @@ _G.packer_plugins = {
     path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
-  jester = {
-    loaded = true,
-    path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/jester",
-    url = "https://github.com/David-Kunz/jester"
-  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/lualine.nvim",
@@ -159,6 +159,21 @@ _G.packer_plugins = {
     path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
   },
+  neotest = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/neotest",
+    url = "https://github.com/nvim-neotest/neotest"
+  },
+  ["neotest-jest"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/neotest-jest",
+    url = "https://github.com/haydenmeade/neotest-jest"
+  },
+  ["neotest-plenary"] = {
+    loaded = true,
+    path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/neotest-plenary",
+    url = "https://github.com/nvim-neotest/neotest-plenary"
+  },
   ["nui.nvim"] = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/nui.nvim",
@@ -188,11 +203,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-neoclip.lua"] = {
-    loaded = true,
-    path = "/home/t.tapai/.local/share/nvim-profiles/debugger/nvim/site/pack/packer/start/nvim-neoclip.lua",
-    url = "https://github.com/AckslD/nvim-neoclip.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
