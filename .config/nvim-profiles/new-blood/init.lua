@@ -111,6 +111,13 @@ PLUGIN_LIST = {
 	},
 	{ "AckslD/nvim-neoclip.lua", "telescope-clip" },
 	{ 'ThePrimeagen/harpoon' },
+	{
+		{
+			-- dependency: https://github.com/sharkdp/fd#installation
+			"nvim-telescope/telescope-file-browser.nvim",
+			requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+		}
+	},
 	-- key combo explained
 	{
 		{
