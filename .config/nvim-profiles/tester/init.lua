@@ -4,42 +4,65 @@
 require(".config.general")
 require(".config.key-maps")
 require(".config.fun-lib")
-
 ------------------------------------------
 -- PLUGINS
 -- type: { plugin_name: string|table, plugin_config_path: string }
+-- use command `source init.lua`, then `PackerInstall` to install newly packages
+-- or use function `lua _UPDATE()` to update the plugin list
 ------------------------------------------
 -- Select how to build plugins
 local importConfigurations = true -- set to false when installing new plugins
-local usePlugins = true  -- set to false when recreating setup from scratch
+local usePlugins = true -- set to false when recreating setup from scratch
 
 PLUGIN_LIST = {
 	-- LSP Configuration & Plugins
 	{
 		{
-			'neovim/nvim-lspconfig',
-			requires = {
-				-- Automatically install LSPs to stdpath for neovim
-				'williamboman/mason.nvim',
-				'williamboman/mason-lspconfig.nvim',
-				-- Useful status updates for LSP
-				'j-hui/fidget.nvim',
-				-- Additional lua configuration, makes nvim stuff amazing
-				'folke/neodev.nvim',
-			},
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
+			{ 'j-hui/fidget.nvim', tag = 'legacy' }, --eye-candy
+			--linter
+			'mfussenegger/nvim-lint',
+			--formatter
+			--CMP
 		},
-		'lsp'
+		'lsp-new'
+	},
+	{
+		{
+			'mfussenegger/nvim-dap',
+			'rcarriga/nvim-dap-ui',
+			'theHamsta/nvim-dap-virtual-text',
+			-- JS
+			"mxsdev/nvim-dap-vscode-js",
+			{
+				"microsoft/vscode-js-debug",
+				opt = true,
+				run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+			}
+		},
+		'dap'
+	},
+	{
+		{
+			"nvim-neotest/neotest",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"nvim-treesitter/nvim-treesitter",
+				"antoinemadec/FixCursorHold.nvim",
+				-- CONFIGURE LANGUAGE SPECIFIC
+				"haydenmeade/neotest-jest",
+			}
+		}, 'neo-test'
 	},
 	-- Autocompletion
 	{
-		{
-			'hrsh7th/nvim-cmp',
-			requires = {
-				'hrsh7th/cmp-nvim-lsp',
-				'L3MON4D3/LuaSnip',
-				'saadparwaiz1/cmp_luasnip'
-			},
-		},
+		{ 'ms-jpq/coq_nvim', branch = 'coq' },
+		'conf-coq'
+	},
+	{
+		{'ms-jpq/coq.artifacts', branch = 'artifacts'}
 	},
 	-- Highlight, edit, and navigate code; has multiple modules
 	{
@@ -51,13 +74,13 @@ PLUGIN_LIST = {
 		},
 		'treesitter'
 	},
-	{ 'windwp/nvim-autopairs', 'autopairs' }, --autoclose
+	{ 'windwp/nvim-autopairs',   'autopairs' }, --autoclose
 	{
 		{
 			'phaazon/hop.nvim',
 			branch = 'v2', -- optional but strongly recommended
 		}, 'hop'
-	}, -- vim easy motions
+	},              -- vim easy motions
 	-- Git
 	{ 'lewis6991/gitsigns.nvim', 'gitsigns' },
 	{
@@ -70,15 +93,14 @@ PLUGIN_LIST = {
 		},
 		"diffview"
 	},
-	{ "tpope/vim-surround" },
 	-- Theme
 	{ 'tanvirtin/monokai.nvim' },
 	-- Fancier statusline
-	{ 'nvim-lualine/lualine.nvim', 'lualine' },
+	{ 'nvim-lualine/lualine.nvim',           'lualine' },
 	-- indentation guides even on blank lines
 	{ 'lukas-reineke/indent-blankline.nvim', 'indent-blankline' },
 	-- comment visual regions/lines
-	{ 'numToStr/Comment.nvim', 'comment' },
+	{ 'numToStr/Comment.nvim',               'comment' },
 	{
 		{
 			"nvim-neo-tree/neo-tree.nvim",
@@ -111,6 +133,13 @@ PLUGIN_LIST = {
 	},
 	{ "AckslD/nvim-neoclip.lua", "telescope-clip" },
 	{ 'ThePrimeagen/harpoon' },
+	{
+		{
+			-- dependency: https://github.com/sharkdp/fd#installation
+			"nvim-telescope/telescope-file-browser.nvim",
+			requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+		}
+	},
 	-- key combo explained
 	{
 		{
@@ -121,8 +150,6 @@ PLUGIN_LIST = {
 		},
 		"which-key"
 	},
-	-- my plug
-	{ '~/documents/nvim-plugins/easy-reader' },
 }
 
 ------------------------------------------
@@ -139,8 +166,8 @@ end
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
 	print '=================================='
-	print"    NO PLUGIN MANAGER FOUND"
-	print"    PLEASE INSTALL PACKER [https://github.com/wbthomason/packer.nvim]"
+	print "		NO PLUGIN MANAGER FOUND"
+	print "		PLEASE INSTALL PACKER [https://github.com/wbthomason/packer.nvim]"
 	print '=================================='
 	return
 end
@@ -174,18 +201,9 @@ end)
 -- You'll need to restart nvim, and then it will work.
 if is_bootstrap then
 	print '=================================='
-	print '    Plugins are being installed'
-	print '    Wait until Packer completes,'
-	print '      then restart nvim'
+	print '		 Plugins are being installed'
+	print '		 Wait until Packer completes,'
+	print '			 then restart nvim'
 	print '=================================='
 	return
 end
-
--- Automatically source and re-compile packer whenever you save this init.lua
---vim.cmd([[
---	augroup packer_user_config
---	autocmd!
---	autocmd BufWritePost init.lua source <afile> | PackerSync
---	augroup end
---]])
---

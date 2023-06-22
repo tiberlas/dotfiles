@@ -38,6 +38,7 @@ local servers = {
 			workspace = { checkThirdParty = false },
 			telemetry = { enable = false },
 			completion = { callSnippet = "Replace" },
+			diagnostics = { globals = { 'vim' } },
 		},
 	},
 }

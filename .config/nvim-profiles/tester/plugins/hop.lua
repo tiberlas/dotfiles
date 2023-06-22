@@ -12,13 +12,10 @@ local hint  = require('hop.hint')
 local foward = hint.HintDirection.AFTER_CURSOR
 local back = hint.HintDirection.BEFORE_CURSOR
 -- hop word in line
-vim.keymap.set('', 'w', function()
+vim.keymap.set('', 'W', function()
 	hop.hint_words({ direction = foward, current_line_only = true, })
 end, {remap=true})
-vim.keymap.set('', 'e', function()
-	hop.hint_words({ direction = foward, current_line_only = true, hint_offset = -1, })
-end, {remap=true})
-vim.keymap.set('', 'b', function()
+vim.keymap.set('', 'B', function()
 	hop.hint_words({ direction = back, current_line_only = true, })
 end, {remap=true})
 vim.keymap.set('', 'f', function()
