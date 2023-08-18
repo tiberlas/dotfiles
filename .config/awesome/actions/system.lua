@@ -107,6 +107,19 @@ globalkeys = GEARS.table.join(
 	AWFUL.key({ modkey }, "i", function()
 		AWFUL.util.spawn("bash "..HOME.."/utils/dmenu/apps.sh")
 	end, { description = "run emoji app", group = "app" }),
+	-- DMENU SECRET KEY
+	AWFUL.key({ modkey }, "b", function()
+		local secret = require"..dmenu.secret.secret"
+		local keys_ok,keys = pcall(require, "..dmenu.secret.keys")
+		if keys_ok == true then
+			secret.secret(keys.secrets)
+		else
+			NAUGHTY.notify {
+				title = "SECRET ERROR",
+				text = "Secret file is encrypted"
+			}
+		end
+	end, { description = "get secret key", group = "app" }),
 	AWFUL.key({ modkey }, "x", function()
 		AWFUL.prompt.run({
 			prompt = "Run Lua code: ",

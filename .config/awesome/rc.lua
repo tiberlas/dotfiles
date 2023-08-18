@@ -1,11 +1,11 @@
 -------------------------------------------------------------------------------
 --
---   _    _   _ _               _             author: t.tiberius
---  | |  | | (_) |             (_)            usage:
---  | |_ | |_ _| |__   ___ _ __ _ _   _ ___     awesome wm configuration file
---  | __|| __| | '_ \ / _ \ '__| | | | / __|
---  | |_ | |_| | |_) |  __/ |  | | |_| \__ \
---   \__(_)__|_|_.__/ \___|_|  |_|\__,_|___/
+--	 _		_		_ _								_							author: t.tiberius
+--	| |  | | (_) |						 (_)						usage:
+--	| |_ | |_ _| |__	 ___ _ __ _ _		_ ___			awesome wm configuration file
+--	| __|| __| | '_ \ / _ \ '__| | | | / __|
+--	| |_ | |_| | |_) |	__/ |  | | |_| \__ \
+--	 \__(_)__|_|_.__/ \___|_|  |_|\__,_|___/
 --
 -------------------------------------------------------------------------------
 
@@ -34,7 +34,6 @@ require'awful.hotkeys_popup.keys'
 local has_fdo, freedesktop = pcall(require, 'freedesktop')
 COLOR = require'.colors'
 HOME = "/home/t.tapai"
-
 -------------------------------------------------------------------------------
 -- ERROR HANDLING
 --
@@ -154,7 +153,7 @@ mykeyboardlayout = AWFUL.widget.keyboardlayout()
 -------------------------------------------------------------------------------
 
 local start_icon = require'.widget.start_icon'
-local separator = WIBOX.widget.textbox("   ")
+local separator = WIBOX.widget.textbox("	 ")
 -- local mytextclock = require'.widget.calendar_clock'
 local mybattery = require'.widget.battery'
 
@@ -166,13 +165,13 @@ local cpu_widget = require("streetturtle-widgets.awesome-wm-widgets.cpu-widget.c
 local  calendar_widget = require("streetturtle-widgets.awesome-wm-widgets.calendar-widget.calendar")
 local mytextclock = WIBOX.widget.textclock()
 local cw = calendar_widget({
-    theme = 'dark',
-    placement = 'top_right',
-    start_sunday = true,
-    radius = 8,
+		theme = 'dark',
+		placement = 'top_right',
+		start_sunday = true,
+		radius = 8,
 -- with customized next/previous (see table above)
-    previous_month_button = 1,
-    next_month_button = 3,
+		previous_month_button = 1,
+		next_month_button = 3,
 })
 mytextclock:connect_signal("button::press",
     function(_, _, _, button)
@@ -277,7 +276,25 @@ AWFUL.screen.connect_for_each_screen(function(s)
 				widget = WIBOX.container.place
 			},
 			layout = WIBOX.layout.flex.horizontal
-		}
+		},
+		widget_template = {
+			{
+				{
+					{
+						id = 'icon_role',
+						widget = WIBOX.widget.imagebox,
+						forced_width = 25
+					},
+					margins = 1,
+					widget  = WIBOX.container.margin,
+				},
+				left  = 10,
+				right = 10,
+				widget = WIBOX.container.margin
+			},
+			id     = 'background_role',
+			widget = WIBOX.container.background,
+		},
 	}
 
 	-- Create the WIBOX
