@@ -101,14 +101,18 @@ local mappings = {
 	},
 	f = {
 		name = "File explorer/search",
-		e = { "<cmd>NeoTreeFloatToggle<cr>", "Explorer" },
+		e = { ":Telescope file_browser path=%:p:h select_buffer=true<CR>", "Explorer" },
 		f = { "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>", "Find Files"},
 		g = { "<cmd>Telescope live_grep<cr>", "Grep"},
 		b = { "<cmd>Telescope buffers<cr>", "Buffers"},
 		r = { "<cmd>Telescope oldfiles<cr>", "Recently Open Files"},
-		c = { "<cmd>Telescope neoclip<cr>", "Clipboard"},
+		--c = { "<cmd>Telescope neoclip<cr>", "Clipboard"},
 		h = { "<cmd>Telescope help_tags<cr>", "Help"},
 		m = { "<cmd>Telescope command_history<cr>", "Command History"},
+		q = { "<cmd>Telescope quickfix<cr>", "Quickfix"}, --populate the list with grep
+		S = { "<cmd>Telescope spell_suggest<cr>", "Spell"},
+		--more LSP
+		R = { "<cmd>Telescope lsp_references<cr>", "Reference"},
 	},
 	l = {
 		name = "LSP",

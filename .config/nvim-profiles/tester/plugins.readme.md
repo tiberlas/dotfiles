@@ -29,6 +29,9 @@ just an adapter between Mason and LSPConfig plugins
 FidGet(j-hui/fidget.nvim)
 This is just eye-candy; When a new LSP is installing it displays a progress bar on the bottom right corner of the screen.
 
+> IN `lsp.lua` add wanted LSP server in the LSP_LIST array
+> available servers: `https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers`
+
 ### DSP (Debugger Specific Protocol)
 
 ### Linter
@@ -37,8 +40,10 @@ NvimLint (mfussenegger/nvim-lint)
 
 Install a linter through Mason.
 Assign a linter for a file type in the linter config.
+Treesitter also adds to this.
 
 ### Formatter
+
 
 
 ## NeoTest
@@ -50,5 +55,17 @@ run test
 
 ## Autocomplete
 
+Use plugin `ms-jpq/coq_nvim`
+When the plug is installed run `:COQdep` to install COQ dependencies
+
+Create custom snippets
+run `:COQsnips edit javascipt` if you want snippets for javascript
+edit the file
+save
+and run `COQsnips compile`
+
+
 ## Treesitter
+
+In `ensure_installed` add all languages you want to lint
 

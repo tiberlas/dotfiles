@@ -14,8 +14,6 @@ vim.keymap.set("n", "<M-j>", ":resize -4<CR>", { noremap = true, silent = true }
 vim.keymap.set("n", "<M-k>", ":resize +4<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<M-h>", ":vertical resize +4<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<M-l>", ":vertical resize -4<CR>", { noremap = true, silent = true })
--- on TAB enter insert mode and add tab simbol
-vim.keymap.set("n", "<TAB>", "I<TAB>", { noremap = true, silent = true })
 -- Ctrl+U/u uppercase or lower case the word
 vim.keymap.set("n", "gU", "viwU<ESC>", { noremap = true, silent = true })
 vim.keymap.set("n", "gu", "viwu<ESC>", { noremap = true, silent = true })

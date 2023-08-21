@@ -11,12 +11,13 @@ GREP IN SPECIFIC FILE:
 
 TODO:
 
-- clean up
+- clean up, safe require
 - write plugin specific documentation
 - write general documentation
 
-- code formater
+- COQ for JSX and HTNL, CSS
 - don't show file-tree on start
+- different file tree system
 
 - for plugin neo-tree:
 - - when rename action is run use: `git mv` (this preserves the git file history)

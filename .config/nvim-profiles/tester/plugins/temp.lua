@@ -4,7 +4,6 @@ if not status_ok then
 	return
 end
 
--- Change *data source* to be the selected dir, and then do grep action on the selected dir
 local ts_select_dir_for_grep = function(prompt_bufnr)
 	local action_state = require("telescope.actions.state")
 	local fb = require("telescope").extensions.file_browser
@@ -33,7 +32,6 @@ end
 local actions = require("telescope.actions")
 local fb_actions = require "telescope._extensions.file_browser.actions"
 telescope.setup {
-	-- PICKER: what is the data source
 	pickers = {
 		live_grep = {
 			mappings = {
@@ -100,13 +98,6 @@ telescope.setup {
 		},
 	},
 	extensions = {
-		fzf = {
-			fuzzy = true,										 -- false will only do exact matching
-			override_generic_sorter = true,  -- override the generic sorter
-			override_file_sorter = true,		 -- override the file sorter
-			case_mode = "smart_case",				 -- or "ignore_case" or "respect_case"
-			-- the default case_mode is "smart_case"
-		},
 		file_browser = {
 			-- path
 			-- cwd
@@ -169,7 +160,8 @@ telescope.setup {
 	},
 }
 
-require('telescope').load_extension 'fzf'
-require('telescope').load_extension 'file_browser'
---pcall(require('telescope').load_extension, 'neoclip')
+-- Enable telescope fzf native, if installed
+pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, 'neoclip')
+pcall(require('telescope').load_extension 'file_browser')
 

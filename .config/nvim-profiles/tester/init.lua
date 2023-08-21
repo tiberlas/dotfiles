@@ -21,11 +21,11 @@ PLUGIN_LIST = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
-			{ 'j-hui/fidget.nvim', tag = 'legacy' }, --eye-candy
+			{ 'j-hui/fidget.nvim', tag = 'legacy' }, --eye-candy, treesitter is needed
 			--linter
 			'mfussenegger/nvim-lint',
 			--formatter
-			--CMP
+			'mhartington/formatter.nvim'
 		},
 		'lsp-new'
 	},
@@ -58,7 +58,10 @@ PLUGIN_LIST = {
 	},
 	-- Autocompletion
 	{
-		{ 'ms-jpq/coq_nvim', branch = 'coq' },
+		{
+			{ 'ms-jpq/coq_nvim', branch = 'coq' },
+			{ 'ms-jpq/coq.thirdparty', branch = '3p' },
+		},
 		'conf-coq'
 	},
 	{
@@ -67,9 +70,11 @@ PLUGIN_LIST = {
 	-- Highlight, edit, and navigate code; has multiple modules
 	{
 		{
-			'nvim-treesitter/nvim-treesitter',
-			requires = {
-				'nvim-treesitter/nvim-treesitter-textobjects',
+			{'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'},
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+				after = "nvim-treesitter",
+				requires = "nvim-treesitter/nvim-treesitter",
 			}
 		},
 		'treesitter'
@@ -116,14 +121,23 @@ PLUGIN_LIST = {
 	-- Fuzzy Finder (files, lsp, etc)
 	{
 		{
-			'nvim-telescope/telescope.nvim',
-			branch = '0.1.x',
-			requires = {
-				'nvim-lua/plenary.nvim'
+			{ -- BASE
+				'nvim-telescope/telescope.nvim',
+				branch = '0.1.x',
+				requires = {
+					'nvim-lua/plenary.nvim'
+				}
+			},
+			{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }, -- MAKE IT FASTER
+			{
+				-- dependency: https://github.com/sharkdp/fd#installation
+				"nvim-telescope/telescope-file-browser.nvim",
+				requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 			}
 		},
 		'telescope'
 	},
+	--[[
 	{
 		{
 			'nvim-telescope/telescope-fzf-native.nvim',
@@ -140,6 +154,7 @@ PLUGIN_LIST = {
 			requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 		}
 	},
+	]]--
 	-- key combo explained
 	{
 		{
