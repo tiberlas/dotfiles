@@ -1,7 +1,13 @@
+local status_ok, mason = pcall(require, "mason")
+if not status_ok then
+	print "[PlugErr] mason not loaded"
+	return
+end
 -- LSP SERVERS TO INSTALL
-local lsp_list = {"lua_ls", "eslint", "tsserver", "pyright", "clangd", "cssls", "jsonls", "quick_lint_js", "marksman", "spectral", "openscad_lsp", "html"}
+local lsp_list = { "lua_ls", "eslint", "tsserver", "pyright", "clangd", "cssls", "jsonls", "quick_lint_js", "marksman",
+	"spectral", "html" }
 -- MOTHER OF ALL ADAPTER PLUGINS, WITH THIS YOU INSTALL LSP, DAP, LINTER, FORMATTER [
-require('mason').setup({
+mason.setup({
 	pip = {
 		-- Whether to upgrade pip to the latest version in the virtual environment before installing packages.
 		upgrade_pip = false,
@@ -57,23 +63,23 @@ require('mason').setup({
 -- ]
 -- ADAPTER FOR INSTALLING LANGUAGE SPECIFIC LSP [
 require('mason-lspconfig').setup {
-		-- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer@nightly", "lua_ls" }
-		-- This setting has no relation with the `automatic_installation` setting.
-		---@type string[]
-		ensure_installed = lsp_list,
-		-- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
-		-- This setting has no relation with the `ensure_installed` setting.
-		-- Can either be:
-		--	 - false: Servers are not automatically installed.
-		--	 - true: All servers set up via lspconfig are automatically installed.
-		--	 - { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.
-		--			 Example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
-		---@type boolean
-		automatic_installation = true,
+	-- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer@nightly", "lua_ls" }
+	-- This setting has no relation with the `automatic_installation` setting.
+	---@type string[]
+	ensure_installed = lsp_list,
+	-- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
+	-- This setting has no relation with the `ensure_installed` setting.
+	-- Can either be:
+	--	 - false: Servers are not automatically installed.
+	--	 - true: All servers set up via lspconfig are automatically installed.
+	--	 - { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.
+	--			 Example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
+	---@type boolean
+	automatic_installation = true,
 
-		-- See `:h mason-lspconfig.setup_handlers()`
-		---@type table<string, fun(server_name: string)>?
-		handlers = nil,
+	-- See `:h mason-lspconfig.setup_handlers()`
+	---@type table<string, fun(server_name: string)>?
+	handlers = nil,
 }
 -- ]
 -- INSTALL LSP'S [
@@ -87,10 +93,10 @@ end
 -- ensure linter is installed on sys level
 -- see how to install linter (usualy through pip)
 require('lint').linters_by_ft = {
-	yaml = {'cfn_lint', 'yamllint'},
-	javascript = { 'eslint'},
-	python = {'flake8'},
-	markdown = {'markdownlint',}
+	yaml = { 'cfn_lint', 'yamllint' },
+	javascript = { 'eslint' },
+	python = { 'flake8' },
+	markdown = { 'markdownlint', }
 }
 -- Run linter after writing
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -151,52 +157,52 @@ require("formatter").setup {
 -- Treesitter is needed for this
 require('fidget').setup {
 	text = {
-		spinner = "pipe",					-- animation shown when tasks are ongoing
-		done = "✔",								-- character shown when all tasks are complete
-		commenced = "Started",		-- message shown when task starts
-		completed = "Completed",	-- message shown when task completes
+		spinner = "pipe",      -- animation shown when tasks are ongoing
+		done = "✔",          -- character shown when all tasks are complete
+		commenced = "Started", -- message shown when task starts
+		completed = "Completed", -- message shown when task completes
 	},
 	align = {
-		bottom = true,						-- align fidgets along bottom edge of buffer
-		right = true,							-- align fidgets along right edge of buffer
+		bottom = true, -- align fidgets along bottom edge of buffer
+		right = true, -- align fidgets along right edge of buffer
 	},
 	timer = {
-		spinner_rate = 125,				-- frame rate of spinner animation, in ms
-		fidget_decay = 2000,			-- how long to keep around empty fidget, in ms
-		task_decay = 1000,				-- how long to keep around completed task, in ms
+		spinner_rate = 125, -- frame rate of spinner animation, in ms
+		fidget_decay = 2000, -- how long to keep around empty fidget, in ms
+		task_decay = 1000, -- how long to keep around completed task, in ms
 	},
 	window = {
-		relative = "win",					-- where to anchor, either "win" or "editor"
-		blend = 100,							-- &winblend for the window
-		zindex = nil,							-- the zindex value for the window
-		border = "none",					-- style of border for the fidget window
+		relative = "win", -- where to anchor, either "win" or "editor"
+		blend = 100,    -- &winblend for the window
+		zindex = nil,   -- the zindex value for the window
+		border = "none", -- style of border for the fidget window
 	},
 	fmt = {
-		leftpad = true,						-- right-justify text in fidget box
-		stack_upwards = true,			-- list of tasks grows upwards
-		max_width = 0,						-- maximum width of the fidget box
-		fidget =									-- function to format fidget title
-			function(fidget_name, spinner)
-				return string.format("%s %s", spinner, fidget_name)
-			end,
-		task =										-- function to format each task line
-			function(task_name, message, percentage)
-				return string.format(
-					"%s%s [%s]",
-					message,
-					percentage and string.format(" (%s%%)", percentage) or "",
-					task_name
-				)
-			end,
+		leftpad = true,     -- right-justify text in fidget box
+		stack_upwards = true, -- list of tasks grows upwards
+		max_width = 0,      -- maximum width of the fidget box
+		fidget =            -- function to format fidget title
+				function(fidget_name, spinner)
+					return string.format("%s %s", spinner, fidget_name)
+				end,
+		task = -- function to format each task line
+				function(task_name, message, percentage)
+					return string.format(
+						"%s%s [%s]",
+						message,
+						percentage and string.format(" (%s%%)", percentage) or "",
+						task_name
+					)
+				end,
 	},
-	sources = {									-- Sources to configure
+	sources = { -- Sources to configure
 		--[[ * = {										 -- Name of source
 			ignore = false,					-- Ignore notifications from this source
 		}, ]]
 	},
 	debug = {
-		logging = false,					-- whether to enable logging, for debugging
-		strict = false,						-- whether to interpret LSP strictly
+		logging = false, -- whether to enable logging, for debugging
+		strict = false, -- whether to interpret LSP strictly
 	},
 }
 -- ]
@@ -223,13 +229,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', '<leader>lI', vim.lsp.buf.implementation, opts)
 		vim.keymap.set('n', '<leader>ls', vim.lsp.buf.signature_help, opts)
 		vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, opts)
-		vim.keymap.set('n', '<leader>lw', vim.lsp.buf.rename, opts)
 		vim.keymap.set({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action, opts)
-		vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, opts)
-		vim.keymap.set('n', '<leader>lf', function()
+		--USE TELESCOPE FOR THIS [
+		--vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, opts)
+		--]
+		-- IN ACTION SECTION (WhichKey) [
+		vim.keymap.set('n', '<leader>aw', vim.lsp.buf.rename, opts)
+		vim.keymap.set('n', '<leader>af', function()
 			vim.lsp.buf.format { async = true }
 		end, opts)
-				--workspace
+		-- ]
+		--workspace
 		vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
 		vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
 		vim.keymap.set('n', '<leader>wl', function()

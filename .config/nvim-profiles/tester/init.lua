@@ -1,3 +1,4 @@
+CONFIG_NAME = 'tester'
 ------------------------------------------
 -- GENERAL CONFIGURATION
 ------------------------------------------
@@ -12,7 +13,7 @@ require(".config.fun-lib")
 ------------------------------------------
 -- Select how to build plugins
 local importConfigurations = true -- set to false when installing new plugins
-local usePlugins = true -- set to false when recreating setup from scratch
+local usePlugins = true           -- set to false when recreating setup from scratch
 
 PLUGIN_LIST = {
 	-- LSP Configuration & Plugins
@@ -27,7 +28,7 @@ PLUGIN_LIST = {
 			--formatter
 			'mhartington/formatter.nvim'
 		},
-		'lsp-new'
+		'lsp'
 	},
 	{
 		{
@@ -40,7 +41,7 @@ PLUGIN_LIST = {
 				"microsoft/vscode-js-debug",
 				opt = true,
 				run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
-			}
+			},
 		},
 		'dap'
 	},
@@ -59,18 +60,16 @@ PLUGIN_LIST = {
 	-- Autocompletion
 	{
 		{
-			{ 'ms-jpq/coq_nvim', branch = 'coq' },
+			{ 'ms-jpq/coq_nvim',       branch = 'coq' },
 			{ 'ms-jpq/coq.thirdparty', branch = '3p' },
+			{ 'ms-jpq/coq.artifacts',  branch = 'artifacts' }
 		},
-		'conf-coq'
-	},
-	{
-		{'ms-jpq/coq.artifacts', branch = 'artifacts'}
+		'coq'
 	},
 	-- Highlight, edit, and navigate code; has multiple modules
 	{
 		{
-			{'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'},
+			{ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
 			{
 				"nvim-treesitter/nvim-treesitter-textobjects",
 				after = "nvim-treesitter",
@@ -106,55 +105,39 @@ PLUGIN_LIST = {
 	{ 'lukas-reineke/indent-blankline.nvim', 'indent-blankline' },
 	-- comment visual regions/lines
 	{ 'numToStr/Comment.nvim',               'comment' },
-	{
-		{
-			"nvim-neo-tree/neo-tree.nvim",
-			branch = "v2.x",
-			requires = {
-				"nvim-lua/plenary.nvim",
-				"kyazdani42/nvim-web-devicons",
-				"MunifTanjim/nui.nvim",
-			}
-		},
-		'neo-tree'
-	},
 	-- Fuzzy Finder (files, lsp, etc)
 	{
 		{
 			{ -- BASE
 				'nvim-telescope/telescope.nvim',
 				branch = '0.1.x',
-				requires = {
-					'nvim-lua/plenary.nvim'
-				}
+				requires = { 'nvim-lua/plenary.nvim' }
 			},
 			{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }, -- MAKE IT FASTER
 			{
 				-- dependency: https://github.com/sharkdp/fd#installation
 				"nvim-telescope/telescope-file-browser.nvim",
 				requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-			}
+			},
+			{
+				-- clipboard
+				"AckslD/nvim-neoclip.lua",
+				requires = { { 'kkharji/sqlite.lua', module = 'sqlite' }, },
+			},
+			{ 'ThePrimeagen/harpoon' },
+			{ 'LukasPietzschmann/telescope-tabs' },
+			{
+				-- show git history
+				'paopaol/telescope-git-diffs.nvim',
+				requires = {
+					"nvim-lua/plenary.nvim",
+					"sindrets/diffview.nvim",
+				},
+			},
+			{ 'nvim-telescope/telescope-symbols.nvim' },
 		},
 		'telescope'
 	},
-	--[[
-	{
-		{
-			'nvim-telescope/telescope-fzf-native.nvim',
-			run = 'make',
-			cond = vim.fn.executable 'make' == 1
-		}
-	},
-	{ "AckslD/nvim-neoclip.lua", "telescope-clip" },
-	{ 'ThePrimeagen/harpoon' },
-	{
-		{
-			-- dependency: https://github.com/sharkdp/fd#installation
-			"nvim-telescope/telescope-file-browser.nvim",
-			requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-		}
-	},
-	]]--
 	-- key combo explained
 	{
 		{

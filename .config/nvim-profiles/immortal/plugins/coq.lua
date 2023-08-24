@@ -1,11 +1,11 @@
 vim.g.coq_settings = {
-	auto_start='shut-up',
-	keymap={
-		jump_to_mark='<c-n>'
+	auto_start = 'shut-up',
+	keymap = {
+		jump_to_mark = '<c-n>'
 	}
 }
 
-    coq = require'coq'
+coq = require 'coq'
 
 require("coq_3p") {
 	{ src = "nvimlua", short_name = "nLUA", conf_only = true },
@@ -15,4 +15,3 @@ require("coq_3p") {
 	--{ src = "vim_dadbod_completion", short_name = "DB"},
 	--{ src = "dap" },
 }
-
