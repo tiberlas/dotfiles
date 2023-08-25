@@ -11,6 +11,42 @@ local builtin = require("telescope.builtin")
 -- file-browser
 local fb_actions = require "telescope._extensions.file_browser.actions"
 
+-- GIT MV
+local function is_git_repo()
+	vim.fn.system("git rev-parse --is-inside-work-tree")
+	return vim.v.shell_error == 0
+end
+local get_target_dir = function(finder)
+	local entry_path
+	if finder.files == false then
+		local entry = action_state.get_selected_entry()
+		entry_path = entry and entry.value -- absolute path
+	end
+	return finder.files and finder.path or entry_path
+end
+local git_move = function(prompt_bufnr)
+	if is_git_repo() then
+		print("Prompt_bufnr: " .. prompt_bufnr)
+		local fb_utils = require "telescope._extensions.file_browser.utils"
+		local selections = fb_utils.get_selected_files(prompt_bufnr, false)
+		if vim.tbl_isempty(selections) then
+			print 'NOTHING SELECTED'
+			return
+		end
+		local current_picker = action_state.get_current_picker(prompt_bufnr)
+		local target_dir = get_target_dir(current_picker.finder)
+		local Path = require "plenary.path"
+		for _, selection in ipairs(selections) do
+			local filename = selection.filename:sub(#selection:parent().filename + 2)
+			local new_path = Path:new { target_dir, filename }
+			local git_cmd = 'git mv '..tostring(selection)..' '..tostring(new_path)
+			vim.fn.system(git_cmd)
+		end
+	else
+		fb_actions.move(prompt_bufnr)
+	end
+end
+
 -- Change *data source* to be the selected dir, and then do grep action on the selected dir
 local ts_select_dir_for_grep = function(prompt_bufnr)
 	local fb = telescope.extensions.file_browser
@@ -146,7 +182,7 @@ telescope.setup {
 					["<C-c>"] = fb_actions.create,
 					["<S-CR>"] = fb_actions.create_from_prompt,
 					["<C-r>"] = fb_actions.rename,
-					["<C-m>"] = fb_actions.move,
+					["<C-m>"] = git_move,
 					["<C-y>"] = fb_actions.copy,
 					["<C-d>"] = fb_actions.remove,
 					["<C-o>"] = fb_actions.open,
@@ -165,7 +201,7 @@ telescope.setup {
 				["n"] = {
 					["c"] = fb_actions.create,
 					["r"] = fb_actions.rename,
-					["m"] = fb_actions.move,
+					["m"] = git_move,
 					["y"] = fb_actions.copy,
 					["d"] = fb_actions.remove,
 					["o"] = fb_actions.open,
