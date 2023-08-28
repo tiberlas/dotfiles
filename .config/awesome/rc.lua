@@ -35,7 +35,6 @@ local has_fdo, freedesktop = pcall(require, 'freedesktop')
 COLOR = require'.colors'
 HOME = "/home/tiberius"
 
->>>>>>> 74e891f ([L570 SETUP])
 -------------------------------------------------------------------------------
 -- ERROR HANDLING
 --
