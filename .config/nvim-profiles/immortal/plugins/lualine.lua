@@ -100,6 +100,13 @@ lualine.setup({
 		lualine_y = { g_show },
 		lualine_z = {},
 	},
-	tabline = {},
+	tabline = {
+		lualine_a = {'%M'},
+		lualine_b = {'%F'},
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {'tabs'}
+	},
 	extensions = {},
 })
