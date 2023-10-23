@@ -67,8 +67,15 @@ inoremap kj <Esc>                       " go to NORMAL mode
 inoremap jk <Esc>
 inoremap KJ <Esc>
 vnoremap JK <Esc>
-inoremap <C-k> :m-2<CR>                 " move current line up
-inoremap <C-j> :m+1<CR>                 " move current line down
+
+inoremap zk :m-2<CR>                 " move current line up
+inoremap zj :m+1<CR>                 " move current line down
+
+nnoremap <M-j> :resize -4<CR>
+nnoremap <M-k> :resize +4<CR>
+nnoremap <M-h> :vertical resize +4<CR>
+nnoremap <M-l> :vertical resize -4<CR>
+
 map <leader>d :nohlsearch<CR>           " disable hl search
 nnoremap gU viwU<Esc>                   " converts word to upper case
 nnoremap gu viwu<Esc>                   " converts word to lower case
@@ -76,4 +83,33 @@ nnoremap gu viwu<Esc>                   " converts word to lower case
 vnoremap < <gv
 vnoremap > >gv
 
+" center this commands
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J MzJ`z
+nnoremap G Gzz
+nnoremap * *Nzz
+
+" navigate through windows with Ctrl-h/j/k/l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-q> <C-w>q
+
+" center text
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap zj :m .+1<CR>==
+nnoremap zk :m .-2<CR>==
+nnoremap * *Nzz
+
+" registar T
+nnoremap <leader>e \"t
+vnoremap <leader>e \"t
+
+" open file explorer in new vertical split
+nnoremap <leader>f <C-w>v:Explore<CR>
+
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vim alternatively you can run :source $MYVIMRC
+
