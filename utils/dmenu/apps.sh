@@ -26,9 +26,12 @@ OPT=(
 "foliate"
 "okular"
 "vlc"
-"authy"
+"snap run authy"
 "flameshot"
 "blueman-applet"
+"snap run teams-for-linux"
+"snap run skype"
+"snap run slack"
 )
 
 CHOICE=$(printf "%s\n" "${OPT[@]}" | dmenu -i -p "$MSG")

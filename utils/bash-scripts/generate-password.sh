@@ -11,8 +11,9 @@
 #!/bin/bash
 # needed dependencies: xclip and pwgen
 
-PASS=$(pwgen -ysBv 17 1)
+PASS=$(pwgen -cnysB -r\`\"\\ 21 1)
 echo "${PASS}" | xclip -selection c
+echo ${PASS}
 printf '\e[31m%s\e[0m\n\n' "generated in clipboard ᕙ(▀̿̿Ĺ̯̿̿▀̿ ̿) ᕗ"
 
 exit 0
