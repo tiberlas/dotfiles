@@ -54,6 +54,7 @@ PLUGIN_LIST = {
 				"antoinemadec/FixCursorHold.nvim",
 				-- CONFIGURE LANGUAGE SPECIFIC
 				"haydenmeade/neotest-jest",
+				"nvim-neotest/neotest-python"
 			}
 		}, 'neo-test'
 	},
