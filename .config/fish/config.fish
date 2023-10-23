@@ -11,6 +11,10 @@ export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # ]
 
+# PYENV
+set -Ux PYENV_ROOT $HOME/.pyenv
+fish_add_path $PYENV_ROOT/bin
+
 # abbriviations
 
 abbr -a v "vim ."
@@ -24,33 +28,32 @@ abbr -a n-i "bash ~/utils/bash-scripts/nvim-immortal.sh"
 abbr -a n-legacy "bash ~/utils/bash-scripts/nvim-legacy.sh ."
 
 abbr -a ls lsd -la
-abbr -a dira "tree -aL 2"
+abbr -a dir "tree -aL 2"
 abbr -a L "&& lsd -la"
 
 abbr -a g-a "git add --all"
 abbr -a g-c "git commit -m 'ATS-'"
 abbr -a g-ch "git checkout"
 abbr -a g-diff "git diff HEAD{'^',}"
+abbr -a g-l "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' -n 15"
+abbr -a g-la "git log --graph --abbrev-commit --decorate --all --source --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset) [%C(red)%S%C(reset)] %C(auto)%d%C(reset)'"
 abbr -a g-i "git status && git log --graph --oneline -n 12"
-abbr -a g-l2 "git log -n 2"
-abbr -a g-la "git log --graph --oneline"
-abbr -a g-ll "git log -n 10 --graph --oneline"
 abbr -a g-p "git push"
 abbr -a g-r "git reset HEAD^"
 abbr -a g-rh "git reset --hard HEAD^"
 abbr -a g-rs "git reset --soft HEAD^"
 abbr -a g-s "git status"
 abbr -a g-f "git fetch --prune"
+abbr -a g-ssh "eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519"
+abbr -a g-set-lr "git config --local user.name Tibor Tapai && git config --local user.email tibor.tapai@tibor.tapai0722mac"
+abbr -a g-set-oll "git config --local user.name Tibor Tapai && git config --local user.email ttapai@openlawlib.org"
 
-abbr -a awsin "aws sso login --profile factor-dev-profile"
+abbr -a aws-lr "aws sso login --profile fktr-dev --no-browser"
+abbr -a py-oll "source ~/documents/workspace/open-law-lib/py10/venv/bin/activate.fish"
 abbr -a open "mimeopen -d"
 abbr -a r-off "redshift -O 6500K"
 abbr -a r-on "redshift -O 5000K"
 abbr -a clock "tty-clock -scbx -C 6 -f \"%a, %d %b %Y %T\""
-abbr -a t-sh "cp ~/Templates/newShellScript.sh new.sh"
-abbr -a t-curl "cp ~/Templates/curl.sh new.sh"
-abbr -a t-pie "cp ~/templates/httpie.sh new.sh"
-abbr -a t-lua "cp ~/Templates/newLua.lua new.lua"
 
 abbr -a dir-pop "cd \$(xclip -selection c -o)"
 abbr -a dir-push "pwd | xclip -selection c"
@@ -79,16 +82,17 @@ abbr -a b-all-push "bash ~/utils/bash-scripts/back-up-push.sh"
 abbr -a b-pull "bash ~/utils/bash-scripts/back-up-pull-no-ender.sh"
 abbr -a b-push "bash ~/utils/bash-scripts/back-up-push-no-ender.sh"
 
-# alias
+abbr -a g-pass 'bash ~/utils/bash-scripts/generate-password.sh'
 
-alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v (pwd):/aws amazon/aws-cli'
-alias deno=$HOME/.deno/bin/deno
+# alias
 alias dot='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
-alias g-pass='pwgen -ysBv 17 1'
-alias pass='bash ~/utils/bash-scripts/generate-password.sh'
+# short hands and type fixes
+alias py='python3'
+alias dc="cd"
+alias gti="git"
 
-# function
+# function TODO
 
 function go
 	pwd > $HOME/.config/fish/previous_dir.txt
