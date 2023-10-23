@@ -115,13 +115,14 @@ globalkeys = GEARS.table.join(
 	-- DMENU SECRET KEY
 	AWFUL.key({ modkey }, "b", function()
 		local secret = require"..dmenu.secret.secret"
-		local keys_ok,keys = pcall(require, "..dmenu.secret.keys")
+		local secretPath = "../../../generic-poem"
+		local keys_ok,keys = pcall(require, secretPath)
 		if keys_ok == true then
-			secret.secret(keys.secrets)
+			secret.secret(keys)
 		else
 			NAUGHTY.notify {
 				title = "SECRET ERROR",
-				text = "Secret file is encrypted"
+				text = "Secret file is encrypted at path: "..secretPath
 			}
 		end
 	end, { description = "get secret key", group = "app" }),
