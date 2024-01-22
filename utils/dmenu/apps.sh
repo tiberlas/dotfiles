@@ -19,6 +19,8 @@ OPT=(
 "transmission-gtk"
 "chromium"
 "freecad"
+"prusa-gcodeviewer"
+"prisa-slicer"
 "cura-slicer.cura"
 "openscad"
 "drawio"

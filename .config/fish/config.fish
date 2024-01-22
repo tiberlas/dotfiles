@@ -2,6 +2,9 @@
 export VISUAL=vim
 export PATH="$HOME/.local/bin:$PATH"
 
+# use for testing Prebid.js
+export CHROME_BIN="/usr/bin/chromium"
+
 fish_vi_key_bindings
 
 # NVM config (https://github.com/brigand/fast-nvm-fish) [
@@ -19,9 +22,10 @@ fish_add_path $PYENV_ROOT/bin
 
 abbr -a v "vim ."
 abbr -a n "bash ~/utils/bash-scripts/nvim-immortal.sh"
+abbr -a n-d "bash ~/utils/bash-scripts/nvim-doom.sh"
 abbr -a n-l "bash ~/utils/bash-scripts/nvim-light.sh"
 abbr -a n-nb "bash ~/utils/bash-scripts/nvim-nb.sh"
-abbr -a n-d "bash ~/utils/bash-scripts/nvim-debugger.sh"
+abbr -a n-dd "bash ~/utils/bash-scripts/nvim-debugger.sh"
 abbr -a n-r "bash ~/utils/bash-scripts/nvim-reader.sh"
 abbr -a n-t "bash ~/utils/bash-scripts/nvim-test.sh"
 abbr -a n-i "bash ~/utils/bash-scripts/nvim-immortal.sh"
@@ -38,22 +42,33 @@ abbr -a g-diff "git diff HEAD{'^',}"
 abbr -a g-l "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' -n 15"
 abbr -a g-la "git log --graph --abbrev-commit --decorate --all --source --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset) [%C(red)%S%C(reset)] %C(auto)%d%C(reset)'"
 abbr -a g-i "git status && git log --graph --oneline -n 12"
-abbr -a g-p "git push"
-abbr -a g-r "git reset HEAD^"
-abbr -a g-rh "git reset --hard HEAD^"
-abbr -a g-rs "git reset --soft HEAD^"
+abbr -a g-p "git push origin "
+abbr -a g-r "git rebase -i HEAD~5"
+abbr -a g-rh "git reset --hard origin/"
+abbr -a g-rs "git reset --soft HEAD^ && git restore --staged ."
 abbr -a g-s "git status"
 abbr -a g-f "git fetch --prune"
 abbr -a g-ssh "eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519"
 abbr -a g-set-lr "git config --local user.name Tibor Tapai && git config --local user.email tibor.tapai@tibor.tapai0722mac"
 abbr -a g-set-oll "git config --local user.name Tibor Tapai && git config --local user.email ttapai@openlawlib.org"
 
+# PROFESSIONAL USE
 abbr -a aws-lr "aws sso login --profile fktr-dev --no-browser"
-abbr -a py-oll "source ~/documents/workspace/open-law-lib/py10/venv/bin/activate.fish"
+abbr -a oll-py-pla "source ~/documents/workspace/open-law-lib/py10/venv/bin/activate.fish"
+abbr -a oll-py-doc6 "source ~/documents/workspace/open-law-lib/py6-py-docx/venv/bin/activate.fish"
+abbr -a oll-py-doc7 "source ~/documents/workspace/open-law-lib/venv-py-docx/venv7/bin/activate.fish"
+abbr -a oll-py-doc8 "source ~/documents/workspace/open-law-lib/venv-py-docx/venv8/bin/activate.fish"
+abbr -a oll-py-doc9 "source ~/documents/workspace/open-law-lib/venv-py-docx/venv9/bin/activate.fish"
+abbr -a oll-py-doc10 "source ~/documents/workspace/open-law-lib/venv-py-docx/venv10/bin/activate.fish"
+abbr -a oll-py-doc11 "source ~/documents/workspace/open-law-lib/venv-py-docx/venv11/bin/activate.fish"
+abbr -a oll-test "oll tests run -i core"
+abbr -a oll-install "pip install -e . -v"
+
 abbr -a open "mimeopen -d"
 abbr -a r-off "redshift -O 6500K"
 abbr -a r-on "redshift -O 5000K"
 abbr -a clock "tty-clock -scbx -C 6 -f \"%a, %d %b %Y %T\""
+abbr -a no-touch "xinput set-prop 11 316 0"
 
 abbr -a dir-pop "cd \$(xclip -selection c -o)"
 abbr -a dir-push "pwd | xclip -selection c"
@@ -89,6 +104,7 @@ alias dot='/usr/bin/git --git-dir=$HOME/dotfiles.git/ --work-tree=$HOME'
 
 # short hands and type fixes
 alias py='python3'
+alias py-t='pytest -svv'
 alias dc="cd"
 alias gti="git"
 

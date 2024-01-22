@@ -56,8 +56,10 @@ globalkeys = GEARS.table.join(
 		AWFUL.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 	AWFUL.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
+	-- used i3lock-fancy: https://github.com/meskarune/i3lock-fancy
+	-- but now I use plain i3lock
 	AWFUL.key({ modkey }, "z", function()
-		AWFUL.spawn.with_shell("light-locker-command -l")
+		AWFUL.spawn.with_shell("i3lock -i ~/pictures/wallpaper.png -c 8c95a0")
 	end, { description = "lock screen", group = "awesome" }),
 	AWFUL.key({ modkey }, "q", function()
 		AWFUL.util.spawn("bash "..HOME.."/utils/dmenu/shutdown.sh")

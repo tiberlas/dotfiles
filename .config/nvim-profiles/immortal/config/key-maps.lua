@@ -1,3 +1,4 @@
+vim.keymap.set("n", "<C-i>", "<C-i>", { noremap = true, silent = true })
 -- jumps in wraps when needed
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

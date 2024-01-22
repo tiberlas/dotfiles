@@ -4,8 +4,7 @@ if not status_ok then
 	return
 end
 -- LSP SERVERS TO INSTALL
-local lsp_list = { "lua_ls", "eslint", "tsserver", "pyright", "clangd", "cssls", "jsonls", "quick_lint_js", "marksman",
-	"spectral", "html" }
+local lsp_list = { "lua_ls", "eslint", "tsserver", "pyright", "clangd", "cssls", "jsonls", "quick_lint_js", "marksman", "spectral", "html" }
 -- MOTHER OF ALL ADAPTER PLUGINS, WITH THIS YOU INSTALL LSP, DAP, LINTER, FORMATTER [
 mason.setup({
 	pip = {
@@ -141,6 +140,11 @@ require("formatter").setup {
 					},
 					stdin = true,
 				}
+			end
+		},
+		xml = {
+			function()
+				vim.cmd([[%! xmllint --format -]])
 			end
 		},
 		-- Use the special "*" filetype for defining formatter configurations on

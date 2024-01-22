@@ -1,17 +1,41 @@
-set -g theme_color_separator                        brblack
+set -g theme_color_error                           red
+set -g theme_color_superuser                       red
+set -g theme_color_user                            white
+set -g theme_color_group                           666666
+set -g theme_color_host                            brgreen
+set -g theme_color_separator                       brblack
+set -g theme_color_bracket                         brblue
+set -g theme_color_normal                          normal
+set -g theme_color_time                            666666
+set -g theme_color_path                            brwhite
+set -g theme_color_prompt                          white
+set -g theme_color_virtualenv                      bryellow
+set -g theme_color_status_prefix                   brblue
+set -g theme_color_status_jobs                     brgreen
+set -g theme_color_status_rw                       brwhite
+set -g theme_color_batt_icon                       white
+set -g theme_color_batt_charging                   brgreen
+set -g theme_color_batt_discharging                red
+set -g theme_color_batt_0                          red
+set -g theme_color_batt_25                         red
+set -g theme_color_batt_50                         bryellow
+set -g theme_color_batt_75                         bryellow
+set -g theme_color_batt_100                        brgreen
+
+set -g theme_color_separator                        normal
 set -g theme_color_normal                           normal
 set -g theme_prompt_userhost_separator              '.'
 set -g __fish_git_prompt_char_branch_begin          '['
 set -g __fish_git_prompt_char_branch_end            ']'
-set -g __fish_git_prompt_color_branch_begin         brblack
-set -g __fish_git_prompt_color_branch_end           brblack
+set -g __fish_git_prompt_color_branch_begin         normal
+set -g __fish_git_prompt_color_branch_end           normal
 
-set -g theme_display_group                          no
-set -g theme_display_time yes
+set -g theme_display_group                          yes
+set -g theme_display_time                           yes
 set -gx fish_prompt_pwd_dir_length                  0
 set -g theme_display_jobs_always                    yes
-set -g theme_display_batt no
-set -g theme_display_batt_icon no
+set -g theme_display_batt                           no
+set -g theme_display_batt_icon                      no
 
 set -g theme_prompt_char_normal                    '$'
 set -g theme_prompt_char_superuser                 '#'
@@ -43,5 +67,5 @@ set -g __fish_git_prompt_show_informative_status   yes
 set -g __fish_git_prompt_char_stateseparator       ' '
 set -g __fish_git_prompt_char_branch_begin         ''
 set -g __fish_git_prompt_char_branch_end           ''
-set -g __fish_git_prompt_color_branch_begin        bryellow
-set -g __fish_git_prompt_color_branch_end          bryellow
+set -g __fish_git_prompt_color_branch_begin        normal
+set -g __fish_git_prompt_color_branch_end          normal

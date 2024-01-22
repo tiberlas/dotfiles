@@ -2,8 +2,10 @@ CONFIG_NAME = 'immortal'
 ------------------------------------------
 -- GENERAL CONFIGURATION
 ------------------------------------------
-require(".config.general")
-require(".config.key-maps")
+--require(".config.general")
+--require(".config.key-maps")
+require(".config.options")
+require(".config.keymaps")
 require(".config.fun-lib")
 ------------------------------------------
 -- PLUGINS
