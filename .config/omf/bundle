@@ -2,7 +2,9 @@ package https://github.com/edc/bass
 package https://github.com/fabioantunes/fish-nvm
 theme default
 theme es
+theme graystatus
 theme kawasaki
 theme l
 theme mars
 theme mokou
+theme plain

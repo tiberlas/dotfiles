@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/t2api/utils/bash-scripts'
+let g:netrw_dirhist_3='/mnt/md0/tutorials'
+let g:netrw_dirhist_2='/home/t2api'
 let g:netrw_dirhist_1='/home/tiberius/utils/bash-scripts'
 let g:netrw_dirhist_0='/home/tiberius'
 let g:netrw_dirhist_9='/home/tiberius/.config/nvim-profiles/immortal/config'
@@ -7,6 +10,3 @@ let g:netrw_dirhist_8='/home/tiberius/.config/fish'
 let g:netrw_dirhist_7='/home/tiberius/.config/fish/completions'
 let g:netrw_dirhist_6='/home/tiberius/.config/fish'
 let g:netrw_dirhist_5='/home/tiberius/.config/fish/functions'
-let g:netrw_dirhist_4='/home/tiberius/.config/fish'
-let g:netrw_dirhist_3='/home/tiberius/.config/fish/conf.d'
-let g:netrw_dirhist_2='/home/tiberius/.config/fish'

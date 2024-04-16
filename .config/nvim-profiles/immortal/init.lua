@@ -24,7 +24,7 @@ PLUGIN_LIST = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
-			{ 'j-hui/fidget.nvim', tag = 'legacy' }, --eye-candy, treesitter is needed
+			{ 'j-hui/fidget.nvim' }, --eye-candy, treesitter is needed
 			--linter
 			'mfussenegger/nvim-lint',
 			--formatter
@@ -101,7 +101,7 @@ PLUGIN_LIST = {
 		"diffview"
 	},
 	-- Theme
-	{ 'tanvirtin/monokai.nvim' },
+	--{ 'tanvirtin/monokai.nvim' },
 	-- Fancier statusline
 	{ 'nvim-lualine/lualine.nvim',           'lualine' },
 	-- indentation guides even on blank lines

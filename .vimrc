@@ -35,14 +35,14 @@ set laststatus=2                        " Always display the status line
 set number                              " Line numbers
 set relativenumber                      " Show relative line numbers
 set cursorline                          " Enable highlighting of the current line
-set background=dark                     " tell vim what the background color looks like
+set background=light                     " tell vim what the background color looks like
 set showtabline=2                       " Always show tabs
 set showmode                          " We don't need to see things like -- INSERT -- anymore
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
-set formatoptions-=cro                  " Stop newline continution of comments
+set formatoptions=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set wrap                                " text wrap
 setlocal nospell spelllang=en_us        " disables spell check
@@ -57,7 +57,7 @@ set showbreak=↪\
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:~,extends:⟩,precedes:⟨,space:•
 set list                                " Sets white spaces
 
-colorscheme monokai
+colorscheme delek
 " transparent background
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
@@ -112,4 +112,3 @@ vnoremap <leader>e \"t
 nnoremap <leader>f <C-w>v:Explore<CR>
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vim alternatively you can run :source $MYVIMRC
-

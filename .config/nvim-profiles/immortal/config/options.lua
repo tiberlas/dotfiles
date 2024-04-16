@@ -76,6 +76,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Theme
 vim.opt.termguicolors = true
-vim.opt.background = "dark"
-vim.cmd([[colorscheme monokai]])
+vim.opt.background = "light"
+--vim.cmd([[colorscheme monokai]])
+vim.cmd.colorscheme "delek"
 vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
