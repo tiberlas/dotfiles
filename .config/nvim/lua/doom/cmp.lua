@@ -35,13 +35,30 @@ local M = {
 		},
 		{
 			"hrsh7th/cmp-nvim-lua",
+			event = "InsertEnter",
+		},
+		{
+			"onsails/lspkind.nvim",
+			event = "InsertEnter",
+		},
+		{
+			"f3fora/cmp-spell",
+			event = "InsertEnter",
+		},
+		{
+			"mtoohey31/cmp-fish",
+			event = "InsertEnter",
+		},
+		{
+			"dmitmel/cmp-digraphs",
+			event = "InsertEnter",
 		},
 	},
 }
 
 function M.config()
-	local cmp = require "cmp"
-	local luasnip = require "luasnip"
+	local cmp = require("cmp")
+	local luasnip = require("luasnip")
 	require("luasnip/loaders/from_vscode").lazy_load()
 
 	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
@@ -49,19 +66,19 @@ function M.config()
 	vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
 	local check_backspace = function()
-		local col = vim.fn.col "." - 1
-		return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+		local col = vim.fn.col(".") - 1
+		return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 	end
 
-	local icons = require "doom.icons"
+	local icons = require("doom.icons")
 
-	cmp.setup {
+	cmp.setup({
 		snippet = {
 			expand = function(args)
 				luasnip.lsp_expand(args.body) -- For `luasnip` users.
 			end,
 		},
-		mapping = cmp.mapping.preset.insert {
+		mapping = cmp.mapping.preset.insert({
 			["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 			["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
 			["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
@@ -69,15 +86,13 @@ function M.config()
 			["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-			["<C-e>"] = cmp.mapping {
+			["<C-e>"] = cmp.mapping({
 				i = cmp.mapping.abort(),
 				c = cmp.mapping.close(),
-			},
+			}),
 			-- Accept currently selected item. If none selected, `select` first item.
 			-- Set `select` to `false` to only confirm explicitly selected items.
-
-			-- Do not need this; selected item will auto generate text
-			--["<CR>"] = cmp.mapping.confirm { select = true },
+			["<CR>"] = cmp.mapping.confirm({ select = false }),
 
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
@@ -109,55 +124,57 @@ function M.config()
 				"i",
 				"s",
 			}),
+		}),
+
+		window = {
+			completion = {
+				winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+				col_offset = -3,
+				side_padding = 0,
+			},
 		},
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
 			format = function(entry, vim_item)
-				vim_item.kind = icons.kind[vim_item.kind]
-				vim_item.menu = ({
-					nvim_lsp = "lsp",
-					nvim_lua = "lua",
-					luasnip = "snip",
-					buffer = "buff",
-					path = "path",
-					emoji = "",
-				})[entry.source.name]
+				local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+				local strings = vim.split(kind.kind, "%s", { trimempty = true })
+				kind.kind = " " .. (strings[1] or "") .. " "
+				kind.menu = "    (" .. (strings[2] or "") .. ")"
 
-				if entry.source.name == "emoji" then
-					vim_item.kind = icons.misc.Smiley
-					vim_item.kind_hl_group = "CmpItemKindEmoji"
-				end
-
-				if entry.source.name == "cmp_tabnine" then
-					vim_item.kind = icons.misc.Robot
-					vim_item.kind_hl_group = "CmpItemKindTabnine"
-				end
-
-				return vim_item
+				return kind
 			end,
 		},
+
 		sources = {
 			{ name = "nvim_lsp" },
-			{ name = "luasnip" },
+			{ name = "luasnip", option = { show_autosnippets = true } },
 			{ name = "cmp_tabnine" },
 			{ name = "nvim_lua" },
+			{ name = "orgmode" },
 			{ name = "buffer" },
 			{ name = "path" },
+			{
+				name = "spell",
+				option = {
+					keep_all_entries = false,
+					enable_in_context = function()
+						return true
+					end,
+					preselect_correct_word = true,
+				},
+			},
+			{ name = 'digraphs' },
 			{ name = "emoji" }, -- start with `:` like `:smile`
+			{ name = "fish" },
 		},
 		confirm_opts = {
 			behavior = cmp.ConfirmBehavior.Replace,
-			select = false,
-		},
-		window = {
-			completion = {
-				scrollbar = false,
-			},
+			select = true,
 		},
 		experimental = {
-			ghost_text = true,
+			ghost_text = false,
 		},
-	}
+	})
 end
 
 return M

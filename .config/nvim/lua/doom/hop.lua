@@ -1,4 +1,3 @@
-
 local M = {
 	"phaazon/hop.nvim",
 	branch = "v2"

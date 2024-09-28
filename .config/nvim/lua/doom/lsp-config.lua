@@ -9,37 +9,25 @@ local M = {
 	},
 }
 
-local function lsp_keymaps(bufnr)
-	--attach only these key-maps if the buffer has LSP support
-	local opts = { noremap = true, silent = true }
-	local keymap = vim.api.nvim_buf_set_keymap
-	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) --kaze sta ne valja
-end
-
-M.on_attach = function(client, bufnr)
-	lsp_keymaps(bufnr)
-end
-
-function M.common_capabilities()
+function M.broadcast_capabilities()
+	--Enable (broadcasting) snippet capability for completion
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 	return capabilities
+end
+
+function M.cmp_capabilities()
+	return require("cmp_nvim_lsp").default_capabilities()
 end
 
 M.toggle_inlay_hints = function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
 end
-function M.config()
 
-	local lspconfig = require "lspconfig"
-	local icons = require "doom.icons"
-	local servers = require "doom.servers"
+function M.config()
+	local lspconfig = require("lspconfig")
+	local icons = require("doom.icons")
 
 	local default_diagnostic_config = {
 		signs = {
@@ -61,43 +49,101 @@ function M.config()
 			source = "always",
 		},
 	}
-
 	vim.diagnostic.config(default_diagnostic_config)
-
+	-- setup diagnostic signs
 	for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 	end
 
-	for _, server in pairs(servers.lsp) do
-		-- configure a specific LSP
-		local opts = {
-			on_attach = M.on_attach,
-			capabilities = M.common_capabilities(),
-		}
-
-		-- specific LSP settings
-		if server == "jsonls" then
-			local settings = {
-				settings = {
-					json = {
-						schemas = require("schemastore").json.schemas(),
+	-- configure a specific LSP: `https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md`
+	-- multy-lang
+	lspconfig["ast_grep"].setup({})
+	lspconfig["harper_ls"].setup({})
+	-- lua
+	lspconfig["lua_ls"].setup({
+		on_attach = M.on_attach,
+		capabilities = M.cmp_capabilities(),
+	})
+	-- python
+	lspconfig["pyright"].setup({
+		capabilities = M.cmp_capabilities(),
+	})
+	lspconfig["pylsp"].setup({
+		settings = {
+			pylsp = {
+				plugins = {
+					pycodestyle = {
+						ignore = { "W391" },
+						maxLineLength = 100,
 					},
 				},
-				setup = {
-					commands = {
-						Format = {
-							function()
-								vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line "$", 0 })
-							end,
+			},
+		},
+	})
+	lspconfig["ruff"].setup({})
+	-- css
+	lspconfig["cssls"].setup({
+		capabilities = M.broadcast_capabilities(),
+	})
+	-- html
+	lspconfig["html"].setup({})
+	-- javascript
+	lspconfig["eslint"].setup({
+		capabilities = M.cmp_capabilities(),
+	})
+	-- typescript
+	lspconfig["tsserver"].setup({
+		capabilities = M.cmp_capabilities(),
+	})
+	-- C#
+	lspconfig["omnisharp"].setup({
+		capabilities = M.cmp_capabilities(),
+	})
+	-- openscada
+	lspconfig["openscad_ls"].setup({})
+	lspconfig["openscad_lsp"].setup({
+		capabilities = M.cmp_capabilities(),
+	})
+	-- rust
+	--lspconfig["bacon_ls"].setup({})
+	-- r language
+	lspconfig["r_language_server"].setup({
+		capabilities = M.cmp_capabilities(),
+	})
+	-- bash
+	lspconfig["bashls"].setup({})
+	-- xml
+	lspconfig["lemminx"].setup({})
+	-- json
+	lspconfig["jsonls"].setup({
+		capabilities = M.broadcast_capabilities(),
+	})
+	-- yaml
+	lspconfig["yamlls"].setup({})
+	-- org md latext
+	lspconfig["ltex"].setup({})
+	vim.cmd([[ autocmd BufRead,BufNewFile *.org set filetype=org ]])
+	lspconfig["textlsp"].setup({
+		settings = {
+			textLSP = {
+				analysers = {
+					languagetool = {
+						check_text = {
+							on_change = false,
+							on_open = true,
+							on_save = true,
 						},
+						enabled = true,
 					},
 				},
-			}
-			opts = vim.tbl_deep_extend("force", settings, opts)
-		end
-
-		lspconfig[server].setup(opts)
-	end
+				documents = {
+					org = {
+						org_todo_keywords = { "TODO", "HOLD", "DONE", "KILL" },
+					},
+				},
+			},
+		},
+	})
 end
 
 return M

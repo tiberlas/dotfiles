@@ -4,10 +4,21 @@ local M = {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
 		{
 			"nvim-telescope/telescope-file-browser.nvim",
-			dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+			dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		},
-		{ 'ThePrimeagen/harpoon' },
-		{ 'LukasPietzschmann/telescope-tabs' },
+		{ "LukasPietzschmann/telescope-tabs" },
+		{
+			"nvim-telescope/telescope-live-grep-args.nvim",
+			version = "^1.0.0",
+		},
+		{ "mollerhoj/telescope-recent-files.nvim" },
+		{ "nvim-telescope/telescope-symbols.nvim" },
+		{
+			"AckslD/nvim-neoclip.lua",
+			dependencies = {
+				{ "kkharji/sqlite.lua", module = "sqlite" },
+			},
+		},
 	},
 }
 
@@ -27,19 +38,19 @@ end
 local git_move = function(prompt_bufnr)
 	if is_git_repo() then
 		print("Prompt_bufnr: " .. prompt_bufnr)
-		local fb_utils = require "telescope._extensions.file_browser.utils"
+		local fb_utils = require("telescope._extensions.file_browser.utils")
 		local selections = fb_utils.get_selected_files(prompt_bufnr, false)
 		if vim.tbl_isempty(selections) then
-			print 'NOTHING SELECTED'
+			print("NOTHING SELECTED")
 			return
 		end
 		local current_picker = action_state.get_current_picker(prompt_bufnr)
 		local target_dir = get_target_dir(current_picker.finder)
-		local Path = require "plenary.path"
+		local Path = require("plenary.path")
 		for _, selection in ipairs(selections) do
 			local filename = selection.filename:sub(#selection:parent().filename + 2)
-			local new_path = Path:new { target_dir, filename }
-			local git_cmd = 'git mv ' .. tostring(selection) .. ' ' .. tostring(new_path)
+			local new_path = Path:new({ target_dir, filename })
+			local git_cmd = "git mv " .. tostring(selection) .. " " .. tostring(new_path)
 			vim.fn.system(git_cmd)
 		end
 	else
@@ -73,13 +84,23 @@ local ts_select_dir_for_grep = function(prompt_bufnr)
 end
 
 function M.config()
-	local icons = require "doom.icons"
-	local actions = require "telescope.actions"
-	local telescope = require "telescope"
-	-- file-browser
-	local fb_actions = require "telescope._extensions.file_browser.actions"
+	local icons = require("doom.icons")
+	local actions = require("telescope.actions")
+	local telescope = require("telescope")
 
-	telescope.setup {
+	-- file-browser
+	local fb_actions = require("telescope._extensions.file_browser.actions")
+
+	local display_full_path_name = function(opts, path)
+		--[[
+		-- Displays path as: `FILE_NAME (FULL_ROOT_PATH)`
+		-- use this fun in *path_display* config
+		--]]
+		local tail = require("telescope.utils").path_tail(path)
+		return string.format("%s (%s)", tail, path), { { { 1, #tail }, "Constant" } }
+	end
+
+	telescope.setup({
 		defaults = {
 			theme = "ivy",
 			prompt_prefix = icons.ui.Telescope .. " ",
@@ -173,7 +194,25 @@ function M.config()
 				theme = "ivy",
 			},
 
+			git_status = {
+				theme = "ivy",
+				path_display = display_full_path_name,
+			},
+
 			git_stash = {
+				theme = "ivy",
+			},
+
+			command_history = {
+				theme = "ivy",
+			},
+
+			recent_files = {
+				theme = "ivy",
+				path_display = display_full_path_name,
+			},
+
+			live_grep_args = {
 				theme = "ivy",
 			},
 
@@ -194,14 +233,6 @@ function M.config()
 			},
 
 			quickfix = {
-				theme = "ivy",
-			},
-
-			lsp_type_definitions = {
-				theme = "ivy",
-			},
-
-			lsp_document_symbols = {
 				theme = "ivy",
 			},
 
@@ -236,6 +267,19 @@ function M.config()
 				show_moon = true,
 			},
 
+			lsp_type_definitions = {
+				theme = "ivy",
+			},
+
+			lsp_document_symbols = {
+				theme = "ivy",
+			},
+
+			lsp_declaration = {
+				theme = "ivy",
+				initial_mode = "normal",
+			},
+
 			lsp_references = {
 				theme = "ivy",
 				initial_mode = "normal",
@@ -257,11 +301,9 @@ function M.config()
 			},
 		},
 		extensions = {
-			fzf = {
-				fuzzy = true,               -- false will only do exact matching
-				override_generic_sorter = true, -- override the generic sorter
-				override_file_sorter = true, -- override the file sorter
-				case_mode = "smart_case",   -- or "ignore_case" or "respect_case"
+			live_grep_args = {
+				auto_quoting = true,
+				theme = "ivy"
 			},
 
 			file_browser = {
@@ -293,13 +335,13 @@ function M.config()
 					["i"] = {
 						["<C-c>"] = fb_actions.create,
 						["<S-CR>"] = fb_actions.create_from_prompt,
-						["<C-r>"] = fb_actions.rename,
+						["<C-a>"] = fb_actions.rename,
 						["<C-m>"] = git_move,
 						["<C-y>"] = fb_actions.copy,
 						["<C-d>"] = fb_actions.remove,
 						["<C-o>"] = fb_actions.open,
 						["<C-g>"] = fb_actions.goto_parent_dir,
-						--["<C-e>"] = fb_actions.goto_home_dir, --NOT WORKING
+						["<C-e>"] = fb_actions.goto_home_dir,
 						["<C-w>"] = fb_actions.goto_cwd,
 						--["<C-t>"] = fb_actions.change_cwd,
 						["<C-t>"] = actions.select_tab,
@@ -318,7 +360,7 @@ function M.config()
 						["d"] = fb_actions.remove,
 						["o"] = fb_actions.open,
 						["g"] = fb_actions.goto_parent_dir,
-						--["e"] = fb_actions.goto_home_dir,
+						["e"] = fb_actions.goto_home_dir,
 						["w"] = fb_actions.goto_cwd,
 						--["t"] = fb_actions.change_cwd,
 						["t"] = actions.select_tab,
@@ -331,9 +373,68 @@ function M.config()
 					},
 				},
 			},
-
 		},
-	}
+	})
+
+	require("neoclip").setup({
+		history = 1000,
+		enable_persistent_history = false,
+		length_limit = 1048576,
+		continuous_sync = false,
+		db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
+		filter = nil,
+		preview = true,
+		prompt = nil,
+		default_register = '"',
+		default_register_macros = "q",
+		enable_macro_history = true,
+		content_spec_column = false,
+		disable_keycodes_parsing = false,
+		on_select = {
+			move_to_front = false,
+			close_telescope = true,
+		},
+		on_paste = {
+			set_reg = false,
+			move_to_front = false,
+			close_telescope = true,
+		},
+		on_replay = {
+			set_reg = false,
+			move_to_front = false,
+			close_telescope = true,
+		},
+		on_custom_action = {
+			close_telescope = true,
+		},
+		keys = {
+			telescope = {
+				i = {
+					select = "<cr>",
+					paste = "<c-p>",
+					paste_behind = "<c-k>",
+					replay = "<c-q>", -- replay a macro
+					delete = "<c-d>", -- delete an entry
+					edit = "<c-e>", -- edit an entry
+					custom = {},
+				},
+				n = {
+					select = "<cr>",
+					paste = "p",
+					--- It is possible to map to more than one key.
+					-- paste = { 'p', '<c-p>' },
+					paste_behind = "P",
+					replay = "q",
+					delete = "d",
+					edit = "e",
+					custom = {},
+				},
+			},
+		},
+	})
+
+	telescope.load_extension("live_grep_args")
+	telescope.load_extension("recent-files")
 end
 
 return M

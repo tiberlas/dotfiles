@@ -59,7 +59,11 @@ vim.opt.showbreak = "↪"
 vim.opt.list = true
 vim.opt.listchars = { tab = "->", eol = "↲", nbsp = "␣", trail = "!", }
 vim.g.netrw_banner = 0
+-- link options
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = 'nc'
 -- spell checker
+vim.cmd('language en_US.utf8')
 vim.opt.spelllang = 'en'
 vim.opt.spell = true
 -- Highlight on yank
@@ -71,3 +75,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	group = highlight_group,
 	pattern = '*',
 })
+
+vim.g.loaded_pearl_provider = 0

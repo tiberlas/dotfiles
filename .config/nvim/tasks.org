@@ -1,0 +1,24 @@
+* Task list [8/13]
+- [X] formatter
+- [X] linter
+- [X] lsp
+- [X] dap
+- [X] test
+- [X] cmp
+- [X] telescope clipboard viewer
+- [ ] fzf/grep; the leader+f+g is slow
+- [ ] telescope filesystem slow (when git show history is active)
+- [ ] telescope filesystem rename not working => find better file system like ranger
+- [ ] new which key
+- [ ] org mode finish setup
+- [X] see git status files list
+- [-] basic documentation
+	- [ ] plugins
+	- [X] useful commands (GREP)
+
+* ERROR LIST
+
+** DONE emoji are not rendering
+   CLOSED: [2024-07-13 Sat 17:10]
+** DONE telescope UI is not consistent
+   CLOSED: [2024-07-13 Sat 17:10]

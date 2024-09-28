@@ -1,7 +1,7 @@
 -- LSP, DAP, Lint, Formatter servers
 -- ENSURE THAT ALL SERVERS ARE INSTALLED THROUGH MASON
 -- ENSURE YOU HAVE INSTALLED npm, pip and luarocks THROUGH APP STORE THAT NVIM IS INSTALLED (e.g. brew)
--- see: https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+-- see: `https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md`
 
 local M = {}
 
@@ -18,38 +18,40 @@ M.lsp = {
 	"yamlls",
 	"marksman",
 	"lemminx",
+	"openscad_lsp",
 }
 M.dap = {
-	"node-debug2-adapter",
-	"debugpy",
+	{ name = "node-debug2-adapter", command = "" },
+	{ name = "debugpy",             command = "" },
 }
+-- linters or diagnostics
 M.lint = {
 	-- css
-	"stylelint",
+	{ name = "stylelint", command = "stylelint" },
 	-- javascript
-	"eslint_d",
+	{ name = "eslint_d",  command = "eslint_d" },
 	-- python
-	"flake8",
-	"pylint",
-	"ruff",
+	{ name = "flake8",    command = "flake8" },
+	--{ name = "pylint",  command = "pylint" },
+	{ name = "ruff",      command = "ruff" },
 	-- lua
-	"selene",
+	{ name = "selene",    command = "selene" },
 	-- text, markdown
-	"vale",
-	"trivy",
+	{ name = "vale",      command = "vale" },
 }
 M.formatter = {
 	-- lua
-	"lua_format", -- mason package: luaformatter
+	--{ name = "luaformatter", command = "lua_format" },
+	{name= "stylua", command = "stylua"},
 	-- javascript
-	"prettier",
-	"biome",
+	{ name = "prettier",     command = "prettier" },
 	-- python
-	--"xmlformatter",
-	"autoflake",
-	"black",
+	{ name = "autoflake",    command = "autoflake" },
+	{ name = "black",        command = "black" },
 	-- markdown
-	"markdown_toc", -- mason package: markdown-toc
+	{ name = "markdown-toc", command = "markdown_toc" },
+	-- others
+	{ name = "xmlformatter", command = "xmlformat" },
 }
 
 return M

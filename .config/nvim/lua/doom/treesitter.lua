@@ -8,7 +8,9 @@ local M = {
 }
 function M.config()
 	require("nvim-treesitter.configs").setup {
-	ensure_installed = { "c", "lua", "bash", "markdown", "markdown_inline", "css", "vim", "vimdoc", "query", "fish", "git_config", "gitignore", "html", "javascript", "json", "python", "scss", "typescript" },
+	--ensure_installed = { "c", "lua", "bash", "markdown", "markdown_inline", "css", "vim", "vimdoc", "query", "fish", "git_config", "gitignore", "html", "javascript", "json", "python", "scss", "typescript" },
+		ensure_installed = "all",
+		ignore_install = { 'org' },
 		sync_install = false,
 		highlight = {
 			enable = true,

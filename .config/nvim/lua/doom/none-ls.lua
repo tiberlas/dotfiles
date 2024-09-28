@@ -1,5 +1,6 @@
 -- FORMATTER AND LINTER
--- see: https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+-- see: `https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md`
+-- specific FORMATTER or LINTER shuld be installed via mason `:Mason`
 local M = {
 	"nvimtools/none-ls.nvim",
 	dependencies = {
@@ -14,23 +15,25 @@ function M.config()
 	local formatting = null_ls.builtins.formatting; -- formatters
 	local diagnostics =  null_ls.builtins.diagnostics; -- linter
 
+	-- some predefined builtins 
 	local sources = {
 		null_ls.builtins.completion.spell,
 	}
 
 	-- add linters
 	for _, server in pairs(servers.lint) do
-		table.insert(sources, diagnostics[server])
+		table.insert(sources, diagnostics[server['command']])
 	end
 
 	-- add formatters
 	for _, server in pairs(servers.formatter) do
-		table.insert(sources, formatting[server])
+		table.insert(sources, formatting[server['command']])
 	end
 
 	null_ls.setup {
 		debug = false,
 		sources = sources
+
 		--[[ sources = {
 			formatting.stylua,
 			formatting.prettier,

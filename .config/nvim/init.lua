@@ -9,12 +9,12 @@ local lazy_plugin_spec = {
 	{ import = "doom.mason" },      -- install lsp, dap, linter, formatter
 	{ import = "doom.lsp-config" }, -- lsp
 	{ import = "doom.schemastore" }, -- lsp for JSON, like package.json
-	{ import = "doom.none-ls" },    -- linter, formatter
+	{ import = "doom.lint" },
+	{ import = "doom.formatter" },
 	{ import = "doom.cmp" },        -- auto complete
 	{ import = "doom.dap" },
 	{ import = "doom.neo-test" },
 	{ import = "doom.telescope" },
-	--{ import = "doom.harpoon" }, -- version 2 not working
 	{ import = "doom.gitsigns" },
 	{ import = "doom.gitdiff" },
 	{ import = "doom.autopairs" },
@@ -25,6 +25,10 @@ local lazy_plugin_spec = {
 	{ import = "doom.iluminati" },
 	{ import = "doom.hop" },
 	{ import = "doom.zen" },
+	{ import = "doom.org-mod" },
+	{ import = "doom.org-mod-bullets" },
+	{ import = "doom.org-mod-table" },
+	{ import = "doom.ranger" },
 }
 
 -- install lazy (plugin manager)

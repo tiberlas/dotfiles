@@ -22,6 +22,13 @@ function _TAB_THIS_BUFFER()
 	vim.cmd([[tabedit %]])
 end
 
+function _DIFF_COMMITS(num_of_commits)
+	if num_of_commits == nil then
+		num_of_commits = 1
+	end
+	vim.cmd("DiffviewOpen HEAD~"..num_of_commits)
+end
+
 function _INSTALL_MASON_SERVERS()
 	local servers = require "doom.servers"
 	-- LSP are installed through mason-lspconfig
